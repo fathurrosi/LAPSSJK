@@ -1,0 +1,17 @@
+G:\Works\Andri\Codes\LAPS.SJK.Logic\obj\Debug\LAPS.SJK.Logic.csprojResolveAssemblyReference.cache
+G:\Works\Andri\Codes\LAPS.SJK.Logic\bin\Debug\LAPS.SJK.Logic.dll
+G:\Works\Andri\Codes\LAPS.SJK.Logic\bin\Debug\LAPS.SJK.Logic.pdb
+G:\Works\Andri\Codes\LAPS.SJK.Logic\bin\Debug\itextsharp.dll
+G:\Works\Andri\Codes\LAPS.SJK.Logic\bin\Debug\LAPS.SJK.Dta.dll
+G:\Works\Andri\Codes\LAPS.SJK.Logic\bin\Debug\LAPS.SJK.Dto.dll
+G:\Works\Andri\Codes\LAPS.SJK.Logic\bin\Debug\NPOI.dll
+G:\Works\Andri\Codes\LAPS.SJK.Logic\bin\Debug\NPOI.OOXML.dll
+G:\Works\Andri\Codes\LAPS.SJK.Logic\bin\Debug\NPOI.OpenXml4Net.dll
+G:\Works\Andri\Codes\LAPS.SJK.Logic\bin\Debug\NPOI.OpenXmlFormats.dll
+G:\Works\Andri\Codes\LAPS.SJK.Logic\bin\Debug\DBHelper.dll
+G:\Works\Andri\Codes\LAPS.SJK.Logic\bin\Debug\MySql.Data.dll
+G:\Works\Andri\Codes\LAPS.SJK.Logic\bin\Debug\LAPS.SJK.Dta.pdb
+G:\Works\Andri\Codes\LAPS.SJK.Logic\bin\Debug\LAPS.SJK.Dto.pdb
+G:\Works\Andri\Codes\LAPS.SJK.Logic\bin\Debug\itextsharp.xml
+G:\Works\Andri\Codes\LAPS.SJK.Logic\obj\Debug\LAPS.SJK.Logic.dll
+G:\Works\Andri\Codes\LAPS.SJK.Logic\obj\Debug\LAPS.SJK.Logic.pdb
