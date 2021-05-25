@@ -1,0 +1,40 @@
+﻿.navbar {
+    border-radius: 0px;
+    border: 0px solid transparent;
+    margin-bottom: 0px;
+}
+.navbar-inverse {
+    background-color: #602784;
+    color: #fff;
+}
+.header .navbar-brand {
+    height: 90px;
+}
+.header .nav >li >a {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.header .navbar-toggle {
+    padding: 10px;
+    margin: 25px 15px 25px 0;
+}
+.logo {
+    display: inline !important;
+}
+.judul {
+    font-weight: bold;
+    color: #f8c300;
+    font-size: 25px;
+    line-height: 60px;
+}
+.subjudul {
+    color: #fff;
+    font-size: 23px;
+    line-height: 60px;
+}
+.login-page {
+    background-color: #602784;
+}
+.login-box-body {
+    border-radius: 5px;
+}
