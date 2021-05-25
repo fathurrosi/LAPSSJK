@@ -1,7 +1,18 @@
-﻿@{
+﻿@model LAPS.SJK.UI.Models.Widget
+
+@{
     ViewBag.Title = "About";
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
 <p>Use this area to provide additional information.</p>
+
+
+
+
+<div style="background: silver">
+    @LAPS.SJK.UI.App_LocalResources.GlobalRes.Money: @($"{5000:c0}") <br />
+    @LAPS.SJK.UI.App_LocalResources.GlobalRes.Money: @(string.Format("{0:c0}", 45000)) <br />
+    @LAPS.SJK.UI.App_LocalResources.GlobalRes.DateAndTime: @(DateTime.Now.ToString("F")) <br />
+</div>

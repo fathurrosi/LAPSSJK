@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using LAPS.SJK.Logic.Helper;
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -7,29 +9,75 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
+
+
+
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink(LAPS.SJK.UI.App_LocalResources.GlobalRes.APPLICATION_NAME, "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink(LAPS.SJK.UI.App_LocalResources.GlobalRes.HOME, "Index", "Home")</li>
+                    <li>@Html.ActionLink(LAPS.SJK.UI.App_LocalResources.GlobalRes.ABOUT, "About", "Home")</li>
+                    <li>@Html.ActionLink(LAPS.SJK.UI.App_LocalResources.GlobalRes.CONTACT, "Contact", "Home")</li>
                 </ul>
-                @Html.Partial("_LoginPartial")
+
             </div>
+
+
+
+            @*<ul class="nav pull-right">
+                @Url.LangSwitcher("English", ViewContext.RouteData, "en")
+                @Url.LangSwitcher("Russian", ViewContext.RouteData, "ru")
+                @Url.LangSwitcher("Norwegian", ViewContext.RouteData, "no")
+            </ul>*@
+
+
+
+            <ul class="nav pull-right">
+                <li class="divider-vertical"></li>
+                <li class="dropdown open">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        @*<li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>*@
+
+                        @Url.LangSwitcher("Indonesia", ViewContext.RouteData, "id")
+                        <li class="divider"></li>
+                        @Url.LangSwitcher("English", ViewContext.RouteData, "en")
+                        <li class="divider"></li>
+                        @Url.LangSwitcher("Russian", ViewContext.RouteData, "ru")
+
+                     
+                        
+                    </ul>
+                </li>
+            </ul>
+
         </div>
+
+
     </div>
     <div class="container body-content">
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+        </div>
         @RenderBody()
         <hr />
         <footer>

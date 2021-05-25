@@ -7,3 +7,12 @@ G:\Works\Andri\Codes\LAPS.SJK.Dta\bin\Debug\LAPS.SJK.Dto.pdb
 G:\Works\Andri\Codes\LAPS.SJK.Dta\obj\Debug\LAPS.SJK.Dta.csprojResolveAssemblyReference.cache
 G:\Works\Andri\Codes\LAPS.SJK.Dta\obj\Debug\LAPS.SJK.Dta.dll
 G:\Works\Andri\Codes\LAPS.SJK.Dta\obj\Debug\LAPS.SJK.Dta.pdb
+G:\Works\Andri\LAPSSJK\LAPS.SJK.Dta\bin\Debug\LAPS.SJK.Dta.dll
+G:\Works\Andri\LAPSSJK\LAPS.SJK.Dta\bin\Debug\LAPS.SJK.Dta.pdb
+G:\Works\Andri\LAPSSJK\LAPS.SJK.Dta\bin\Debug\DBHelper.dll
+G:\Works\Andri\LAPSSJK\LAPS.SJK.Dta\bin\Debug\LAPS.SJK.Dto.dll
+G:\Works\Andri\LAPSSJK\LAPS.SJK.Dta\bin\Debug\MySql.Data.dll
+G:\Works\Andri\LAPSSJK\LAPS.SJK.Dta\bin\Debug\LAPS.SJK.Dto.pdb
+G:\Works\Andri\LAPSSJK\LAPS.SJK.Dta\obj\Debug\LAPS.SJK.Dta.csprojResolveAssemblyReference.cache
+G:\Works\Andri\LAPSSJK\LAPS.SJK.Dta\obj\Debug\LAPS.SJK.Dta.dll
+G:\Works\Andri\LAPSSJK\LAPS.SJK.Dta\obj\Debug\LAPS.SJK.Dta.pdb

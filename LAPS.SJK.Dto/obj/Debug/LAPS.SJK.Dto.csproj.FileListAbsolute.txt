@@ -5,3 +5,9 @@ G:\Works\Andri\Codes\LAPS.SJK.Dto\bin\Debug\MySql.Data.dll
 G:\Works\Andri\Codes\LAPS.SJK.Dto\obj\Debug\LAPS.SJK.Dto.dll
 G:\Works\Andri\Codes\LAPS.SJK.Dto\obj\Debug\LAPS.SJK.Dto.pdb
 G:\Works\Andri\Codes\LAPS.SJK.Dto\obj\Debug\LAPS.SJK.Dto.csprojResolveAssemblyReference.cache
+G:\Works\Andri\LAPSSJK\LAPS.SJK.Dto\bin\Debug\LAPS.SJK.Dto.dll
+G:\Works\Andri\LAPSSJK\LAPS.SJK.Dto\bin\Debug\LAPS.SJK.Dto.pdb
+G:\Works\Andri\LAPSSJK\LAPS.SJK.Dto\bin\Debug\DBHelper.dll
+G:\Works\Andri\LAPSSJK\LAPS.SJK.Dto\bin\Debug\MySql.Data.dll
+G:\Works\Andri\LAPSSJK\LAPS.SJK.Dto\obj\Debug\LAPS.SJK.Dto.dll
+G:\Works\Andri\LAPSSJK\LAPS.SJK.Dto\obj\Debug\LAPS.SJK.Dto.pdb

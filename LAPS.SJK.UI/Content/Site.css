@@ -1,40 +1,24 @@
-﻿.navbar {
-    border-radius: 0px;
-    border: 0px solid transparent;
-    margin-bottom: 0px;
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
 }
-.navbar-inverse {
-    background-color: #602784;
-    color: #fff;
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
 }
-.header .navbar-brand {
-    height: 90px;
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
 }
-.header .nav >li >a {
-    padding-top: 30px;
-    padding-bottom: 30px;
-}
-.header .navbar-toggle {
-    padding: 10px;
-    margin: 25px 15px 25px 0;
-}
-.logo {
-    display: inline !important;
-}
-.judul {
-    font-weight: bold;
-    color: #f8c300;
-    font-size: 25px;
-    line-height: 60px;
-}
-.subjudul {
-    color: #fff;
-    font-size: 23px;
-    line-height: 60px;
-}
-.login-page {
-    background-color: #602784;
-}
-.login-box-body {
-    border-radius: 5px;
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
 }

@@ -12,7 +12,7 @@ using LAPS.SJK.Logic.Enum;
 
 namespace LAPS.SJK.UI.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         public ActionResult Login()
         {

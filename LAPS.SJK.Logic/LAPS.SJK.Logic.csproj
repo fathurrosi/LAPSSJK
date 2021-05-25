@@ -49,6 +49,9 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -57,6 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\LocalizationAttribute.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="ConfigReader.cs" />
     <Compile Include="DataItem.cs" />
@@ -68,6 +72,7 @@
     <Compile Include="Handler\FileHandler.cs" />
     <Compile Include="Handler\ImageHandler.cs" />
     <Compile Include="Helper\ExcelHelper.cs" />
+    <Compile Include="Helper\LanguageHelper.cs" />
     <Compile Include="Helper\PDFHelper.cs" />
     <Compile Include="Helper\SessionHelper.cs" />
     <Compile Include="Login.cs" />
