@@ -61,6 +61,96 @@ namespace LAPS.SJK.UI.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DAFTAR ANGGOTA.
+        /// </summary>
+        public static string _DAFTAR_ANGGOTA {
+            get {
+                return ResourceManager.GetString("_DAFTAR_ANGGOTA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HAK DAN KEWAJIBAN ANGGOTA.
+        /// </summary>
+        public static string _HAK_DAN_KEWAJIBAN_ANGGOTA {
+            get {
+                return ResourceManager.GetString("_HAK_DAN_KEWAJIBAN_ANGGOTA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to KEANGGOTAAN LAPS SJK.
+        /// </summary>
+        public static string _KEANGGOTAAN_LAPS_SJK {
+            get {
+                return ResourceManager.GetString("_KEANGGOTAAN_LAPS_SJK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to KOMITE ETIK.
+        /// </summary>
+        public static string _KOMITE_ETIK {
+            get {
+                return ResourceManager.GetString("_KOMITE_ETIK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PENDIRIAN LAPS SJK.
+        /// </summary>
+        public static string _PENDIRIAN_LAPS_SJK {
+            get {
+                return ResourceManager.GetString("_PENDIRIAN_LAPS_SJK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PENGAWAS LAPS SJK.
+        /// </summary>
+        public static string _PENGAWAS_LAPS_SJK {
+            get {
+                return ResourceManager.GetString("_PENGAWAS_LAPS_SJK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PENGURUS LAPS SJK.
+        /// </summary>
+        public static string _PENGURUS_LAPS_SJK {
+            get {
+                return ResourceManager.GetString("_PENGURUS_LAPS_SJK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to STRUKTUR ORGANISASI LAPS SJK.
+        /// </summary>
+        public static string _STRUKTUR_ORGANISASI_LAPS_SJK {
+            get {
+                return ResourceManager.GetString("_STRUKTUR_ORGANISASI_LAPS_SJK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SYARAT MENJADI ANGGOTA LAPS SJK.
+        /// </summary>
+        public static string _SYARAT_MENJADI_ANGGOTA_LAPS_SJK {
+            get {
+                return ResourceManager.GetString("_SYARAT_MENJADI_ANGGOTA_LAPS_SJK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tentang Kami.
+        /// </summary>
+        public static string _Tentang_Kami {
+            get {
+                return ResourceManager.GetString("_Tentang_Kami", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tentang Kita.
         /// </summary>
         public static string ABOUT {

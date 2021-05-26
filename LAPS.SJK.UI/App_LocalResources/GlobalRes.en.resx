@@ -165,4 +165,34 @@
   <data name="Tooltip_help" xml:space="preserve">
     <value>Tooltip help</value>
   </data>
+  <data name="_DAFTAR_ANGGOTA" xml:space="preserve">
+    <value>MEMBER LIST</value>
+  </data>
+  <data name="_HAK_DAN_KEWAJIBAN_ANGGOTA" xml:space="preserve">
+    <value>RIGHTS AND OBLIGATIONS OF MEMBERS</value>
+  </data>
+  <data name="_KEANGGOTAAN_LAPS_SJK" xml:space="preserve">
+    <value>LAPS SJK MEMBERSHIP</value>
+  </data>
+  <data name="_KOMITE_ETIK" xml:space="preserve">
+    <value>ETHICS COMMITTEE</value>
+  </data>
+  <data name="_PENDIRIAN_LAPS_SJK" xml:space="preserve">
+    <value>ESTABLISHMENT OF SJK LAPS</value>
+  </data>
+  <data name="_PENGAWAS_LAPS_SJK" xml:space="preserve">
+    <value>OVERSIGHT OF LAPS SJK</value>
+  </data>
+  <data name="_PENGURUS_LAPS_SJK" xml:space="preserve">
+    <value>MANAGEMENT OF LAPS SJK</value>
+  </data>
+  <data name="_STRUKTUR_ORGANISASI_LAPS_SJK" xml:space="preserve">
+    <value>SJK LAPS ORGANIZATIONAL STRUCTURE</value>
+  </data>
+  <data name="_SYARAT_MENJADI_ANGGOTA_LAPS_SJK" xml:space="preserve">
+    <value>REQUIREMENTS TO BE A MEMBER OF LAPS SJK</value>
+  </data>
+  <data name="_Tentang_Kami" xml:space="preserve">
+    <value>About Us</value>
+  </data>
 </root>

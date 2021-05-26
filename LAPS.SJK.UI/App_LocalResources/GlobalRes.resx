@@ -165,4 +165,34 @@
   <data name="Tooltip_help" xml:space="preserve">
     <value>Tooltip help</value>
   </data>
+  <data name="_DAFTAR_ANGGOTA" xml:space="preserve">
+    <value>DAFTAR ANGGOTA</value>
+  </data>
+  <data name="_HAK_DAN_KEWAJIBAN_ANGGOTA" xml:space="preserve">
+    <value>HAK DAN KEWAJIBAN ANGGOTA</value>
+  </data>
+  <data name="_KEANGGOTAAN_LAPS_SJK" xml:space="preserve">
+    <value>KEANGGOTAAN LAPS SJK</value>
+  </data>
+  <data name="_KOMITE_ETIK" xml:space="preserve">
+    <value>KOMITE ETIK</value>
+  </data>
+  <data name="_PENDIRIAN_LAPS_SJK" xml:space="preserve">
+    <value>PENDIRIAN LAPS SJK</value>
+  </data>
+  <data name="_PENGAWAS_LAPS_SJK" xml:space="preserve">
+    <value>PENGAWAS LAPS SJK</value>
+  </data>
+  <data name="_PENGURUS_LAPS_SJK" xml:space="preserve">
+    <value>PENGURUS LAPS SJK</value>
+  </data>
+  <data name="_STRUKTUR_ORGANISASI_LAPS_SJK" xml:space="preserve">
+    <value>STRUKTUR ORGANISASI LAPS SJK</value>
+  </data>
+  <data name="_SYARAT_MENJADI_ANGGOTA_LAPS_SJK" xml:space="preserve">
+    <value>SYARAT MENJADI ANGGOTA LAPS SJK</value>
+  </data>
+  <data name="_Tentang_Kami" xml:space="preserve">
+    <value>Tentang Kami</value>
+  </data>
 </root>
