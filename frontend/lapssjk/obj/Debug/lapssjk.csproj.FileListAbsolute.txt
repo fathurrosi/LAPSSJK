@@ -4,3 +4,9 @@ C:\Users\andri\source\repos\lapssjk\lapssjk\bin\lapssjk.pdb
 C:\Users\andri\source\repos\lapssjk\lapssjk\obj\Debug\lapssjk.csproj.CoreCompileInputs.cache
 C:\Users\andri\source\repos\lapssjk\lapssjk\obj\Debug\lapssjk.dll
 C:\Users\andri\source\repos\lapssjk\lapssjk\obj\Debug\lapssjk.pdb
+G:\Works\Andri\LAPSSJK\frontend\lapssjk\bin\lapssjk.dll.config
+G:\Works\Andri\LAPSSJK\frontend\lapssjk\bin\lapssjk.dll
+G:\Works\Andri\LAPSSJK\frontend\lapssjk\bin\lapssjk.pdb
+G:\Works\Andri\LAPSSJK\frontend\lapssjk\obj\Debug\lapssjk.csprojResolveAssemblyReference.cache
+G:\Works\Andri\LAPSSJK\frontend\lapssjk\obj\Debug\lapssjk.dll
+G:\Works\Andri\LAPSSJK\frontend\lapssjk\obj\Debug\lapssjk.pdb
