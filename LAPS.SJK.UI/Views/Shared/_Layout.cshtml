@@ -98,8 +98,11 @@
                                                     <i class="fas fa-angle-down"></i>
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownLanguage">
-                                                    <a class="dropdown-item" href="#"><img src="@Url.Content("~/Content/img/blank.gif")" class="flag flag-id" alt="Indonesia" /> ID</a>
-                                                    <a class="dropdown-item" href="#"><img src="@Url.Content("~/Content/img/blank.gif")" class="flag flag-us" alt="English" /> EN</a>
+                                                    @Url.LangSwitcher("Indonesia", ViewContext.RouteData, "id")
+                                                    @Url.LangSwitcher("English", ViewContext.RouteData, "en")
+
+                                                    @*<a class="dropdown-item" href="#"><img src="@Url.Content("~/Content/img/blank.gif")" class="flag flag-id" alt="Indonesia" /> ID</a>
+                                                        <a class="dropdown-item" href="#"><img src="@Url.Content("~/Content/img/blank.gif")" class="flag flag-us" alt="English" /> EN</a>*@
                                                 </div>
                                             </li>
                                         </ul>
