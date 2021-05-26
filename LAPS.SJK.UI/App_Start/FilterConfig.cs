@@ -8,7 +8,7 @@ namespace LAPS.SJK.UI
     {    
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new LocalizationAttribute("en"), 0);
+            filters.Add(new LocalizationAttribute("id"), 0);
             filters.Add(new HandleErrorAttribute());
         }
     }
