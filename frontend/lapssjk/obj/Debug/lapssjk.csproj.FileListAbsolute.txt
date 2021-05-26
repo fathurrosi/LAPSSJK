@@ -1,0 +1,6 @@
+C:\Users\andri\source\repos\lapssjk\lapssjk\bin\lapssjk.dll.config
+C:\Users\andri\source\repos\lapssjk\lapssjk\bin\lapssjk.dll
+C:\Users\andri\source\repos\lapssjk\lapssjk\bin\lapssjk.pdb
+C:\Users\andri\source\repos\lapssjk\lapssjk\obj\Debug\lapssjk.csproj.CoreCompileInputs.cache
+C:\Users\andri\source\repos\lapssjk\lapssjk\obj\Debug\lapssjk.dll
+C:\Users\andri\source\repos\lapssjk\lapssjk\obj\Debug\lapssjk.pdb
