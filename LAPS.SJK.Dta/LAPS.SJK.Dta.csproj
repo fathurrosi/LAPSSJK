@@ -51,17 +51,30 @@
     <Compile Include="Cstm\tbl_RoleItem.cs" />
     <Compile Include="Cstm\tbl_userItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tbl_categoryItem.cs" />
     <Compile Include="tbl_Combo_DetailItem.cs" />
+    <Compile Include="tbl_culture_infoItem.cs" />
     <Compile Include="tbl_FileItem.cs" />
     <Compile Include="tbl_InfoItem.cs" />
+    <Compile Include="tbl_labelItem.cs" />
     <Compile Include="tbl_LogItem.cs" />
     <Compile Include="tbl_MenuItem.cs" />
+    <Compile Include="tbl_menu_relationsItem.cs" />
+    <Compile Include="tbl_menu_xItem.cs" />
+    <Compile Include="tbl_postItem.cs" />
+    <Compile Include="tbl_post_content_textItem.cs" />
+    <Compile Include="tbl_post_detailItem.cs" />
+    <Compile Include="tbl_post_list_fieldItem.cs" />
+    <Compile Include="tbl_post_list_templateItem.cs" />
+    <Compile Include="tbl_post_list_valueItem.cs" />
     <Compile Include="tbl_PrivilegeItem.cs" />
     <Compile Include="tbl_RoleItem.cs" />
     <Compile Include="tbl_SessionItem.cs" />
     <Compile Include="tbl_SettingItem.cs" />
     <Compile Include="tbl_UserItem.cs" />
     <Compile Include="tbl_User_RoleItem.cs" />
+    <Compile Include="tb_contact_usItem.cs" />
+    <Compile Include="tb_optionsItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LAPS.SJK.Dto\LAPS.SJK.Dto.csproj">

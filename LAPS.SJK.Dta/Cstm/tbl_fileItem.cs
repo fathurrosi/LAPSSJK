@@ -10,20 +10,20 @@ namespace LAPS.SJK.Dta
 {
 
 
-    public partial class tbl_FileItem
+    public partial class tbl_fileItem
     {
-        public static tbl_File GetByReff(string ReferenceTable, string ReferenceID)
+        public static tbl_file GetByReff(string ReferenceTable, string ReferenceID)
         {
             IDBHelper context = new DBHelper();
             context.CommandText = @"	
-            SELECT top 1 *  FROM [tbl_File]
+            SELECT top 1 *  FROM [tbl_file]
             WHERE [ref_name] =@ReferenceTable and [ref_id] =@ReferenceID
 
             ";
             context.CommandType = System.Data.CommandType.Text;
             context.AddParameter("@ReferenceTable", ReferenceTable);
             context.AddParameter("@ReferenceID", ReferenceID);
-            return DBUtil.ExecuteMapper(context, new tbl_File()).FirstOrDefault();
+            return DBUtil.ExecuteMapper(context, new tbl_file()).FirstOrDefault();
             //return result.FirstOrDefault();
 
         }

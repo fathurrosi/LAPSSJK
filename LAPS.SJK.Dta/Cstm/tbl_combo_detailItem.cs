@@ -7,36 +7,36 @@ using LAPS.SJK.Dto;
 
 namespace LAPS.SJK.Dta
 {
-    public partial class tbl_Combo_DetailItem
+    public partial class tbl_combo_detailItem
     {
-        public static List<tbl_Combo_Detail> GetByHeader(string header)
+        public static List<tbl_combo_detail> GetByHeader(string header)
         {
-            List<tbl_Combo_Detail> result = GetAll().Where(t => t.header == header).ToList();
+            List<tbl_combo_detail> result = GetAll().Where(t => t.header == header).ToList();
             result = result.OrderBy(t => t.sequence).ToList();
 
-            //result.Insert(0, new tbl_Combo_Detail() { name="Jenis Dokumen" });
+            //result.Insert(0, new tbl_combo_detail() { name="Jenis Dokumen" });
             return result;
         }
 
 
-        //public static List<tbl_Combo_Detail> GetImgPosition()
+        //public static List<tbl_combo_detail> GetImgPosition()
         //{
-        //    List<tbl_Combo_Detail> result = new List<tbl_Combo_Detail>();
-        //    result.Add(new tbl_Combo_Detail() { id = 1, name = "Sebelah Kiri" });
-        //    result.Add(new tbl_Combo_Detail() { id = 2, name = "Sebelah Kanan" });
+        //    List<tbl_combo_detail> result = new List<tbl_combo_detail>();
+        //    result.Add(new tbl_combo_detail() { id = 1, name = "Sebelah Kiri" });
+        //    result.Add(new tbl_combo_detail() { id = 2, name = "Sebelah Kanan" });
         //    return result;
         //}
 
 
-        public static List<tbl_Combo_Detail> GetTipeKanlender()
+        public static List<tbl_combo_detail> GetTipeKanlender()
         {
-            List<tbl_Combo_Detail> result = GetAll().Where(t => t.header == "Tipe Kalender").ToList();
+            List<tbl_combo_detail> result = GetAll().Where(t => t.header == "Tipe Kalender").ToList();
             return result;
         }
 
-        public static List<tbl_Combo_Detail> GetCollateral_Corporate_Category()
+        public static List<tbl_combo_detail> GetCollateral_Corporate_Category()
         {
-            List<tbl_Combo_Detail> result = GetAll().Where(t => t.header == "Collateral_Corporate_Category").ToList();
+            List<tbl_combo_detail> result = GetAll().Where(t => t.header == "Collateral_Corporate_Category").ToList();
             return result;
         }
     }

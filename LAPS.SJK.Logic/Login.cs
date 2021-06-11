@@ -11,8 +11,8 @@ namespace LAPS.SJK.Logic
     {
         public static void Update(string username)
         {
-            tbl_User item = new tbl_User();
-            //tbl_UserItem.UpdateLogin(username, Utilities.GetComputerName(), Utilities.GetIpAddress());
+            tbl_user item = new tbl_user();
+            //tbl_userItem.UpdateLogin(username, Utilities.GetComputerName(), Utilities.GetIpAddress());
         }
     }
 }

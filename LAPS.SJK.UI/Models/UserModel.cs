@@ -4,7 +4,7 @@ using LAPS.SJK.UI.App_LocalResources;
 
 namespace LAPS.SJK.UI.Models
 {
-    public class UserModel : LAPS.SJK.Dto.tbl_User
+    public class UserModel : LAPS.SJK.Dto.tbl_user
     {
     }
 

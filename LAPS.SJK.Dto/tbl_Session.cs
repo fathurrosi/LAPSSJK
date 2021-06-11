@@ -4,17 +4,17 @@ using System;
 using DataAccessLayer;
 namespace LAPS.SJK.Dto
 {
-    public class tbl_Session : IDataMapper<tbl_Session>
+    public class tbl_session : IDataMapper<tbl_session>
     {
-        #region tbl_Session Properties
+        #region tbl_session Properties
         public Guid id { get; set; }
         public string name { get; set; }
         public DateTime? updated { get; set; }
         public string updatedBy { get; set; }
         #endregion    
-        public tbl_Session Map(System.Data.IDataReader reader)
+        public tbl_session Map(System.Data.IDataReader reader)
         {
-            tbl_Session obj = new tbl_Session();   
+            tbl_session obj = new tbl_session();   
             obj.id = new Guid(reader["id"].ToString());
             obj.name = reader["name"] == DBNull.Value ? null : reader["name"].ToString();
             obj.updated = reader["updated"] == DBNull.Value ? (DateTime?) null : Convert.ToDateTime(reader["updated"]);

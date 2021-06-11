@@ -8,24 +8,24 @@ using LAPS.SJK.Dto;
 namespace LAPS.SJK.Dta
 {
     /// <summary>
-    /// Dta Class of TABLE [tbl_Log]
+    /// Dta Class of TABLE [tbl_log]
     /// </summary>    
-    public partial class tbl_LogItem
+    public partial class tbl_logItem
     {
        
         #region Data Access
 
         /// <summary>
-        /// Execute Insert to TABLE [tbl_Log]
+        /// Execute Insert to TABLE [tbl_log]
         /// </summary>        
-        public static tbl_Log Insert(tbl_Log obj)
+        public static tbl_log Insert(tbl_log obj)
         {
              IDBHelper context = new DBHelper();
             string sqlQuery = @"
 SET NOCOUNT OFF
 DECLARE @Err int
 
-INSERT INTO [tbl_Log]([LogDate], [IPAddress], [LogType], [LongMessage], [ShortMessage], [Username], [MechineName]) 
+INSERT INTO [tbl_log]([LogDate], [IPAddress], [LogType], [LongMessage], [ShortMessage], [Username], [MechineName]) 
 VALUES      (@LogDate, @IPAddress, @LogType, @LongMessage, @ShortMessage, @Username, @MechineName)
 
 SET @Err = @@Error
@@ -34,7 +34,7 @@ DECLARE @_ID BigInt
 SELECT @_ID = SCOPE_IDENTITY()
 
 SELECT  LogDate, IPAddress, LogType, LongMessage, ShortMessage, Username, MechineName, ID
-FROM    [tbl_Log]
+FROM    [tbl_log]
 WHERE   [ID]  = @_ID";
             context.AddParameter("@LogDate", obj.LogDate);
             context.AddParameter("@IPAddress", string.Format("{0}", obj.IPAddress));
@@ -45,13 +45,13 @@ WHERE   [ID]  = @_ID";
             context.AddParameter("@MechineName", string.Format("{0}", obj.MechineName));
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
-            return DBUtil.ExecuteMapper<tbl_Log>(context, new tbl_Log()).FirstOrDefault();
+            return DBUtil.ExecuteMapper<tbl_log>(context, new tbl_log()).FirstOrDefault();
         }
 
         /// <summary>
-        /// Execute Update to TABLE [tbl_Log]
+        /// Execute Update to TABLE [tbl_log]
         /// </summary>        
-        public static tbl_Log Update(tbl_Log obj)
+        public static tbl_log Update(tbl_log obj)
         {
              IDBHelper context = new DBHelper();
             string sqlQuery = @"
@@ -59,7 +59,7 @@ SET NOCOUNT OFF
 
 DECLARE @Err int
 
-UPDATE      [tbl_Log]
+UPDATE      [tbl_log]
 SET         [LogDate] = @LogDate,
             [IPAddress] = @IPAddress,
             [LogType] = @LogType,
@@ -72,7 +72,7 @@ WHERE       [ID]  = @ID
 SET @Err = @@Error
 
 SELECT  LogDate, IPAddress, LogType, LongMessage, ShortMessage, Username, MechineName, ID 
-FROM    [tbl_Log]
+FROM    [tbl_log]
 WHERE   [ID]  = @ID";
             context.AddParameter("@LogDate", obj.LogDate);
             context.AddParameter("@IPAddress", string.Format("{0}", obj.IPAddress));
@@ -84,16 +84,16 @@ WHERE   [ID]  = @ID";
             context.AddParameter("@ID", obj.ID);            
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
-            return DBUtil.ExecuteMapper<tbl_Log>(context, new tbl_Log()).FirstOrDefault(); 
+            return DBUtil.ExecuteMapper<tbl_log>(context, new tbl_log()).FirstOrDefault(); 
         }
 
         /// <summary>
-        /// Execute Delete to TABLE [tbl_Log]
+        /// Execute Delete to TABLE [tbl_log]
         /// </summary>        
         public static int Delete(Int64 ID)
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery =@"DELETE FROM tbl_Log 
+            string sqlQuery =@"DELETE FROM tbl_log 
 WHERE   [ID]  = @ID";
             context.AddParameter("@ID", ID);
             context.CommandText = sqlQuery;
@@ -105,13 +105,13 @@ WHERE   [ID]  = @ID";
             return GetTotalRecord();
         }
         /// <summary>
-        /// Get Total records from [tbl_Log]
+        /// Get Total records from [tbl_log]
         /// </summary>        
         public static int GetTotalRecord()
         {
             int result = -1;
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT Count(*) as Total FROM tbl_Log";
+            string sqlQuery = "SELECT Count(*) as Total FROM tbl_log";
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             object obj = DBUtil.ExecuteScalar(context);
@@ -122,33 +122,33 @@ WHERE   [ID]  = @ID";
         }
 
         /// <summary>
-        /// Get All records from TABLE [tbl_Log]
+        /// Get All records from TABLE [tbl_log]
         /// </summary>        
-        public static List<tbl_Log> GetAll()
+        public static List<tbl_log> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT LogDate, IPAddress, LogType, LongMessage, ShortMessage, Username, MechineName, ID FROM tbl_Log";
+            string sqlQuery = "SELECT LogDate, IPAddress, LogType, LongMessage, ShortMessage, Username, MechineName, ID FROM tbl_log";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
-            return DBUtil.ExecuteMapper<tbl_Log>(context, new tbl_Log());
+            return DBUtil.ExecuteMapper<tbl_log>(context, new tbl_log());
         }
 
         /// <summary>
-        /// Get All records from TABLE [tbl_Log]
+        /// Get All records from TABLE [tbl_log]
         /// </summary>        
-        public static List<tbl_Log> GetPaging(int PageSize, int PageIndex)
+        public static List<tbl_log> GetPaging(int PageSize, int PageIndex)
         {
             IDBHelper context = new DBHelper();
             string sqlQuery = @"
-            WITH [Paging_tbl_Log] AS
+            WITH [Paging_tbl_log] AS
             (
-                SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_Log].[ID] DESC ) AS PAGING_ROW_NUMBER,
-                        [tbl_Log].*
-                FROM    [tbl_Log]
+                SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_log].[ID] DESC ) AS PAGING_ROW_NUMBER,
+                        [tbl_log].*
+                FROM    [tbl_log]
             )
 
-            SELECT      [Paging_tbl_Log].*
-            FROM        [Paging_tbl_Log]
+            SELECT      [Paging_tbl_log].*
+            FROM        [Paging_tbl_log]
             ORDER BY PAGING_ROW_NUMBER           
             OFFSET @PageIndex ROWS 
             FETCH Next @PageSize ROWS ONLY
@@ -158,21 +158,21 @@ WHERE   [ID]  = @ID";
             context.AddParameter("@PageSize", PageSize);
             context.CommandType = System.Data.CommandType.Text;
             context.CommandText = sqlQuery;
-            return DBUtil.ExecuteMapper<tbl_Log>(context, new tbl_Log());
+            return DBUtil.ExecuteMapper<tbl_log>(context, new tbl_log());
         }
 
         /// <summary>
-        /// Get a single record of TABLE [tbl_Log] by Primary Key
+        /// Get a single record of TABLE [tbl_log] by Primary Key
         /// </summary>        
-        public static tbl_Log GetByPK(Int64 ID)
+        public static tbl_log GetByPK(Int64 ID)
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = @"SELECT LogDate, IPAddress, LogType, LongMessage, ShortMessage, Username, MechineName, ID FROM tbl_Log
+            string sqlQuery = @"SELECT LogDate, IPAddress, LogType, LongMessage, ShortMessage, Username, MechineName, ID FROM tbl_log
             WHERE [ID]  = @ID";
             context.AddParameter("@ID", ID);
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
-            return DBUtil.ExecuteMapper<tbl_Log>(context, new tbl_Log()).FirstOrDefault();
+            return DBUtil.ExecuteMapper<tbl_log>(context, new tbl_log()).FirstOrDefault();
         }
 
         #endregion

@@ -30,16 +30,16 @@ namespace LAPS.SJK.Logic.Helper
             return null;
         }
 
-        public static Dto.Cstm.tbl_User GetUserLogin()
+        public static Dto.Cstm.tbl_user GetUserLogin()
         {
             object obj = Get(_UserLogin);
             if (obj == null)
             {
-                Dto.Cstm.tbl_User user = tbl_UserItem.GetUser(Utilities.Username);
+                Dto.Cstm.tbl_user user = tbl_userItem.GetUser(Utilities.Username);
                 Set(_UserLogin, user);
                 return user;
             }
-            else return (Dto.Cstm.tbl_User)obj;
+            else return (Dto.Cstm.tbl_user)obj;
         }
 
 

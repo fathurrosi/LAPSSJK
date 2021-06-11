@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LAPS.SJK.Dta
 {
-    public partial class tbl_LogItem
+    public partial class tbl_logItem
     {
     }
 }

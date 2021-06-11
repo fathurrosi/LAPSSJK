@@ -4,9 +4,9 @@ using System;
 using DataAccessLayer;
 namespace LAPS.SJK.Dto
 {
-    public class tbl_Info : IDataMapper<tbl_Info>
+    public class tbl_info : IDataMapper<tbl_info>
     {
-        #region tbl_Info Properties
+        #region tbl_info Properties
         public Int32 id { get; set; }
         public string title { get; set; }
         public string body { get; set; }
@@ -15,9 +15,9 @@ namespace LAPS.SJK.Dto
         public DateTime? updated { get; set; }
         public string updated_by { get; set; }
         #endregion    
-        public tbl_Info Map(System.Data.IDataReader reader)
+        public tbl_info Map(System.Data.IDataReader reader)
         {
-            tbl_Info obj = new tbl_Info();   
+            tbl_info obj = new tbl_info();   
             obj.id = Convert.ToInt32(reader["id"]);
             obj.title = reader["title"] == DBNull.Value ? null : reader["title"].ToString();
             obj.body = reader["body"] == DBNull.Value ? null : reader["body"].ToString();

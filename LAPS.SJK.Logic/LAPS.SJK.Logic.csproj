@@ -48,6 +48,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Routing" />
@@ -63,6 +64,7 @@
     <Compile Include="Attributes\LocalizationAttribute.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="ConfigReader.cs" />
+    <Compile Include="CustomResourceManager.cs" />
     <Compile Include="DataItem.cs" />
     <Compile Include="Enum\ContentsType.cs" />
     <Compile Include="Enum\FileType.cs" />

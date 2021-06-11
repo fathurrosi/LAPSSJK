@@ -8,43 +8,43 @@ using LAPS.SJK.Dto;
 namespace LAPS.SJK.Dta
 {
     /// <summary>
-    /// Dta Class of TABLE [tbl_Session]
+    /// Dta Class of TABLE [tbl_session]
     /// </summary>    
-    public partial class tbl_SessionItem
+    public partial class tbl_sessionItem
     {
        
         #region Data Access
 
         /// <summary>
-        /// Execute Insert to TABLE [tbl_Session]
+        /// Execute Insert to TABLE [tbl_session]
         /// </summary>        
-        public static tbl_Session Insert(tbl_Session obj)
+        public static tbl_session Insert(tbl_session obj)
         {
              IDBHelper context = new DBHelper();
             string sqlQuery = @"
 SET NOCOUNT OFF
 DECLARE @Err int
 
-INSERT INTO [tbl_Session]([id], [name], [updatedBy]) 
+INSERT INTO [tbl_session]([id], [name], [updatedBy]) 
 VALUES      (@id, @name, @updatedBy)
 
 SET @Err = @@Error
 
 SELECT  id, name, updated, updatedBy
-FROM    [tbl_Session]
+FROM    [tbl_session]
 WHERE   [id]  = @id";
             context.AddParameter("@id", obj.id);
             context.AddParameter("@name", string.Format("{0}", obj.name));
             context.AddParameter("@updatedBy", string.Format("{0}", obj.updatedBy));
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
-            return DBUtil.ExecuteMapper<tbl_Session>(context, new tbl_Session()).FirstOrDefault();
+            return DBUtil.ExecuteMapper<tbl_session>(context, new tbl_session()).FirstOrDefault();
         }
 
         /// <summary>
-        /// Execute Update to TABLE [tbl_Session]
+        /// Execute Update to TABLE [tbl_session]
         /// </summary>        
-        public static tbl_Session Update(tbl_Session obj)
+        public static tbl_session Update(tbl_session obj)
         {
              IDBHelper context = new DBHelper();
             string sqlQuery = @"
@@ -52,7 +52,7 @@ SET NOCOUNT OFF
 
 DECLARE @Err int
 
-UPDATE      [tbl_Session]
+UPDATE      [tbl_session]
 SET         [name] = @name,
             [updated] = @updated,
             [updatedBy] = @updatedBy
@@ -61,7 +61,7 @@ WHERE       [id]  = @id
 SET @Err = @@Error
 
 SELECT  id, name, updated, updatedBy 
-FROM    [tbl_Session]
+FROM    [tbl_session]
 WHERE   [id]  = @id";
             context.AddParameter("@name", string.Format("{0}", obj.name));
             context.AddParameter("@updated", obj.updated);
@@ -69,16 +69,16 @@ WHERE   [id]  = @id";
             context.AddParameter("@id", obj.id);            
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
-            return DBUtil.ExecuteMapper<tbl_Session>(context, new tbl_Session()).FirstOrDefault(); 
+            return DBUtil.ExecuteMapper<tbl_session>(context, new tbl_session()).FirstOrDefault(); 
         }
 
         /// <summary>
-        /// Execute Delete to TABLE [tbl_Session]
+        /// Execute Delete to TABLE [tbl_session]
         /// </summary>        
         public static int Delete(Guid id)
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery =@"DELETE FROM tbl_Session 
+            string sqlQuery =@"DELETE FROM tbl_session 
 WHERE   [id]  = @id";
             context.AddParameter("@id", id);
             context.CommandText = sqlQuery;
@@ -90,13 +90,13 @@ WHERE   [id]  = @id";
             return GetTotalRecord();
         }
         /// <summary>
-        /// Get Total records from [tbl_Session]
+        /// Get Total records from [tbl_session]
         /// </summary>        
         public static int GetTotalRecord()
         {
             int result = -1;
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT Count(*) as Total FROM tbl_Session";
+            string sqlQuery = "SELECT Count(*) as Total FROM tbl_session";
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             object obj = DBUtil.ExecuteScalar(context);
@@ -107,33 +107,33 @@ WHERE   [id]  = @id";
         }
 
         /// <summary>
-        /// Get All records from TABLE [tbl_Session]
+        /// Get All records from TABLE [tbl_session]
         /// </summary>        
-        public static List<tbl_Session> GetAll()
+        public static List<tbl_session> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT id, name, updated, updatedBy FROM tbl_Session";
+            string sqlQuery = "SELECT id, name, updated, updatedBy FROM tbl_session";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
-            return DBUtil.ExecuteMapper<tbl_Session>(context, new tbl_Session());
+            return DBUtil.ExecuteMapper<tbl_session>(context, new tbl_session());
         }
 
         /// <summary>
-        /// Get All records from TABLE [tbl_Session]
+        /// Get All records from TABLE [tbl_session]
         /// </summary>        
-        public static List<tbl_Session> GetPaging(int PageSize, int PageIndex)
+        public static List<tbl_session> GetPaging(int PageSize, int PageIndex)
         {
             IDBHelper context = new DBHelper();
             string sqlQuery = @"
-            WITH [Paging_tbl_Session] AS
+            WITH [Paging_tbl_session] AS
             (
-                SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_Session].[id] DESC ) AS PAGING_ROW_NUMBER,
-                        [tbl_Session].*
-                FROM    [tbl_Session]
+                SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_session].[id] DESC ) AS PAGING_ROW_NUMBER,
+                        [tbl_session].*
+                FROM    [tbl_session]
             )
 
-            SELECT      [Paging_tbl_Session].*
-            FROM        [Paging_tbl_Session]
+            SELECT      [Paging_tbl_session].*
+            FROM        [Paging_tbl_session]
             ORDER BY PAGING_ROW_NUMBER           
             OFFSET @PageIndex ROWS 
             FETCH Next @PageSize ROWS ONLY
@@ -143,21 +143,21 @@ WHERE   [id]  = @id";
             context.AddParameter("@PageSize", PageSize);
             context.CommandType = System.Data.CommandType.Text;
             context.CommandText = sqlQuery;
-            return DBUtil.ExecuteMapper<tbl_Session>(context, new tbl_Session());
+            return DBUtil.ExecuteMapper<tbl_session>(context, new tbl_session());
         }
 
         /// <summary>
-        /// Get a single record of TABLE [tbl_Session] by Primary Key
+        /// Get a single record of TABLE [tbl_session] by Primary Key
         /// </summary>        
-        public static tbl_Session GetByPK(Guid id)
+        public static tbl_session GetByPK(Guid id)
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = @"SELECT id, name, updated, updatedBy FROM tbl_Session
+            string sqlQuery = @"SELECT id, name, updated, updatedBy FROM tbl_session
             WHERE [id]  = @id";
             context.AddParameter("@id", id);
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
-            return DBUtil.ExecuteMapper<tbl_Session>(context, new tbl_Session()).FirstOrDefault();
+            return DBUtil.ExecuteMapper<tbl_session>(context, new tbl_session()).FirstOrDefault();
         }
 
         #endregion

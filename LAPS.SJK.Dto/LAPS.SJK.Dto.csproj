@@ -48,17 +48,30 @@
     <Compile Include="Cstm\SearchResult.cs" />
     <Compile Include="Cstm\tbl_User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tbl_category.cs" />
     <Compile Include="tbl_Combo_Detail.cs" />
+    <Compile Include="tbl_culture_info.cs" />
     <Compile Include="tbl_File.cs" />
     <Compile Include="tbl_Info.cs" />
+    <Compile Include="tbl_label.cs" />
     <Compile Include="tbl_Log.cs" />
     <Compile Include="tbl_Menu.cs" />
+    <Compile Include="tbl_menu_relations.cs" />
+    <Compile Include="tbl_menu_x.cs" />
+    <Compile Include="tbl_post.cs" />
+    <Compile Include="tbl_post_content_text.cs" />
+    <Compile Include="tbl_post_detail.cs" />
+    <Compile Include="tbl_post_list_field.cs" />
+    <Compile Include="tbl_post_list_template.cs" />
+    <Compile Include="tbl_post_list_value.cs" />
     <Compile Include="tbl_Privilege.cs" />
     <Compile Include="tbl_Role.cs" />
     <Compile Include="tbl_Session.cs" />
     <Compile Include="tbl_Setting.cs" />
     <Compile Include="tbl_User.cs" />
     <Compile Include="tbl_User_Role.cs" />
+    <Compile Include="tb_contact_us.cs" />
+    <Compile Include="tb_options.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

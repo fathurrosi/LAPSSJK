@@ -8,53 +8,49 @@ using LAPS.SJK.Dto;
 namespace LAPS.SJK.Dta
 {
     /// <summary>
-    /// Dta Class of TABLE [tbl_Menu]
+    /// Dta Class of TABLE [tbl_menu]
     /// </summary>    
-    public partial class tbl_MenuItem
+    public partial class tbl_menuItem
     {
        
         #region Data Access
 
         /// <summary>
-        /// Execute Insert to TABLE [tbl_Menu]
+        /// Execute Insert to TABLE [tbl_menu]
         /// </summary>        
-        public static tbl_Menu Insert(tbl_Menu obj)
+        public static tbl_menu Insert(tbl_menu obj)
         {
              IDBHelper context = new DBHelper();
             string sqlQuery = @"
 SET NOCOUNT OFF
 DECLARE @Err int
 
-INSERT INTO [tbl_Menu]([ID], [Name], [Description], [Icon], [Url], [ParentID], [Sequence], [Deleted], [MenuType], [CreatedDate], [CreatedBy], [ModifiedBy], [ModifiedDate]) 
-VALUES      (@ID, @Name, @Description, @Icon, @Url, @ParentID, @Sequence, @Deleted, @MenuType, @CreatedDate, @CreatedBy, @ModifiedBy, @ModifiedDate)
+INSERT INTO [tbl_menu]([menu_code], [menu_name], [on_lock], [parentid], [orderid], [url]) 
+VALUES      (@menu_code, @menu_name, @on_lock, @parentid, @orderid, @url)
 
 SET @Err = @@Error
 
-SELECT  ID, Name, Description, Icon, Url, ParentID, Sequence, Deleted, MenuType, CreatedDate, CreatedBy, ModifiedBy, ModifiedDate
-FROM    [tbl_Menu]
-WHERE   [ID]  = @ID";
-            context.AddParameter("@ID", obj.ID);
-            context.AddParameter("@Name", string.Format("{0}", obj.Name));
-            context.AddParameter("@Description", string.Format("{0}", obj.Description));
-            context.AddParameter("@Icon", string.Format("{0}", obj.Icon));
-            context.AddParameter("@Url", string.Format("{0}", obj.Url));
-            context.AddParameter("@ParentID", obj.ParentID);
-            context.AddParameter("@Sequence", obj.Sequence);
-            context.AddParameter("@Deleted", obj.Deleted);
-            context.AddParameter("@MenuType", string.Format("{0}", obj.MenuType));
-            context.AddParameter("@CreatedDate", obj.CreatedDate);
-            context.AddParameter("@CreatedBy", string.Format("{0}", obj.CreatedBy));
-            context.AddParameter("@ModifiedBy", string.Format("{0}", obj.ModifiedBy));
-            context.AddParameter("@ModifiedDate", obj.ModifiedDate);
+DECLARE @_menu_id Int
+SELECT @_menu_id = SCOPE_IDENTITY()
+
+SELECT  menu_id, menu_code, menu_name, on_lock, parentid, orderid, url
+FROM    [tbl_menu]
+WHERE   [menu_id]  = @_menu_id";
+            context.AddParameter("@menu_code", string.Format("{0}", obj.menu_code));
+            context.AddParameter("@menu_name", string.Format("{0}", obj.menu_name));
+            context.AddParameter("@on_lock", obj.on_lock);
+            context.AddParameter("@parentid", obj.parentid);
+            context.AddParameter("@orderid", obj.orderid);
+            context.AddParameter("@url", string.Format("{0}", obj.url));
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
-            return DBUtil.ExecuteMapper<tbl_Menu>(context, new tbl_Menu()).FirstOrDefault();
+            return DBUtil.ExecuteMapper<tbl_menu>(context, new tbl_menu()).FirstOrDefault();
         }
 
         /// <summary>
-        /// Execute Update to TABLE [tbl_Menu]
+        /// Execute Update to TABLE [tbl_menu]
         /// </summary>        
-        public static tbl_Menu Update(tbl_Menu obj)
+        public static tbl_menu Update(tbl_menu obj)
         {
              IDBHelper context = new DBHelper();
             string sqlQuery = @"
@@ -62,53 +58,41 @@ SET NOCOUNT OFF
 
 DECLARE @Err int
 
-UPDATE      [tbl_Menu]
-SET         [Name] = @Name,
-            [Description] = @Description,
-            [Icon] = @Icon,
-            [Url] = @Url,
-            [ParentID] = @ParentID,
-            [Sequence] = @Sequence,
-            [Deleted] = @Deleted,
-            [MenuType] = @MenuType,
-            [CreatedDate] = @CreatedDate,
-            [CreatedBy] = @CreatedBy,
-            [ModifiedBy] = @ModifiedBy,
-            [ModifiedDate] = @ModifiedDate
-WHERE       [ID]  = @ID
+UPDATE      [tbl_menu]
+SET         [menu_code] = @menu_code,
+            [menu_name] = @menu_name,
+            [on_lock] = @on_lock,
+            [parentid] = @parentid,
+            [orderid] = @orderid,
+            [url] = @url
+WHERE       [menu_id]  = @menu_id
 
 SET @Err = @@Error
 
-SELECT  ID, Name, Description, Icon, Url, ParentID, Sequence, Deleted, MenuType, CreatedDate, CreatedBy, ModifiedBy, ModifiedDate 
-FROM    [tbl_Menu]
-WHERE   [ID]  = @ID";
-            context.AddParameter("@Name", string.Format("{0}", obj.Name));
-            context.AddParameter("@Description", string.Format("{0}", obj.Description));
-            context.AddParameter("@Icon", string.Format("{0}", obj.Icon));
-            context.AddParameter("@Url", string.Format("{0}", obj.Url));
-            context.AddParameter("@ParentID", obj.ParentID);
-            context.AddParameter("@Sequence", obj.Sequence);
-            context.AddParameter("@Deleted", obj.Deleted);
-            context.AddParameter("@MenuType", string.Format("{0}", obj.MenuType));
-            context.AddParameter("@CreatedDate", obj.CreatedDate);
-            context.AddParameter("@CreatedBy", string.Format("{0}", obj.CreatedBy));
-            context.AddParameter("@ModifiedBy", string.Format("{0}", obj.ModifiedBy));
-            context.AddParameter("@ModifiedDate", obj.ModifiedDate);
-            context.AddParameter("@ID", obj.ID);            
+SELECT  menu_id, menu_code, menu_name, on_lock, parentid, orderid, url 
+FROM    [tbl_menu]
+WHERE   [menu_id]  = @menu_id";
+            context.AddParameter("@menu_code", string.Format("{0}", obj.menu_code));
+            context.AddParameter("@menu_name", string.Format("{0}", obj.menu_name));
+            context.AddParameter("@on_lock", obj.on_lock);
+            context.AddParameter("@parentid", obj.parentid);
+            context.AddParameter("@orderid", obj.orderid);
+            context.AddParameter("@url", string.Format("{0}", obj.url));
+            context.AddParameter("@menu_id", obj.menu_id);            
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
-            return DBUtil.ExecuteMapper<tbl_Menu>(context, new tbl_Menu()).FirstOrDefault(); 
+            return DBUtil.ExecuteMapper<tbl_menu>(context, new tbl_menu()).FirstOrDefault(); 
         }
 
         /// <summary>
-        /// Execute Delete to TABLE [tbl_Menu]
+        /// Execute Delete to TABLE [tbl_menu]
         /// </summary>        
-        public static int Delete(Int32 ID)
+        public static int Delete(Int32 menu_id)
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery =@"DELETE FROM tbl_Menu 
-WHERE   [ID]  = @ID";
-            context.AddParameter("@ID", ID);
+            string sqlQuery =@"DELETE FROM tbl_menu 
+WHERE   [menu_id]  = @menu_id";
+            context.AddParameter("@menu_id", menu_id);
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             return DBUtil.ExecuteNonQuery(context);
@@ -118,13 +102,13 @@ WHERE   [ID]  = @ID";
             return GetTotalRecord();
         }
         /// <summary>
-        /// Get Total records from [tbl_Menu]
+        /// Get Total records from [tbl_menu]
         /// </summary>        
         public static int GetTotalRecord()
         {
             int result = -1;
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT Count(*) as Total FROM tbl_Menu";
+            string sqlQuery = "SELECT Count(*) as Total FROM tbl_menu";
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             object obj = DBUtil.ExecuteScalar(context);
@@ -135,33 +119,33 @@ WHERE   [ID]  = @ID";
         }
 
         /// <summary>
-        /// Get All records from TABLE [tbl_Menu]
+        /// Get All records from TABLE [tbl_menu]
         /// </summary>        
-        public static List<tbl_Menu> GetAll()
+        public static List<tbl_menu> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT ID, Name, Description, Icon, Url, ParentID, Sequence, Deleted, MenuType, CreatedDate, CreatedBy, ModifiedBy, ModifiedDate FROM tbl_Menu";
+            string sqlQuery = "SELECT menu_id, menu_code, menu_name, on_lock, parentid, orderid, url FROM tbl_menu";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
-            return DBUtil.ExecuteMapper<tbl_Menu>(context, new tbl_Menu());
+            return DBUtil.ExecuteMapper<tbl_menu>(context, new tbl_menu());
         }
 
         /// <summary>
-        /// Get All records from TABLE [tbl_Menu]
+        /// Get All records from TABLE [tbl_menu]
         /// </summary>        
-        public static List<tbl_Menu> GetPaging(int PageSize, int PageIndex)
+        public static List<tbl_menu> GetPaging(int PageSize, int PageIndex)
         {
             IDBHelper context = new DBHelper();
             string sqlQuery = @"
-            WITH [Paging_tbl_Menu] AS
+            WITH [Paging_tbl_menu] AS
             (
-                SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_Menu].[ID] DESC ) AS PAGING_ROW_NUMBER,
-                        [tbl_Menu].*
-                FROM    [tbl_Menu]
+                SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_menu].[menu_id] DESC ) AS PAGING_ROW_NUMBER,
+                        [tbl_menu].*
+                FROM    [tbl_menu]
             )
 
-            SELECT      [Paging_tbl_Menu].*
-            FROM        [Paging_tbl_Menu]
+            SELECT      [Paging_tbl_menu].*
+            FROM        [Paging_tbl_menu]
             ORDER BY PAGING_ROW_NUMBER           
             OFFSET @PageIndex ROWS 
             FETCH Next @PageSize ROWS ONLY
@@ -171,21 +155,21 @@ WHERE   [ID]  = @ID";
             context.AddParameter("@PageSize", PageSize);
             context.CommandType = System.Data.CommandType.Text;
             context.CommandText = sqlQuery;
-            return DBUtil.ExecuteMapper<tbl_Menu>(context, new tbl_Menu());
+            return DBUtil.ExecuteMapper<tbl_menu>(context, new tbl_menu());
         }
 
         /// <summary>
-        /// Get a single record of TABLE [tbl_Menu] by Primary Key
+        /// Get a single record of TABLE [tbl_menu] by Primary Key
         /// </summary>        
-        public static tbl_Menu GetByPK(Int32 ID)
+        public static tbl_menu GetByPK(Int32 menu_id)
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = @"SELECT ID, Name, Description, Icon, Url, ParentID, Sequence, Deleted, MenuType, CreatedDate, CreatedBy, ModifiedBy, ModifiedDate FROM tbl_Menu
-            WHERE [ID]  = @ID";
-            context.AddParameter("@ID", ID);
+            string sqlQuery = @"SELECT menu_id, menu_code, menu_name, on_lock, parentid, orderid, url FROM tbl_menu
+            WHERE [menu_id]  = @menu_id";
+            context.AddParameter("@menu_id", menu_id);
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
-            return DBUtil.ExecuteMapper<tbl_Menu>(context, new tbl_Menu()).FirstOrDefault();
+            return DBUtil.ExecuteMapper<tbl_menu>(context, new tbl_menu()).FirstOrDefault();
         }
 
         #endregion

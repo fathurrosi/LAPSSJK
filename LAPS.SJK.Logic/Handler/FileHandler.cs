@@ -21,7 +21,7 @@ namespace LAPS.SJK.Logic.Handler
             get { return true; }
         }
 
-        //public static int UpdateTable(tbl_Files file)
+        //public static int UpdateTable(tbl_files file)
         //{
         //    string username = Utilities.Username;
         //    int result = -1;
@@ -67,7 +67,7 @@ namespace LAPS.SJK.Logic.Handler
             //    try
             //    {
 
-            //        tbl_Files file = tbl_FilesItem.GetByID(FileID);
+            //        tbl_files file = tbl_filesItem.GetByID(FileID);
 
             //        if (file != null)
             //        {

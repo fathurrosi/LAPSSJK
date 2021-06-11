@@ -85,89 +85,89 @@ namespace LAPS.SJK.Logic
 
         public const string SESSION_ALL_MENU = "_ALL_MENU";
 
-        public static List<tbl_Menu> GetALL_MENU()
-        {
-            List<tbl_Menu> list = new List<tbl_Menu>();
-            object obj = SessionHelper.Get(SESSION_ALL_MENU);
-            if (obj == null)
-            {
-                obj = tbl_MenuItem.GetAllActive();
-                SessionHelper.Set(SESSION_ALL_MENU, obj);
-            }
+        //public static List<tbl_menu> GetALL_MENU()
+        //{
+        //    List<tbl_menu> list = new List<tbl_menu>();
+        //    object obj = SessionHelper.Get(SESSION_ALL_MENU);
+        //    if (obj == null)
+        //    {
+        //        obj = tbl_menuItem.GetAllActive();
+        //        SessionHelper.Set(SESSION_ALL_MENU, obj);
+        //    }
 
-            list = obj as List<tbl_Menu>;
+        //    list = obj as List<tbl_menu>;
 
-            return list;
-        }
+        //    return list;
+        //}
 
 
-        public static List<tbl_Menu> GetFRONTEND_MENU()
-        {
-            //List<tbl_Menu> list = new List<tbl_Menu>();
-            //object obj = SessionHelper.Get(SESSION_FRONTEND_MENU);
-            //if (obj == null)
-            //{
-            //    obj = tbl_MenuItem.GetByType("FRONT");
-            //    SessionHelper.Set(SESSION_FRONTEND_MENU, obj);
-            //}
+        //public static List<tbl_menu> GetFRONTEND_MENU()
+        //{
+        //    //List<tbl_menu> list = new List<tbl_menu>();
+        //    //object obj = SessionHelper.Get(SESSION_FRONTEND_MENU);
+        //    //if (obj == null)
+        //    //{
+        //    //    obj = tbl_menuItem.GetByType("FRONT");
+        //    //    SessionHelper.Set(SESSION_FRONTEND_MENU, obj);
+        //    //}
 
-            //list = obj as List<tbl_Menu>;
+        //    //list = obj as List<tbl_menu>;
 
-            //return list;
+        //    //return list;
 
-            return tbl_MenuItem.GetByType("FRONT");
-        }
+        //    return tbl_menuItem.GetByType("FRONT");
+        //}
 
-        public static List<tbl_Menu> GetBACKEND_MENU()
-        {
-            //List<tbl_Menu> list = new List<tbl_Menu>();
-            //object obj = SessionHelper.Get(SESSION_BACKEND_MENU);
-            //if (obj == null)
-            //{
-            //    obj = tbl_MenuItem.GetByType("BACK");
-            //    SessionHelper.Set(SESSION_BACKEND_MENU, obj);
-            //}
+        //public static List<tbl_menu> GetBACKEND_MENU()
+        //{
+        //    //List<tbl_menu> list = new List<tbl_menu>();
+        //    //object obj = SessionHelper.Get(SESSION_BACKEND_MENU);
+        //    //if (obj == null)
+        //    //{
+        //    //    obj = tbl_menuItem.GetByType("BACK");
+        //    //    SessionHelper.Set(SESSION_BACKEND_MENU, obj);
+        //    //}
 
-            //list = obj as List<tbl_Menu>;
+        //    //list = obj as List<tbl_menu>;
 
-            //return list;
+        //    //return list;
 
-            return tbl_MenuItem.GetByType("BACK");
-        }
+        //    return tbl_menuItem.GetByType("BACK");
+        //}
 
-        public static List<tbl_Menu> GetTOP_MENU()
-        {
-            //List<tbl_Menu> list = new List<tbl_Menu>();
-            //object obj = SessionHelper.Get(SESSION_TOP_MENU);
-            //if (obj == null)
-            //{
-            //    obj = tbl_MenuItem.GetByType("TOP");
-            //    SessionHelper.Set(SESSION_TOP_MENU, obj);
-            //}
+        //public static List<tbl_menu> GetTOP_MENU()
+        //{
+        //    //List<tbl_menu> list = new List<tbl_menu>();
+        //    //object obj = SessionHelper.Get(SESSION_TOP_MENU);
+        //    //if (obj == null)
+        //    //{
+        //    //    obj = tbl_menuItem.GetByType("TOP");
+        //    //    SessionHelper.Set(SESSION_TOP_MENU, obj);
+        //    //}
 
-            //list = obj as List<tbl_Menu>;
+        //    //list = obj as List<tbl_menu>;
 
-            //return list;
+        //    //return list;
 
-            return tbl_MenuItem.GetByType("TOP");
-        }
+        //    return tbl_menuItem.GetByType("TOP");
+        //}
 
-        public static List<tbl_Menu> GetTOP_BEFORE_MENU()
-        {
-            //List<tbl_Menu> list = new List<tbl_Menu>();
-            //object obj = SessionHelper.Get(SESSION_TOP_BEFORE_MENU);
-            //if (obj == null)
-            //{
-            //    obj = tbl_MenuItem.GetByType("TOP_BEFORE");
-            //    SessionHelper.Set(SESSION_TOP_BEFORE_MENU, obj);
-            //}
+        //public static List<tbl_menu> GetTOP_BEFORE_MENU()
+        //{
+        //    //List<tbl_menu> list = new List<tbl_menu>();
+        //    //object obj = SessionHelper.Get(SESSION_TOP_BEFORE_MENU);
+        //    //if (obj == null)
+        //    //{
+        //    //    obj = tbl_menuItem.GetByType("TOP_BEFORE");
+        //    //    SessionHelper.Set(SESSION_TOP_BEFORE_MENU, obj);
+        //    //}
 
-            //list = obj as List<tbl_Menu>;
+        //    //list = obj as List<tbl_menu>;
 
-            //return list;
+        //    //return list;
 
-            return tbl_MenuItem.GetByType("TOP_BEFORE");
-        }
+        //    return tbl_menuItem.GetByType("TOP_BEFORE");
+        //}
 
 
         public static void ClearAllManus()
@@ -179,34 +179,34 @@ namespace LAPS.SJK.Logic
 
 
 
-        //public static tbl_Menu GetMenuBackendByID(int menuID)
+        //public static tbl_menu GetMenuBackendByID(int menuID)
         //{
-        //    List<tbl_Menu> list = new List<tbl_Menu>();
+        //    List<tbl_menu> list = new List<tbl_menu>();
         //    object obj = SessionHelper.Get(SESSION_BACKEND_MENU);
         //    if (obj == null)
         //    {
-        //        obj = tbl_MenuItem.GetAllActive().Where(t => t.MenuType == "BACK").ToList();
+        //        obj = tbl_menuItem.GetAllActive().Where(t => t.MenuType == "BACK").ToList();
         //        SessionHelper.Set(SESSION_BACKEND_MENU, obj);
         //    }
 
-        //    list = obj as List<tbl_Menu>;
+        //    list = obj as List<tbl_menu>;
 
         //    return list.Where(t => t.ID == menuID).FirstOrDefault();
         //}
 
 
 
-        //public static tbl_Menu GetMenuFrontendByID(int menuID)
+        //public static tbl_menu GetMenuFrontendByID(int menuID)
         //{
-        //    List<tbl_Menu> list = new List<tbl_Menu>();
+        //    List<tbl_menu> list = new List<tbl_menu>();
         //    object obj = SessionHelper.Get(SESSION_FRONTEND_MENU);
         //    if (obj == null)
         //    {
-        //        obj = tbl_MenuItem.GetAllActive().Where(t => t.MenuType == "FRONT").ToList();
+        //        obj = tbl_menuItem.GetAllActive().Where(t => t.MenuType == "FRONT").ToList();
         //        SessionHelper.Set(SESSION_FRONTEND_MENU, obj);
         //    }
 
-        //    list = obj as List<tbl_Menu>;
+        //    list = obj as List<tbl_menu>;
 
         //    return list.Where(t => t.ID == menuID).FirstOrDefault();
         //}
@@ -426,7 +426,7 @@ namespace LAPS.SJK.Logic
             get
             {
                 if (Username == string.Format("{0}", UserType.Anonymous)) return false;
-                Dto.Cstm.tbl_User user = SessionHelper.GetUserLogin();
+                Dto.Cstm.tbl_user user = SessionHelper.GetUserLogin();
                 if (user == null) return false;
                 if (user.Roles == null) return false;
                 if (user.Roles.Where(t => t.Name == string.Format("{0}", Enum.UserType.User)).Count() > 0) return true;
@@ -750,11 +750,11 @@ namespace LAPS.SJK.Logic
     public class Log
     {
 
-        public static tbl_Log Error(Exception ex)
+        public static tbl_log Error(Exception ex)
         {
             if (ex != null)
             {
-                tbl_Log log = new tbl_Log();
+                tbl_log log = new tbl_log();
                 log.IPAddress = Utilities.GetIpAddress();
                 log.LogDate = DateTime.Now;
                 log.LogType = LogType.ERROR.ToString();
@@ -763,15 +763,15 @@ namespace LAPS.SJK.Logic
                 log.Username = Utilities.Username;
                 log.MechineName = Utilities.GetComputerName();
 
-                return tbl_LogItem.Insert(log);
+                return tbl_logItem.Insert(log);
             }
 
-            return new tbl_Log();
+            return new tbl_log();
         }
 
         public static void Info(string message)
         {
-            tbl_Log log = new tbl_Log();
+            tbl_log log = new tbl_log();
             log.IPAddress = Utilities.GetIpAddress();
             log.LogDate = DateTime.Now;
             log.LogType = LogType.INFROMATION.ToString();
@@ -779,34 +779,34 @@ namespace LAPS.SJK.Logic
             log.LongMessage = message;
             log.Username = Utilities.Username;
             log.MechineName = Utilities.GetComputerName();
-            tbl_LogItem.Insert(log);
+            tbl_logItem.Insert(log);
         }
 
         //public static void Warning(string message)
         //{
-        //    //tbl_LogItem.Insert(Utilities.GetComputerName(), Utilities.GetIpAddress(), LogType.WARNING.ToString(), message, Utilities.Username);
+        //    //tbl_logItem.Insert(Utilities.GetComputerName(), Utilities.GetIpAddress(), LogType.WARNING.ToString(), message, Utilities.Username);
         //}
 
         //public static void Delete(string message)
         //{
-        //    //tbl_LogItem.Insert(Utilities.GetComputerName(), Utilities.GetIpAddress(), LogType.DELETE.ToString(), message, Utilities.Username);
+        //    //tbl_logItem.Insert(Utilities.GetComputerName(), Utilities.GetIpAddress(), LogType.DELETE.ToString(), message, Utilities.Username);
         //}
 
         //public static int Insert(string message)
         //{
         //    return 1;
-        //    //return tbl_LogItem.Insert(Utilities.GetComputerName(), Utilities.GetIpAddress(), LogType.INSERT.ToString(), message, Utilities.Username);
+        //    //return tbl_logItem.Insert(Utilities.GetComputerName(), Utilities.GetIpAddress(), LogType.INSERT.ToString(), message, Utilities.Username);
         //}
 
         //public static void Update(string message)
         //{
-        //    //tbl_LogItem.Insert(Utilities.GetComputerName(), Utilities.GetIpAddress(), LogType.UPDATE.ToString(), message, Utilities.Username);
+        //    //tbl_logItem.Insert(Utilities.GetComputerName(), Utilities.GetIpAddress(), LogType.UPDATE.ToString(), message, Utilities.Username);
         //}
 
 
         //public static async void Write(string message)
         //{
-        //    await tbl_LogItem.InsertAsync(Utilities.GetComputerName(), Utilities.GetIpAddress(), LogType.UPDATE.ToString(), message, "", Utilities.Username);
+        //    await tbl_logItem.InsertAsync(Utilities.GetComputerName(), Utilities.GetIpAddress(), LogType.UPDATE.ToString(), message, "", Utilities.Username);
         //}
     }
 }

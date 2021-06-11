@@ -4,17 +4,17 @@ using System;
 using DataAccessLayer;
 namespace LAPS.SJK.Dto
 {
-    public class tbl_Setting : IDataMapper<tbl_Setting>
+    public class tbl_setting : IDataMapper<tbl_setting>
     {
-        #region tbl_Setting Properties
+        #region tbl_setting Properties
         public Int32 id { get; set; }
         public string name { get; set; }
         public string value { get; set; }
         public string description { get; set; }
         #endregion    
-        public tbl_Setting Map(System.Data.IDataReader reader)
+        public tbl_setting Map(System.Data.IDataReader reader)
         {
-            tbl_Setting obj = new tbl_Setting();   
+            tbl_setting obj = new tbl_setting();   
             obj.id = Convert.ToInt32(reader["id"]);
             obj.name = reader["name"] == DBNull.Value ? null : reader["name"].ToString();
             obj.value = reader["value"] == DBNull.Value ? null : reader["value"].ToString();

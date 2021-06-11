@@ -6,13 +6,13 @@ namespace LAPS.SJK.Logic.Enum
     {
         None
           , tbl_session
-          , tbl_User_role
+          , tbl_user_role
           , tbl_role
-          , tbl_Log
+          , tbl_log
           , tbl_privilege
             , tbl_setting
-          , tbl_User
-          , tbl_Menu
+          , tbl_user
+          , tbl_menu
           , tbl_Info
 
 

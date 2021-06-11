@@ -4,18 +4,18 @@ using System;
 using DataAccessLayer;
 namespace LAPS.SJK.Dto
 {
-    public class tbl_Combo_Detail : IDataMapper<tbl_Combo_Detail>
+    public class tbl_combo_detail : IDataMapper<tbl_combo_detail>
     {
-        #region tbl_Combo_Detail Properties
+        #region tbl_combo_detail Properties
         public string name { get; set; }
         public string parent { get; set; }
         public string header { get; set; }
         public Int32? sequence { get; set; }
         public Int32 id { get; set; }
         #endregion    
-        public tbl_Combo_Detail Map(System.Data.IDataReader reader)
+        public tbl_combo_detail Map(System.Data.IDataReader reader)
         {
-            tbl_Combo_Detail obj = new tbl_Combo_Detail();   
+            tbl_combo_detail obj = new tbl_combo_detail();   
             obj.name = reader["name"] == DBNull.Value ? null : reader["name"].ToString();
             obj.parent = reader["parent"] == DBNull.Value ? null : reader["parent"].ToString();
             obj.header = reader["header"] == DBNull.Value ? null : reader["header"].ToString();

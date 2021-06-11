@@ -4,9 +4,9 @@ using System;
 using DataAccessLayer;
 namespace LAPS.SJK.Dto
 {
-    public class tbl_Role : IDataMapper<tbl_Role>
+    public class tbl_role : IDataMapper<tbl_role>
     {
-        #region tbl_Role Properties
+        #region tbl_role Properties
         public Int32 ID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
@@ -15,9 +15,9 @@ namespace LAPS.SJK.Dto
         public DateTime? ModifiedDate { get; set; }
         public string ModifiedBy { get; set; }
         #endregion    
-        public tbl_Role Map(System.Data.IDataReader reader)
+        public tbl_role Map(System.Data.IDataReader reader)
         {
-            tbl_Role obj = new tbl_Role();   
+            tbl_role obj = new tbl_role();   
             obj.ID = Convert.ToInt32(reader["ID"]);
             obj.Name = reader["Name"] == DBNull.Value ? null : reader["Name"].ToString();
             obj.Description = reader["Description"] == DBNull.Value ? null : reader["Description"].ToString();

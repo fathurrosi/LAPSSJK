@@ -4,39 +4,27 @@ using System;
 using DataAccessLayer;
 namespace LAPS.SJK.Dto
 {
-    public class tbl_Menu : IDataMapper<tbl_Menu>
+    public class tbl_menu : IDataMapper<tbl_menu>
     {
-        #region tbl_Menu Properties
-        public Int32 ID { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string Icon { get; set; }
-        public string Url { get; set; }
-        public Int32? ParentID { get; set; }
-        public Int32? Sequence { get; set; }
-        public Int32? Deleted { get; set; }
-        public string MenuType { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        public string CreatedBy { get; set; }
-        public string ModifiedBy { get; set; }
-        public DateTime? ModifiedDate { get; set; }
+        #region tbl_menu Properties
+        public Int32 menu_id { get; set; }
+        public string menu_code { get; set; }
+        public string menu_name { get; set; }
+        public Int32? on_lock { get; set; }
+        public Int32? parentid { get; set; }
+        public Int32? orderid { get; set; }
+        public string url { get; set; }
         #endregion    
-        public tbl_Menu Map(System.Data.IDataReader reader)
+        public tbl_menu Map(System.Data.IDataReader reader)
         {
-            tbl_Menu obj = new tbl_Menu();   
-            obj.ID = Convert.ToInt32(reader["ID"]);
-            obj.Name = string.Format("{0}",reader["Name"]);
-            obj.Description = reader["Description"] == DBNull.Value ? null : reader["Description"].ToString();
-            obj.Icon = reader["Icon"] == DBNull.Value ? null : reader["Icon"].ToString();
-            obj.Url = reader["Url"] == DBNull.Value ? null : reader["Url"].ToString();
-            obj.ParentID = reader["ParentID"] == DBNull.Value ? (Int32?) null : Convert.ToInt32(reader["ParentID"]);
-            obj.Sequence = reader["Sequence"] == DBNull.Value ? (Int32?) null : Convert.ToInt32(reader["Sequence"]);
-            obj.Deleted = reader["Deleted"] == DBNull.Value ? (Int32?) null : Convert.ToInt32(reader["Deleted"]);
-            obj.MenuType = reader["MenuType"] == DBNull.Value ? null : reader["MenuType"].ToString();
-            obj.CreatedDate = reader["CreatedDate"] == DBNull.Value ? (DateTime?) null : Convert.ToDateTime(reader["CreatedDate"]);
-            obj.CreatedBy = reader["CreatedBy"] == DBNull.Value ? null : reader["CreatedBy"].ToString();
-            obj.ModifiedBy = reader["ModifiedBy"] == DBNull.Value ? null : reader["ModifiedBy"].ToString();
-            obj.ModifiedDate = reader["ModifiedDate"] == DBNull.Value ? (DateTime?) null : Convert.ToDateTime(reader["ModifiedDate"]);
+            tbl_menu obj = new tbl_menu();   
+            obj.menu_id = Convert.ToInt32(reader["menu_id"]);
+            obj.menu_code = reader["menu_code"] == DBNull.Value ? null : reader["menu_code"].ToString();
+            obj.menu_name = reader["menu_name"] == DBNull.Value ? null : reader["menu_name"].ToString();
+            obj.on_lock = reader["on_lock"] == DBNull.Value ? (Int32?) null : Convert.ToInt32(reader["on_lock"]);
+            obj.parentid = reader["parentid"] == DBNull.Value ? (Int32?) null : Convert.ToInt32(reader["parentid"]);
+            obj.orderid = reader["orderid"] == DBNull.Value ? (Int32?) null : Convert.ToInt32(reader["orderid"]);
+            obj.url = reader["url"] == DBNull.Value ? null : reader["url"].ToString();
             return obj;
         }
     }

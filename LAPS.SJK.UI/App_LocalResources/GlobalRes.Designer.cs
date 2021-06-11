@@ -9,9 +9,12 @@
 //------------------------------------------------------------------------------
 
 namespace LAPS.SJK.UI.App_LocalResources {
+    using LAPS.SJK.Dto;
+    using LAPS.SJK.Logic;
     using System;
-    
-    
+    using System.Collections.Generic;
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -24,7 +27,7 @@ namespace LAPS.SJK.UI.App_LocalResources {
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class GlobalRes {
         
-        private static global::System.Resources.ResourceManager resourceMan;
+        private static CustomResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
@@ -36,10 +39,10 @@ namespace LAPS.SJK.UI.App_LocalResources {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        public static CustomResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("LAPS.SJK.UI.App_LocalResources.GlobalRes", typeof(GlobalRes).Assembly);
+                    CustomResourceManager temp = new CustomResourceManager("LAPS.SJK.UI.App_LocalResources.GlobalRes", typeof(GlobalRes).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -60,12 +63,31 @@ namespace LAPS.SJK.UI.App_LocalResources {
             }
         }
         
+
+        public static string GetMenu(string name)
+        {
+            return ResourceManager.GetString(name);
+        }
+
+
+        /// <summary>
+        ///   Looks up a localized string similar to DAFTAR ANGGOTA.
+        /// </summary>
+        public static List<tbl_menu> _DAFTAR_MENU
+        {
+            get
+            {
+                return ResourceManager.GetAvailableMenus();
+            }
+        }
+
+
         /// <summary>
         ///   Looks up a localized string similar to DAFTAR ANGGOTA.
         /// </summary>
         public static string _DAFTAR_ANGGOTA {
             get {
-                return ResourceManager.GetString("_DAFTAR_ANGGOTA", resourceCulture);
+                return ResourceManager.GetString("_DAFTAR_ANGGOTA");
             }
         }
         
@@ -74,7 +96,7 @@ namespace LAPS.SJK.UI.App_LocalResources {
         /// </summary>
         public static string _HAK_DAN_KEWAJIBAN_ANGGOTA {
             get {
-                return ResourceManager.GetString("_HAK_DAN_KEWAJIBAN_ANGGOTA", resourceCulture);
+                return ResourceManager.GetString("_HAK_DAN_KEWAJIBAN_ANGGOTA");
             }
         }
         
@@ -83,7 +105,7 @@ namespace LAPS.SJK.UI.App_LocalResources {
         /// </summary>
         public static string _KEANGGOTAAN_LAPS_SJK {
             get {
-                return ResourceManager.GetString("_KEANGGOTAAN_LAPS_SJK", resourceCulture);
+                return ResourceManager.GetString("_KEANGGOTAAN_LAPS_SJK");
             }
         }
         
@@ -92,7 +114,7 @@ namespace LAPS.SJK.UI.App_LocalResources {
         /// </summary>
         public static string _KOMITE_ETIK {
             get {
-                return ResourceManager.GetString("_KOMITE_ETIK", resourceCulture);
+                return ResourceManager.GetString("_KOMITE_ETIK");
             }
         }
         
@@ -101,7 +123,7 @@ namespace LAPS.SJK.UI.App_LocalResources {
         /// </summary>
         public static string _PENDIRIAN_LAPS_SJK {
             get {
-                return ResourceManager.GetString("_PENDIRIAN_LAPS_SJK", resourceCulture);
+                return ResourceManager.GetString("_PENDIRIAN_LAPS_SJK");
             }
         }
         
@@ -110,7 +132,7 @@ namespace LAPS.SJK.UI.App_LocalResources {
         /// </summary>
         public static string _PENGAWAS_LAPS_SJK {
             get {
-                return ResourceManager.GetString("_PENGAWAS_LAPS_SJK", resourceCulture);
+                return ResourceManager.GetString("_PENGAWAS_LAPS_SJK");
             }
         }
         
@@ -119,7 +141,7 @@ namespace LAPS.SJK.UI.App_LocalResources {
         /// </summary>
         public static string _PENGURUS_LAPS_SJK {
             get {
-                return ResourceManager.GetString("_PENGURUS_LAPS_SJK", resourceCulture);
+                return ResourceManager.GetString("_PENGURUS_LAPS_SJK");
             }
         }
         
@@ -128,7 +150,7 @@ namespace LAPS.SJK.UI.App_LocalResources {
         /// </summary>
         public static string _STRUKTUR_ORGANISASI_LAPS_SJK {
             get {
-                return ResourceManager.GetString("_STRUKTUR_ORGANISASI_LAPS_SJK", resourceCulture);
+                return ResourceManager.GetString("_STRUKTUR_ORGANISASI_LAPS_SJK");
             }
         }
         
@@ -137,7 +159,7 @@ namespace LAPS.SJK.UI.App_LocalResources {
         /// </summary>
         public static string _SYARAT_MENJADI_ANGGOTA_LAPS_SJK {
             get {
-                return ResourceManager.GetString("_SYARAT_MENJADI_ANGGOTA_LAPS_SJK", resourceCulture);
+                return ResourceManager.GetString("_SYARAT_MENJADI_ANGGOTA_LAPS_SJK");
             }
         }
         
@@ -146,7 +168,7 @@ namespace LAPS.SJK.UI.App_LocalResources {
         /// </summary>
         public static string _Tentang_Kami {
             get {
-                return ResourceManager.GetString("_Tentang_Kami", resourceCulture);
+                return ResourceManager.GetString("_Tentang_Kami");
             }
         }
         
@@ -155,7 +177,7 @@ namespace LAPS.SJK.UI.App_LocalResources {
         /// </summary>
         public static string ABOUT {
             get {
-                return ResourceManager.GetString("ABOUT", resourceCulture);
+                return ResourceManager.GetString("ABOUT");
             }
         }
         
@@ -164,7 +186,7 @@ namespace LAPS.SJK.UI.App_LocalResources {
         /// </summary>
         public static string APPLICATION_NAME {
             get {
-                return ResourceManager.GetString("APPLICATION_NAME", resourceCulture);
+                return ResourceManager.GetString("APPLICATION_NAME");
             }
         }
         
@@ -173,7 +195,7 @@ namespace LAPS.SJK.UI.App_LocalResources {
         /// </summary>
         public static string CONTACT {
             get {
-                return ResourceManager.GetString("CONTACT", resourceCulture);
+                return ResourceManager.GetString("CONTACT");
             }
         }
         
@@ -182,7 +204,7 @@ namespace LAPS.SJK.UI.App_LocalResources {
         /// </summary>
         public static string DateAndTime {
             get {
-                return ResourceManager.GetString("DateAndTime", resourceCulture);
+                return ResourceManager.GetString("DateAndTime");
             }
         }
         
@@ -191,7 +213,7 @@ namespace LAPS.SJK.UI.App_LocalResources {
         /// </summary>
         public static string DateTime {
             get {
-                return ResourceManager.GetString("DateTime", resourceCulture);
+                return ResourceManager.GetString("DateTime");
             }
         }
         
@@ -200,7 +222,7 @@ namespace LAPS.SJK.UI.App_LocalResources {
         /// </summary>
         public static string HOME {
             get {
-                return ResourceManager.GetString("HOME", resourceCulture);
+                return ResourceManager.GetString("HOME");
             }
         }
         
@@ -209,7 +231,7 @@ namespace LAPS.SJK.UI.App_LocalResources {
         /// </summary>
         public static string Label_text {
             get {
-                return ResourceManager.GetString("Label_text", resourceCulture);
+                return ResourceManager.GetString("Label_text");
             }
         }
         
@@ -218,7 +240,7 @@ namespace LAPS.SJK.UI.App_LocalResources {
         /// </summary>
         public static string Language {
             get {
-                return ResourceManager.GetString("Language", resourceCulture);
+                return ResourceManager.GetString("Language");
             }
         }
         
@@ -227,7 +249,7 @@ namespace LAPS.SJK.UI.App_LocalResources {
         /// </summary>
         public static string MainMenu {
             get {
-                return ResourceManager.GetString("MainMenu", resourceCulture);
+                return ResourceManager.GetString("MainMenu");
             }
         }
         
@@ -236,7 +258,7 @@ namespace LAPS.SJK.UI.App_LocalResources {
         /// </summary>
         public static string Money {
             get {
-                return ResourceManager.GetString("Money", resourceCulture);
+                return ResourceManager.GetString("Money");
             }
         }
         
@@ -245,7 +267,7 @@ namespace LAPS.SJK.UI.App_LocalResources {
         /// </summary>
         public static string Must_be_at_least_5_charachters {
             get {
-                return ResourceManager.GetString("Must_be_at_least_5_charachters", resourceCulture);
+                return ResourceManager.GetString("Must_be_at_least_5_charachters");
             }
         }
         
@@ -254,7 +276,7 @@ namespace LAPS.SJK.UI.App_LocalResources {
         /// </summary>
         public static string Must_contain_only_letters {
             get {
-                return ResourceManager.GetString("Must_contain_only_letters", resourceCulture);
+                return ResourceManager.GetString("Must_contain_only_letters");
             }
         }
         
@@ -263,7 +285,7 @@ namespace LAPS.SJK.UI.App_LocalResources {
         /// </summary>
         public static string Name {
             get {
-                return ResourceManager.GetString("Name", resourceCulture);
+                return ResourceManager.GetString("Name");
             }
         }
         
@@ -272,7 +294,7 @@ namespace LAPS.SJK.UI.App_LocalResources {
         /// </summary>
         public static string Submit_and_test_error_messages {
             get {
-                return ResourceManager.GetString("Submit_and_test_error_messages", resourceCulture);
+                return ResourceManager.GetString("Submit_and_test_error_messages");
             }
         }
         
@@ -281,7 +303,7 @@ namespace LAPS.SJK.UI.App_LocalResources {
         /// </summary>
         public static string This_field_is_required {
             get {
-                return ResourceManager.GetString("This_field_is_required", resourceCulture);
+                return ResourceManager.GetString("This_field_is_required");
             }
         }
         
@@ -290,7 +312,7 @@ namespace LAPS.SJK.UI.App_LocalResources {
         /// </summary>
         public static string Tooltip_help {
             get {
-                return ResourceManager.GetString("Tooltip_help", resourceCulture);
+                return ResourceManager.GetString("Tooltip_help");
             }
         }
     }

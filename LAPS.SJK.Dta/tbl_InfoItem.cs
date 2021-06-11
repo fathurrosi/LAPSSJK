@@ -8,24 +8,24 @@ using LAPS.SJK.Dto;
 namespace LAPS.SJK.Dta
 {
     /// <summary>
-    /// Dta Class of TABLE [tbl_Info]
+    /// Dta Class of TABLE [tbl_info]
     /// </summary>    
-    public partial class tbl_InfoItem
+    public partial class tbl_infoItem
     {
        
         #region Data Access
 
         /// <summary>
-        /// Execute Insert to TABLE [tbl_Info]
+        /// Execute Insert to TABLE [tbl_info]
         /// </summary>        
-        public static tbl_Info Insert(tbl_Info obj)
+        public static tbl_info Insert(tbl_info obj)
         {
              IDBHelper context = new DBHelper();
             string sqlQuery = @"
 SET NOCOUNT OFF
 DECLARE @Err int
 
-INSERT INTO [tbl_Info]([title], [body], [created], [created_by]) 
+INSERT INTO [tbl_info]([title], [body], [created], [created_by]) 
 VALUES      (@title, @body, @created, @created_by)
 
 SET @Err = @@Error
@@ -34,7 +34,7 @@ DECLARE @_id Int
 SELECT @_id = SCOPE_IDENTITY()
 
 SELECT  id, title, body, created, created_by, updated, updated_by
-FROM    [tbl_Info]
+FROM    [tbl_info]
 WHERE   [id]  = @_id";
             context.AddParameter("@title", string.Format("{0}", obj.title));
             context.AddParameter("@body", string.Format("{0}", obj.body));
@@ -42,13 +42,13 @@ WHERE   [id]  = @_id";
             context.AddParameter("@created_by", string.Format("{0}", obj.created_by));
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
-            return DBUtil.ExecuteMapper<tbl_Info>(context, new tbl_Info()).FirstOrDefault();
+            return DBUtil.ExecuteMapper<tbl_info>(context, new tbl_info()).FirstOrDefault();
         }
 
         /// <summary>
-        /// Execute Update to TABLE [tbl_Info]
+        /// Execute Update to TABLE [tbl_info]
         /// </summary>        
-        public static tbl_Info Update(tbl_Info obj)
+        public static tbl_info Update(tbl_info obj)
         {
              IDBHelper context = new DBHelper();
             string sqlQuery = @"
@@ -56,7 +56,7 @@ SET NOCOUNT OFF
 
 DECLARE @Err int
 
-UPDATE      [tbl_Info]
+UPDATE      [tbl_info]
 SET         [title] = @title,
             [body] = @body,
             [updated] = @updated,
@@ -66,7 +66,7 @@ WHERE       [id]  = @id
 SET @Err = @@Error
 
 SELECT  id, title, body, created, created_by, updated, updated_by 
-FROM    [tbl_Info]
+FROM    [tbl_info]
 WHERE   [id]  = @id";
             context.AddParameter("@title", string.Format("{0}", obj.title));
             context.AddParameter("@body", string.Format("{0}", obj.body));
@@ -75,16 +75,16 @@ WHERE   [id]  = @id";
             context.AddParameter("@id", obj.id);            
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
-            return DBUtil.ExecuteMapper<tbl_Info>(context, new tbl_Info()).FirstOrDefault(); 
+            return DBUtil.ExecuteMapper<tbl_info>(context, new tbl_info()).FirstOrDefault(); 
         }
 
         /// <summary>
-        /// Execute Delete to TABLE [tbl_Info]
+        /// Execute Delete to TABLE [tbl_info]
         /// </summary>        
         public static int Delete(Int32 id)
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery =@"DELETE FROM tbl_Info 
+            string sqlQuery =@"DELETE FROM tbl_info 
 WHERE   [id]  = @id";
             context.AddParameter("@id", id);
             context.CommandText = sqlQuery;
@@ -96,13 +96,13 @@ WHERE   [id]  = @id";
             return GetTotalRecord();
         }
         /// <summary>
-        /// Get Total records from [tbl_Info]
+        /// Get Total records from [tbl_info]
         /// </summary>        
         public static int GetTotalRecord()
         {
             int result = -1;
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT Count(*) as Total FROM tbl_Info";
+            string sqlQuery = "SELECT Count(*) as Total FROM tbl_info";
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             object obj = DBUtil.ExecuteScalar(context);
@@ -113,33 +113,33 @@ WHERE   [id]  = @id";
         }
 
         /// <summary>
-        /// Get All records from TABLE [tbl_Info]
+        /// Get All records from TABLE [tbl_info]
         /// </summary>        
-        public static List<tbl_Info> GetAll()
+        public static List<tbl_info> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT id, title, body, created, created_by, updated, updated_by FROM tbl_Info";
+            string sqlQuery = "SELECT id, title, body, created, created_by, updated, updated_by FROM tbl_info";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
-            return DBUtil.ExecuteMapper<tbl_Info>(context, new tbl_Info());
+            return DBUtil.ExecuteMapper<tbl_info>(context, new tbl_info());
         }
 
         /// <summary>
-        /// Get All records from TABLE [tbl_Info]
+        /// Get All records from TABLE [tbl_info]
         /// </summary>        
-        public static List<tbl_Info> GetPaging(int PageSize, int PageIndex)
+        public static List<tbl_info> GetPaging(int PageSize, int PageIndex)
         {
             IDBHelper context = new DBHelper();
             string sqlQuery = @"
-            WITH [Paging_tbl_Info] AS
+            WITH [Paging_tbl_info] AS
             (
-                SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_Info].[id] DESC ) AS PAGING_ROW_NUMBER,
-                        [tbl_Info].*
-                FROM    [tbl_Info]
+                SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_info].[id] DESC ) AS PAGING_ROW_NUMBER,
+                        [tbl_info].*
+                FROM    [tbl_info]
             )
 
-            SELECT      [Paging_tbl_Info].*
-            FROM        [Paging_tbl_Info]
+            SELECT      [Paging_tbl_info].*
+            FROM        [Paging_tbl_info]
             ORDER BY PAGING_ROW_NUMBER           
             OFFSET @PageIndex ROWS 
             FETCH Next @PageSize ROWS ONLY
@@ -149,21 +149,21 @@ WHERE   [id]  = @id";
             context.AddParameter("@PageSize", PageSize);
             context.CommandType = System.Data.CommandType.Text;
             context.CommandText = sqlQuery;
-            return DBUtil.ExecuteMapper<tbl_Info>(context, new tbl_Info());
+            return DBUtil.ExecuteMapper<tbl_info>(context, new tbl_info());
         }
 
         /// <summary>
-        /// Get a single record of TABLE [tbl_Info] by Primary Key
+        /// Get a single record of TABLE [tbl_info] by Primary Key
         /// </summary>        
-        public static tbl_Info GetByPK(Int32 id)
+        public static tbl_info GetByPK(Int32 id)
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = @"SELECT id, title, body, created, created_by, updated, updated_by FROM tbl_Info
+            string sqlQuery = @"SELECT id, title, body, created, created_by, updated, updated_by FROM tbl_info
             WHERE [id]  = @id";
             context.AddParameter("@id", id);
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
-            return DBUtil.ExecuteMapper<tbl_Info>(context, new tbl_Info()).FirstOrDefault();
+            return DBUtil.ExecuteMapper<tbl_info>(context, new tbl_info()).FirstOrDefault();
         }
 
         #endregion

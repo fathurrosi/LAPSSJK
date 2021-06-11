@@ -1,0 +1,444 @@
+﻿@{
+    List<LAPS.SJK.Dto.tbl_menu> menus = LAPS.SJK.UI.App_LocalResources.GlobalRes._DAFTAR_MENU;
+}
+<nav class="collapse">
+    <ul class="nav nav-pills" id="mainNav">
+        @{foreach (var item in menus.Where(t => !t.parentid.HasValue || t.parentid == 0).Distinct().ToList())
+            {
+                <li class="dropdown">
+                    <a class="dropdown-item dropdown-toggle" href="@item.url">
+                        @LAPS.SJK.UI.App_LocalResources.GlobalRes.GetMenu(item.menu_code)
+                    </a>
+                    @if (menus.Where(t => t.parentid == item.menu_id).Count() > 0)
+                    {
+                        <ul class="dropdown-menu">
+                            @{foreach (var firstItem in (menus.Where(t => t.parentid == item.menu_id).ToList()))
+                                {
+                                    <li>
+                                        <a class="dropdown-item" href="@firstItem.url">
+                                            @LAPS.SJK.UI.App_LocalResources.GlobalRes.GetMenu(firstItem.menu_code)
+                                        </a>
+                                        @if (menus.Where(t => t.parentid == firstItem.menu_id).Count() > 0)
+                                        {
+                                            <ul class="dropdown-menu">
+                                                @foreach (var secondItem in (menus.Where(t => t.parentid == firstItem.menu_id).ToList()))
+                                                {
+                                                    <li><a class="dropdown-item" href="@secondItem.url">@LAPS.SJK.UI.App_LocalResources.GlobalRes.GetMenu(secondItem.menu_code)</a></li>
+                                                }
+                                            </ul>
+                                        }
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    }
+                </li>
+            }
+        }
+
+        @*<li class="dropdown">
+                <a class="dropdown-item dropdown-toggle active" href="#">
+                    Tentang Kami
+
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a class="dropdown-item" href="pendirianlapssjk.html">
+
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="strukturorganisasi.html">
+                            @LAPS.SJK.UI.App_LocalResources.GlobalRes._STRUKTUR_ORGANISASI_LAPS_SJK
+                        </a>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-item" href="#">@LAPS.SJK.UI.App_LocalResources.GlobalRes._KEANGGOTAAN_LAPS_SJK</a>
+                        <ul class="dropdown-menu">
+
+                            <li><a class="dropdown-item" href="syaratmenjadianggota.html">@LAPS.SJK.UI.App_LocalResources.GlobalRes._SYARAT_MENJADI_ANGGOTA_LAPS_SJK</a></li>
+                            <li><a class="dropdown-item" href="hakdankewajiban.html">@LAPS.SJK.UI.App_LocalResources.GlobalRes._HAK_DAN_KEWAJIBAN_ANGGOTA</a></li>
+                            <li><a class="dropdown-item" href="daftaranggota.html">@LAPS.SJK.UI.App_LocalResources.GlobalRes._DAFTAR_ANGGOTA</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="pengawaslapssjk.html">
+                            @LAPS.SJK.UI.App_LocalResources.GlobalRes._PENGAWAS_LAPS_SJK
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="penguruslapssjk.html">
+                            @LAPS.SJK.UI.App_LocalResources.GlobalRes._PENGURUS_LAPS_SJK
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="komiteetik.html">
+                            @LAPS.SJK.UI.App_LocalResources.GlobalRes._KOMITE_ETIK
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a class="dropdown-item dropdown-toggle" href="#">
+                    LAYANAN PENYELESAIAN SENGKETA
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a class="dropdown-item" href="blog-post-single.html">
+                            TENTANG MEDIASI
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="blog-post-single.html">
+                            TENTANG ARBITRASE
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="blog-post-single.html">
+                            TENTANG PENDAPAT MENGIKAT
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="blog-post-single.html">
+                            TATA CARA PENDAFTARAN PERMOHONAN PENYELESAIAN SENGKETA
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a class="dropdown-item dropdown-toggle" href="#">
+                    PERATURAN DAN ACARA LAPS SJK
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a class="dropdown-item" href="index.html">
+                            PERATURAN DAN ACARA MEDIASI
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="index.html">
+                            PERATURAN DAN ACARA ARBITRASE
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="index.html">
+                            PERATURAN DAN ACARA PENDAPAT MENGIKAT
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="index.html">
+                            PERATURAN TENTANG MEDIATOR DAN ARBITER LAPS SJK
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="index.html">
+                            PERATURAN TENTANG BIAYA-BIAYA LAPS SJK
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="index.html">
+                            KODE ETIK MEDIATOR DAN ARBITER LAPS SJK
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="dropdown">
+                <a class="dropdown-item dropdown-toggle" href="#">
+                    DAFTAR MEDIATOR LAPS SJK
+                </a>
+                <ul class="dropdown-menu">
+
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-item" href="index.html">
+                            DAFTAR MEDIATOR PERBANKAN
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">DAFTAR MEDIATOR PERBANKAN KONVENSIONAL</a></li>
+                            <li><a class="dropdown-item" href="#">DAFTAR MEDIATOR PERBANKAN SYARIAH</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-item" href="index.html">
+                            DAFTAR MEDIATOR PERASURANSIAN
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">DAFTAR MEDIATOR ASURANSI UMUM KONVENSIONAL</a></li>
+                            <li><a class="dropdown-item" href="#">DAFTAR MEDIATOR ASURANSI UMUM SYARIAH</a></li>
+                            <li><a class="dropdown-item" href="#">DAFTAR MEDIATOR ASURANSI JIWA KONVENSIONAL</a></li>
+                            <li><a class="dropdown-item" href="#">DAFTAR MEDIATOR ASURANSI JIWA SYARIAH</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-item" href="index.html">
+                            DAFTAR MEDIATOR PASAR MODAL
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">DAFTAR MEDIATOR PASAR MODAL KONVENSIONAL</a></li>
+                            <li><a class="dropdown-item" href="#">DAFTAR MEDIATOR PASAR MODAL SYARIAH</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-item" href="index.html">
+                            DAFTAR MEDIATOR DANA PENSIUN
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">DAFTAR MEDIATOR DANA PENSIUN KONVENSIONAL</a></li>
+                            <li><a class="dropdown-item" href="#">DAFTAR MEDIATOR DANA PENSIUN SYARIAH</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-item" href="index.html">
+                            DAFTAR MEDIATOR PEMBIAYAAN
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">DAFTAR MEDIATOR PEMBIAYAAN KONVENSIONAL</a></li>
+                            <li><a class="dropdown-item" href="#">DAFTAR MEDIATOR PEMBIAYAAN SYARIAH</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-item" href="index.html">
+                            DAFTAR MEDIATOR PERGADAIAN
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">DAFTAR MEDIATOR PERGADAIAN KONVENSIONAL</a></li>
+                            <li><a class="dropdown-item" href="#">DAFTAR MEDIATOR PERGADAIAN SYARIAH</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-item" href="index.html">
+                            DAFTAR MEDIATOR MODAL VENTURA
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">DAFTAR MEDIATOR MODAL VENTURA KONVENSIONAL</a></li>
+                            <li><a class="dropdown-item" href="#">DAFTAR MEDIATOR MODAL VENTURA SYARIAH</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-item" href="index.html">
+                            DAFTAR MEDIATOR PENJAMINAN KREDIT
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">DAFTAR MEDIATOR PENJAMINAN KREDIT KONVENSIONAL</a></li>
+                            <li><a class="dropdown-item" href="#">DAFTAR MEDIATOR PENJAMINAN KREDIT SYARIAH</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-item" href="index.html">
+                            DAFTAR MEDIATOR FINTECH
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">DAFTAR MEDIATOR FINTECH KONVENSIONAL</a></li>
+                            <li><a class="dropdown-item" href="#">DAFTAR MEDIATOR FINTECH SYARIAH</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a class="dropdown-item dropdown-toggle" href="#">
+                    DAFTAR ARBITER LAPS SJK
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-item">
+                            DAFTAR ARBITER PERBANKAN
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="daftararbiterperbankankonvensional.html">DAFTAR ARBITER PERBANKAN KONVENSIONAL</a></li>
+                            <li><a class="dropdown-item" href="daftararbiterperbankansyariah.html">DAFTAR ARBITER PERBANKAN SYARIAH</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-item">
+                            DAFTAR ARBITER PERASURANSIAN
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="daftararbiterasuransiumumkonvensional.html">DAFTAR ARBITER ASURANSI UMUM KONVENSIONAL</a></li>
+                            <li><a class="dropdown-item" href="daftararbiterasuransiumumsyariah.html">DAFTAR ARBITER ASURANSI UMUM SYARIAH</a></li>
+                            <li><a class="dropdown-item" href="daftararbiterasuransijiwakonvensional.html">DAFTAR ARBITER ASURANSI JIWA KONVENSIONAL</a></li>
+                            <li><a class="dropdown-item" href="daftararbiterasuransijiwasyariah.html">DAFTAR ARBITER ASURANSI JIWA SYARIAH</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-item">
+                            DAFTAR ARBITER PASAR MODAL
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="daftararbiterpasarmodalkonvensional.html">DAFTAR ARBITER PASAR MODAL KONVENSIONAL</a></li>
+                            <li><a class="dropdown-item" href="daftararbiterpasarmodalsyariah.html">DAFTAR ARBITER PASAR MODAL SYARIAH</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-item">
+                            DAFTAR ARBITER DANA PENSIUN
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="daftararbiterdanapensiunkonvensional.html">DAFTAR ARBITER DANA PENSIUN KONVENSIONAL</a></li>
+                            <li><a class="dropdown-item" href="daftararbiterdanapensiunsyariah.html">DAFTAR ARBITER DANA PENSIUN SYARIAH</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-item">
+                            DAFTAR ARBITER PEMBIAYAAN
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="daftararbiterpembiayaankonvensional.html">DAFTAR ARBITER PEMBIAYAAN KONVENSIONAL</a></li>
+                            <li><a class="dropdown-item" href="daftararbiterpembiayaansyariah.html">DAFTAR ARBITER PEMBIAYAAN SYARIAH</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-item">
+                            DAFTAR ARBITER PERGADAIAN
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="">DAFTAR ARBITER PERGADAIAN KONVENSIONAL</a></li>
+                            <li><a class="dropdown-item" href="#">DAFTAR ARBITER PERGADAIAN SYARIAH</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-item">
+                            DAFTAR ARBITER MODAL VENTURA
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="daftararbitermodalventurakonvensional.html">DAFTAR ARBITER MODAL VENTURA KONVENSIONAL</a></li>
+                            <li><a class="dropdown-item" href="daftararbitermodalventurasyariah.html">DAFTAR ARBITER MODAL VENTURA SYARIAH</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-item">
+                            DAFTAR ARBITER PENJAMINAN KREDIT
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="daftararbiterpenjaminankreditkonvensional.html">DAFTAR ARBITER PENJAMINAN KREDIT KONVENSIONAL</a></li>
+                            <li><a class="dropdown-item" href="daftararbiterpenjaminankreditsyariah.html">DAFTAR ARBITER PENJAMINAN KREDIT SYARIAH</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-item">
+                            DAFTAR ARBITER FINTECH
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="daftararbiterfintechkonvensional.html">DAFTAR ARBITER FINTECH KONVENSIONAL</a></li>
+                            <li><a class="dropdown-item" href="daftararbiterfintechsyariah.html">DAFTAR ARBITER FINTECH SYARIAH</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a class="dropdown-item dropdown-toggle" href="#">
+                    KEGIATAN
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a class="dropdown-item" href="blog-large-image-sidebar.html">
+                            KEGIATAN YANG TELAH LALU
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="blog-large-image-sidebar.html">
+                            KEGIATAN YANG AKAN DATANG
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            LAPS SJK DALAM STATISTIK
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a class="dropdown-item dropdown-toggle" href="#">
+                    TATA KELOLA
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-item" href="index.html">
+                            LAPORAN TAHUNAN DAN LAPORAN KEUANGAN
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">TAHUN 2021</a></li>
+                            <li><a class="dropdown-item" href="#">TAHUN 2020</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-item" href="index.html">
+                            RAPAT UMUM ANGGOTA TAHUNAN
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">TAHUN 2021</a></li>
+                            <li><a class="dropdown-item" href="#">TAHUN 2020</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-item" href="index.html">
+                            RAPAT UMUM ANGGOTA LUAR BIASA
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">TAHUN 2021</a></li>
+                            <li><a class="dropdown-item" href="#">TAHUN 2020</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-item" href="index.html">
+                            RAPAT PENGAWAS <span class="tip tip-dark"><i class="icon-lock icons"></i></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">TAHUN 2021</a></li>
+                            <li><a class="dropdown-item" href="#">TAHUN 2020</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-item" href="index.html">
+                            RAPAT PENGURUS
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">TAHUN 2021</a></li>
+                            <li><a class="dropdown-item" href="#">TAHUN 2020</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown-submenu">
+                        <a class="dropdown-item" href="index.html">
+                            DOKUMEN LEGALITAS
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">KEPUTUSAN SIRKULER PARA PENDIRI</a></li>
+                            <li><a class="dropdown-item" href="#">ANGGARAN DASAR</a></li>
+                            <li><a class="dropdown-item" href="#">PENGESAHAN KEMENTERIAN HUKUM & HAM</a></li>
+                            <li><a class="dropdown-item" href="#">ANGGARAN RUMAH TANGGA</a></li>
+                            <li><a class="dropdown-item" href="#">NPWP</a></li>
+                            <li><a class="dropdown-item" href="#">IZIN OPERASIONAL DARI OJK</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a class="dropdown-item dropdown-toggle" href="contactus.html">
+                    HUBUNGI KAMI
+                </a>
+            </li>*@
+
+
+    </ul>
+</nav>

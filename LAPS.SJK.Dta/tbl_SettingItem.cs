@@ -8,24 +8,24 @@ using LAPS.SJK.Dto;
 namespace LAPS.SJK.Dta
 {
     /// <summary>
-    /// Dta Class of TABLE [tbl_Setting]
+    /// Dta Class of TABLE [tbl_setting]
     /// </summary>    
-    public partial class tbl_SettingItem
+    public partial class tbl_settingItem
     {
        
         #region Data Access
 
         /// <summary>
-        /// Execute Insert to TABLE [tbl_Setting]
+        /// Execute Insert to TABLE [tbl_setting]
         /// </summary>        
-        public static tbl_Setting Insert(tbl_Setting obj)
+        public static tbl_setting Insert(tbl_setting obj)
         {
              IDBHelper context = new DBHelper();
             string sqlQuery = @"
 SET NOCOUNT OFF
 DECLARE @Err int
 
-INSERT INTO [tbl_Setting]([name], [value], [description]) 
+INSERT INTO [tbl_setting]([name], [value], [description]) 
 VALUES      (@name, @value, @description)
 
 SET @Err = @@Error
@@ -34,20 +34,20 @@ DECLARE @_id Int
 SELECT @_id = SCOPE_IDENTITY()
 
 SELECT  id, name, value, description
-FROM    [tbl_Setting]
+FROM    [tbl_setting]
 WHERE   [id]  = @_id";
             context.AddParameter("@name", string.Format("{0}", obj.name));
             context.AddParameter("@value", string.Format("{0}", obj.value));
             context.AddParameter("@description", string.Format("{0}", obj.description));
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
-            return DBUtil.ExecuteMapper<tbl_Setting>(context, new tbl_Setting()).FirstOrDefault();
+            return DBUtil.ExecuteMapper<tbl_setting>(context, new tbl_setting()).FirstOrDefault();
         }
 
         /// <summary>
-        /// Execute Update to TABLE [tbl_Setting]
+        /// Execute Update to TABLE [tbl_setting]
         /// </summary>        
-        public static tbl_Setting Update(tbl_Setting obj)
+        public static tbl_setting Update(tbl_setting obj)
         {
              IDBHelper context = new DBHelper();
             string sqlQuery = @"
@@ -55,7 +55,7 @@ SET NOCOUNT OFF
 
 DECLARE @Err int
 
-UPDATE      [tbl_Setting]
+UPDATE      [tbl_setting]
 SET         [name] = @name,
             [value] = @value,
             [description] = @description
@@ -64,7 +64,7 @@ WHERE       [id]  = @id
 SET @Err = @@Error
 
 SELECT  id, name, value, description 
-FROM    [tbl_Setting]
+FROM    [tbl_setting]
 WHERE   [id]  = @id";
             context.AddParameter("@name", string.Format("{0}", obj.name));
             context.AddParameter("@value", string.Format("{0}", obj.value));
@@ -72,16 +72,16 @@ WHERE   [id]  = @id";
             context.AddParameter("@id", obj.id);            
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
-            return DBUtil.ExecuteMapper<tbl_Setting>(context, new tbl_Setting()).FirstOrDefault(); 
+            return DBUtil.ExecuteMapper<tbl_setting>(context, new tbl_setting()).FirstOrDefault(); 
         }
 
         /// <summary>
-        /// Execute Delete to TABLE [tbl_Setting]
+        /// Execute Delete to TABLE [tbl_setting]
         /// </summary>        
         public static int Delete(Int32 id)
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery =@"DELETE FROM tbl_Setting 
+            string sqlQuery =@"DELETE FROM tbl_setting 
 WHERE   [id]  = @id";
             context.AddParameter("@id", id);
             context.CommandText = sqlQuery;
@@ -93,13 +93,13 @@ WHERE   [id]  = @id";
             return GetTotalRecord();
         }
         /// <summary>
-        /// Get Total records from [tbl_Setting]
+        /// Get Total records from [tbl_setting]
         /// </summary>        
         public static int GetTotalRecord()
         {
             int result = -1;
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT Count(*) as Total FROM tbl_Setting";
+            string sqlQuery = "SELECT Count(*) as Total FROM tbl_setting";
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             object obj = DBUtil.ExecuteScalar(context);
@@ -110,33 +110,33 @@ WHERE   [id]  = @id";
         }
 
         /// <summary>
-        /// Get All records from TABLE [tbl_Setting]
+        /// Get All records from TABLE [tbl_setting]
         /// </summary>        
-        public static List<tbl_Setting> GetAll()
+        public static List<tbl_setting> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT id, name, value, description FROM tbl_Setting";
+            string sqlQuery = "SELECT id, name, value, description FROM tbl_setting";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
-            return DBUtil.ExecuteMapper<tbl_Setting>(context, new tbl_Setting());
+            return DBUtil.ExecuteMapper<tbl_setting>(context, new tbl_setting());
         }
 
         /// <summary>
-        /// Get All records from TABLE [tbl_Setting]
+        /// Get All records from TABLE [tbl_setting]
         /// </summary>        
-        public static List<tbl_Setting> GetPaging(int PageSize, int PageIndex)
+        public static List<tbl_setting> GetPaging(int PageSize, int PageIndex)
         {
             IDBHelper context = new DBHelper();
             string sqlQuery = @"
-            WITH [Paging_tbl_Setting] AS
+            WITH [Paging_tbl_setting] AS
             (
-                SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_Setting].[id] DESC ) AS PAGING_ROW_NUMBER,
-                        [tbl_Setting].*
-                FROM    [tbl_Setting]
+                SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_setting].[id] DESC ) AS PAGING_ROW_NUMBER,
+                        [tbl_setting].*
+                FROM    [tbl_setting]
             )
 
-            SELECT      [Paging_tbl_Setting].*
-            FROM        [Paging_tbl_Setting]
+            SELECT      [Paging_tbl_setting].*
+            FROM        [Paging_tbl_setting]
             ORDER BY PAGING_ROW_NUMBER           
             OFFSET @PageIndex ROWS 
             FETCH Next @PageSize ROWS ONLY
@@ -146,21 +146,21 @@ WHERE   [id]  = @id";
             context.AddParameter("@PageSize", PageSize);
             context.CommandType = System.Data.CommandType.Text;
             context.CommandText = sqlQuery;
-            return DBUtil.ExecuteMapper<tbl_Setting>(context, new tbl_Setting());
+            return DBUtil.ExecuteMapper<tbl_setting>(context, new tbl_setting());
         }
 
         /// <summary>
-        /// Get a single record of TABLE [tbl_Setting] by Primary Key
+        /// Get a single record of TABLE [tbl_setting] by Primary Key
         /// </summary>        
-        public static tbl_Setting GetByPK(Int32 id)
+        public static tbl_setting GetByPK(Int32 id)
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = @"SELECT id, name, value, description FROM tbl_Setting
+            string sqlQuery = @"SELECT id, name, value, description FROM tbl_setting
             WHERE [id]  = @id";
             context.AddParameter("@id", id);
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
-            return DBUtil.ExecuteMapper<tbl_Setting>(context, new tbl_Setting()).FirstOrDefault();
+            return DBUtil.ExecuteMapper<tbl_setting>(context, new tbl_setting()).FirstOrDefault();
         }
 
         #endregion

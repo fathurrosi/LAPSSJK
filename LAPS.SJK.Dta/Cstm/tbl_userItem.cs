@@ -10,20 +10,20 @@ using LAPS.SJK.Dto.Cstm;
 
 namespace LAPS.SJK.Dta
 {
-    public partial class tbl_UserItem
+    public partial class tbl_userItem
     {
-        public static tbl_User GetUser(string Username)
+        public static tbl_user GetUser(string Username)
         {
-            tbl_User user = null;
+            tbl_user user = null;
             IDBHelper context = new DBHelper();
-            context.CommandText = @"	SELECT * from tbl_User WHERE Username = @Username ";
+            context.CommandText = @"	SELECT * from tbl_user WHERE Username = @Username ";
             context.CommandType = CommandType.Text;
             context.AddParameter("@Username", string.Format("{0}", Username));
-            List<tbl_User> result = DBUtil.ExecuteMapper(context, new tbl_User());
+            List<tbl_user> result = DBUtil.ExecuteMapper(context, new tbl_user());
             if (result.Count > 0)
             {
                 user = result.FirstOrDefault();
-                user.Roles = tbl_RoleItem.GetByUsername(user.Username);
+                user.Roles = tbl_roleItem.GetByUsername(user.Username);
             }
             return user;
         }
@@ -31,7 +31,7 @@ namespace LAPS.SJK.Dta
         public static void UpdateLogin(string Username, string machine, string ipAddress)
         {
             IDBHelper context = new DBHelper();
-            context.CommandText = @"UPDATE tbl_User
+            context.CommandText = @"UPDATE tbl_user
    SET LastLogin =  @LastLogin
       ,IsLogin = 1
       ,IPAddress = @IPAddress
@@ -60,7 +60,7 @@ namespace LAPS.SJK.Dta
                 IDBHelper context = new DBHelper();
                 context.BeginTransaction();
                 context.CommandText = @"
-INSERT INTO tbl_User
+INSERT INTO tbl_user
            (Username, Fullname
            ,Password
           , IsActive)
@@ -82,7 +82,7 @@ INSERT INTO tbl_User
                         context.AddParameter("Username", Username);
                         context.AddParameter("@RoleID", t);
                         context.CommandText = @"
-INSERT INTO tbl_UserRole
+INSERT INTO tbl_userRole
            (Username
            ,RoleID)
      VALUES
@@ -114,7 +114,7 @@ INSERT INTO tbl_UserRole
                 context.BeginTransaction();
                 context.CommandText = @"
 
-UPDATE tbl_User
+UPDATE tbl_user
            set Password =@Password
           , IsActive=1,  fullname =@fullname   
 		  where Username=@Username
@@ -130,7 +130,7 @@ UPDATE tbl_User
                     context.Clear();
                     context.AddParameter("Username", Username);
                     context.CommandText = @"                    
-DELETE FROM tbl_UserRole
+DELETE FROM tbl_userRole
       WHERE Username =@Username
 ";
                     context.CommandType = CommandType.Text;
@@ -141,7 +141,7 @@ DELETE FROM tbl_UserRole
                         context.AddParameter("Username", Username);
                         context.AddParameter("@RoleID", t);
                         context.CommandText = @"
-                        INSERT INTO tbl_UserRole
+                        INSERT INTO tbl_userRole
            (Username
            ,RoleID)
      VALUES
@@ -165,7 +165,7 @@ DELETE FROM tbl_UserRole
         {
             IDBHelper context = new DBHelper();
             context.CommandText = @"
-update tbl_User
+update tbl_user
            set Password =@Password
           , IsActive=1
 		  where Username=@Username
@@ -180,10 +180,10 @@ update tbl_User
         //        {
         //            IDBHelper context = new DBHelper();
         //            context.CommandText = @"
-        //DELETE FROM tbl_User
+        //DELETE FROM tbl_user
         //      WHERE Username =@Username;
 
-        //DELETE FROM tbl_Userrole 
+        //DELETE FROM tbl_userrole 
         //	WHERE
         //	Username = @Username;
         //";

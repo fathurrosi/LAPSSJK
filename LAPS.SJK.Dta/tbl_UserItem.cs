@@ -8,30 +8,30 @@ using LAPS.SJK.Dto;
 namespace LAPS.SJK.Dta
 {
     /// <summary>
-    /// Dta Class of TABLE [tbl_User]
+    /// Dta Class of TABLE [tbl_user]
     /// </summary>    
-    public partial class tbl_UserItem
+    public partial class tbl_userItem
     {
        
         #region Data Access
 
         /// <summary>
-        /// Execute Insert to TABLE [tbl_User]
+        /// Execute Insert to TABLE [tbl_user]
         /// </summary>        
-        public static tbl_User Insert(tbl_User obj)
+        public static tbl_user Insert(tbl_user obj)
         {
              IDBHelper context = new DBHelper();
             string sqlQuery = @"
 SET NOCOUNT OFF
 DECLARE @Err int
 
-INSERT INTO [tbl_User]([Username], [Password], [LastLogin], [IsLogin], [IPAddress], [MachineName], [IsActive], [FullName]) 
+INSERT INTO [tbl_user]([Username], [Password], [LastLogin], [IsLogin], [IPAddress], [MachineName], [IsActive], [FullName]) 
 VALUES      (@Username, @Password, @LastLogin, @IsLogin, @IPAddress, @MachineName, @IsActive, @FullName)
 
 SET @Err = @@Error
 
 SELECT  Username, Password, LastLogin, IsLogin, IPAddress, MachineName, IsActive, FullName
-FROM    [tbl_User]
+FROM    [tbl_user]
 WHERE   [Username]  = @Username";
             context.AddParameter("@Username", string.Format("{0}", obj.Username));
             context.AddParameter("@Password", string.Format("{0}", obj.Password));
@@ -43,13 +43,13 @@ WHERE   [Username]  = @Username";
             context.AddParameter("@FullName", string.Format("{0}", obj.FullName));
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
-            return DBUtil.ExecuteMapper<tbl_User>(context, new tbl_User()).FirstOrDefault();
+            return DBUtil.ExecuteMapper<tbl_user>(context, new tbl_user()).FirstOrDefault();
         }
 
         /// <summary>
-        /// Execute Update to TABLE [tbl_User]
+        /// Execute Update to TABLE [tbl_user]
         /// </summary>        
-        public static tbl_User Update(tbl_User obj)
+        public static tbl_user Update(tbl_user obj)
         {
              IDBHelper context = new DBHelper();
             string sqlQuery = @"
@@ -57,7 +57,7 @@ SET NOCOUNT OFF
 
 DECLARE @Err int
 
-UPDATE      [tbl_User]
+UPDATE      [tbl_user]
 SET         [Password] = @Password,
             [LastLogin] = @LastLogin,
             [IsLogin] = @IsLogin,
@@ -70,7 +70,7 @@ WHERE       [Username]  = @Username
 SET @Err = @@Error
 
 SELECT  Username, Password, LastLogin, IsLogin, IPAddress, MachineName, IsActive, FullName 
-FROM    [tbl_User]
+FROM    [tbl_user]
 WHERE   [Username]  = @Username";
             context.AddParameter("@Password", string.Format("{0}", obj.Password));
             context.AddParameter("@LastLogin", obj.LastLogin);
@@ -82,16 +82,16 @@ WHERE   [Username]  = @Username";
             context.AddParameter("@Username", string.Format("{0}", obj.Username));            
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
-            return DBUtil.ExecuteMapper<tbl_User>(context, new tbl_User()).FirstOrDefault(); 
+            return DBUtil.ExecuteMapper<tbl_user>(context, new tbl_user()).FirstOrDefault(); 
         }
 
         /// <summary>
-        /// Execute Delete to TABLE [tbl_User]
+        /// Execute Delete to TABLE [tbl_user]
         /// </summary>        
         public static int Delete(string Username)
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery =@"DELETE FROM tbl_User 
+            string sqlQuery =@"DELETE FROM tbl_user 
 WHERE   [Username]  = @Username";
             context.AddParameter("@Username",  string.Format("{0}", Username));
             context.CommandText = sqlQuery;
@@ -103,13 +103,13 @@ WHERE   [Username]  = @Username";
             return GetTotalRecord();
         }
         /// <summary>
-        /// Get Total records from [tbl_User]
+        /// Get Total records from [tbl_user]
         /// </summary>        
         public static int GetTotalRecord()
         {
             int result = -1;
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT Count(*) as Total FROM tbl_User";
+            string sqlQuery = "SELECT Count(*) as Total FROM tbl_user";
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             object obj = DBUtil.ExecuteScalar(context);
@@ -120,33 +120,33 @@ WHERE   [Username]  = @Username";
         }
 
         /// <summary>
-        /// Get All records from TABLE [tbl_User]
+        /// Get All records from TABLE [tbl_user]
         /// </summary>        
-        public static List<tbl_User> GetAll()
+        public static List<tbl_user> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT Username, Password, LastLogin, IsLogin, IPAddress, MachineName, IsActive, FullName FROM tbl_User";
+            string sqlQuery = "SELECT Username, Password, LastLogin, IsLogin, IPAddress, MachineName, IsActive, FullName FROM tbl_user";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
-            return DBUtil.ExecuteMapper<tbl_User>(context, new tbl_User());
+            return DBUtil.ExecuteMapper<tbl_user>(context, new tbl_user());
         }
 
         /// <summary>
-        /// Get All records from TABLE [tbl_User]
+        /// Get All records from TABLE [tbl_user]
         /// </summary>        
-        public static List<tbl_User> GetPaging(int PageSize, int PageIndex)
+        public static List<tbl_user> GetPaging(int PageSize, int PageIndex)
         {
             IDBHelper context = new DBHelper();
             string sqlQuery = @"
-            WITH [Paging_tbl_User] AS
+            WITH [Paging_tbl_user] AS
             (
-                SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_User].[Username] DESC ) AS PAGING_ROW_NUMBER,
-                        [tbl_User].*
-                FROM    [tbl_User]
+                SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_user].[Username] DESC ) AS PAGING_ROW_NUMBER,
+                        [tbl_user].*
+                FROM    [tbl_user]
             )
 
-            SELECT      [Paging_tbl_User].*
-            FROM        [Paging_tbl_User]
+            SELECT      [Paging_tbl_user].*
+            FROM        [Paging_tbl_user]
             ORDER BY PAGING_ROW_NUMBER           
             OFFSET @PageIndex ROWS 
             FETCH Next @PageSize ROWS ONLY
@@ -156,21 +156,21 @@ WHERE   [Username]  = @Username";
             context.AddParameter("@PageSize", PageSize);
             context.CommandType = System.Data.CommandType.Text;
             context.CommandText = sqlQuery;
-            return DBUtil.ExecuteMapper<tbl_User>(context, new tbl_User());
+            return DBUtil.ExecuteMapper<tbl_user>(context, new tbl_user());
         }
 
         /// <summary>
-        /// Get a single record of TABLE [tbl_User] by Primary Key
+        /// Get a single record of TABLE [tbl_user] by Primary Key
         /// </summary>        
-        public static tbl_User GetByPK(string Username)
+        public static tbl_user GetByPK(string Username)
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = @"SELECT Username, Password, LastLogin, IsLogin, IPAddress, MachineName, IsActive, FullName FROM tbl_User
+            string sqlQuery = @"SELECT Username, Password, LastLogin, IsLogin, IPAddress, MachineName, IsActive, FullName FROM tbl_user
             WHERE [Username]  = @Username";
             context.AddParameter("@Username", Username);
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
-            return DBUtil.ExecuteMapper<tbl_User>(context, new tbl_User()).FirstOrDefault();
+            return DBUtil.ExecuteMapper<tbl_user>(context, new tbl_user()).FirstOrDefault();
         }
 
         #endregion

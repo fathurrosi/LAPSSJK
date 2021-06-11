@@ -31,11 +31,11 @@ namespace LAPS.SJK.UI.Controllers
 
                 Log.Info(string.Format("User :{0}-{1} try to log in", usernname, password));
 
-                Dto.Cstm.tbl_User Item = tbl_UserItem.GetUser(usernname);
+                Dto.Cstm.tbl_user Item = tbl_userItem.GetUser(usernname);
                 if (Item != null && Item.Password == password &&
                     Item.Roles.Where(t => string.Format("{0}", t.Name).ToLower() == string.Format("{0}", UserType.User).ToLower()).Count() > 0)
                 {
-                    tbl_UserItem.UpdateLogin(user.Username, "", "");
+                    tbl_userItem.UpdateLogin(user.Username, "", "");
                     FormsAuthentication.SetAuthCookie(user.Username, false);
                     return RedirectToAction("Index", "Home");
                 }
@@ -66,7 +66,7 @@ namespace LAPS.SJK.UI.Controllers
                 registerUser.IsActive = 1;
                 registerUser.LastLogin = DateTime.Now;
                 
-                tbl_UserItem.Insert(registerUser);
+                tbl_userItem.Insert(registerUser);
 
                 return RedirectToAction("Login");
 

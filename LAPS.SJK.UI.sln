@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAPS.SJK.UI", "LAPS.SJK.UI\LAPS.SJK.UI.csproj", "{2C84DE3D-5A46-482E-85CC-6966D3D124F5}"
 EndProject
@@ -10,27 +10,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAPS.SJK.Dto", "LAPS.SJK.Dto\LAPS.SJK.Dto.csproj", "{6A1223E2-0DA9-4256-A0B0-97C06E8303F9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAPS.SJK.Dta", "LAPS.SJK.Dta\LAPS.SJK.Dta.csproj", "{2127C3A3-7096-4041-9B8D-96DF6672FC7E}"
-EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Languagetranslator(1)", "Languagetranslator\", "{224FC65E-2B8D-4410-9AF6-90ADDC242BE8}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_58941"
-		Debug.AspNetCompiler.PhysicalPath = "Languagetranslator\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58941\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_58941"
-		Release.AspNetCompiler.PhysicalPath = "Languagetranslator\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58941\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "58941"
-		SlnRelativePath = "Languagetranslator\"
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,12 +33,11 @@ Global
 		{2127C3A3-7096-4041-9B8D-96DF6672FC7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2127C3A3-7096-4041-9B8D-96DF6672FC7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2127C3A3-7096-4041-9B8D-96DF6672FC7E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{224FC65E-2B8D-4410-9AF6-90ADDC242BE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{224FC65E-2B8D-4410-9AF6-90ADDC242BE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{224FC65E-2B8D-4410-9AF6-90ADDC242BE8}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{224FC65E-2B8D-4410-9AF6-90ADDC242BE8}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {31CCFD42-C74D-47FA-BDE2-3C6F8D834FA7}
 	EndGlobalSection
 EndGlobal

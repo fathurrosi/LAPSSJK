@@ -4,9 +4,9 @@ using System;
 using DataAccessLayer;
 namespace LAPS.SJK.Dto
 {
-    public class tbl_User : IDataMapper<tbl_User>
+    public class tbl_user : IDataMapper<tbl_user>
     {
-        #region tbl_User Properties
+        #region tbl_user Properties
         public string Username { get; set; }
         public string Password { get; set; }
         public DateTime? LastLogin { get; set; }
@@ -16,9 +16,9 @@ namespace LAPS.SJK.Dto
         public Int32? IsActive { get; set; }
         public string FullName { get; set; }
         #endregion    
-        public tbl_User Map(System.Data.IDataReader reader)
+        public tbl_user Map(System.Data.IDataReader reader)
         {
-            tbl_User obj = new tbl_User();   
+            tbl_user obj = new tbl_user();   
             obj.Username = string.Format("{0}",reader["Username"]);
             obj.Password = reader["Password"] == DBNull.Value ? null : reader["Password"].ToString();
             obj.LastLogin = reader["LastLogin"] == DBNull.Value ? (DateTime?) null : Convert.ToDateTime(reader["LastLogin"]);

@@ -4,9 +4,9 @@ using System;
 using DataAccessLayer;
 namespace LAPS.SJK.Dto
 {
-    public class tbl_Privilege : IDataMapper<tbl_Privilege>
+    public class tbl_privilege : IDataMapper<tbl_privilege>
     {
-        #region tbl_Privilege Properties
+        #region tbl_privilege Properties
         public Int32 MenuID { get; set; }
         public Int32 RoleID { get; set; }
         public Int32? AllowCreate { get; set; }
@@ -15,9 +15,9 @@ namespace LAPS.SJK.Dto
         public Int32? AllowDelete { get; set; }
         public Int32? AllowPrint { get; set; }
         #endregion    
-        public tbl_Privilege Map(System.Data.IDataReader reader)
+        public tbl_privilege Map(System.Data.IDataReader reader)
         {
-            tbl_Privilege obj = new tbl_Privilege();   
+            tbl_privilege obj = new tbl_privilege();   
             obj.MenuID = Convert.ToInt32(reader["MenuID"]);
             obj.RoleID = Convert.ToInt32(reader["RoleID"]);
             obj.AllowCreate = reader["AllowCreate"] == DBNull.Value ? (Int32?) null : Convert.ToInt32(reader["AllowCreate"]);

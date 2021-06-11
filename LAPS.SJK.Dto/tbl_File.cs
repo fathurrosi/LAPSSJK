@@ -4,9 +4,9 @@ using System;
 using DataAccessLayer;
 namespace LAPS.SJK.Dto
 {
-    public class tbl_File : IDataMapper<tbl_File>
+    public class tbl_file : IDataMapper<tbl_file>
     {
-        #region tbl_File Properties
+        #region tbl_file Properties
         public string file_id { get; set; }
         public string ref_name { get; set; }
         public string ref_id { get; set; }
@@ -18,9 +18,9 @@ namespace LAPS.SJK.Dto
         public DateTime? created { get; set; }
         public string created_by { get; set; }
         #endregion    
-        public tbl_File Map(System.Data.IDataReader reader)
+        public tbl_file Map(System.Data.IDataReader reader)
         {
-            tbl_File obj = new tbl_File();   
+            tbl_file obj = new tbl_file();   
             obj.file_id = string.Format("{0}",reader["file_id"]);
             obj.ref_name = reader["ref_name"] == DBNull.Value ? null : reader["ref_name"].ToString();
             obj.ref_id = reader["ref_id"] == DBNull.Value ? null : reader["ref_id"].ToString();

@@ -29,7 +29,7 @@ namespace LAPS.SJK.Logic.Handler
             {
                 //if (string.IsNullOrEmpty(FileID))
                 //    response.Redirect("~/_layouts/HCIS/Images/noImageAvailable300.gif");
-                //tbl_Files file = tbl_FilesItem.GetByID(FileID);
+                //tbl_files file = tbl_filesItem.GetByID(FileID);
                 //if (file != null)
                 //{
                 //    string fileName = file.FileName;
