@@ -31,6 +31,11 @@ namespace LAPS.SJK.Logic
         {
         }
 
+        public string GetLang()
+        {
+            return CultureInfo.CurrentUICulture.Name;
+        }
+
         public override object GetObject(string name)
         {
             return base.GetObject(name);

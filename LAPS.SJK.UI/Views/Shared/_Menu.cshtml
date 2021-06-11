@@ -6,8 +6,8 @@
         @{foreach (var item in menus.Where(t => !t.parentid.HasValue || t.parentid == 0).Distinct().ToList())
             {
                 <li class="dropdown">
-                    <a class="dropdown-item dropdown-toggle" href="@item.url">
-                        @LAPS.SJK.UI.App_LocalResources.GlobalRes.GetMenu(item.menu_code)
+                    <a class="dropdown-item dropdown-toggle" href="@LAPS.SJK.UI.App_LocalResources.GlobalRes.GetUrl(item.url)">
+                        @LAPS.SJK.UI.App_LocalResources.GlobalRes.GetMenu(item.menu_name)
                     </a>
                     @if (menus.Where(t => t.parentid == item.menu_id).Count() > 0)
                     {
@@ -15,15 +15,15 @@
                             @{foreach (var firstItem in (menus.Where(t => t.parentid == item.menu_id).ToList()))
                                 {
                                     <li>
-                                        <a class="dropdown-item" href="@firstItem.url">
-                                            @LAPS.SJK.UI.App_LocalResources.GlobalRes.GetMenu(firstItem.menu_code)
+                                        <a class="dropdown-item" href="@LAPS.SJK.UI.App_LocalResources.GlobalRes.GetUrl(firstItem.url)">
+                                            @LAPS.SJK.UI.App_LocalResources.GlobalRes.GetMenu(firstItem.menu_name)
                                         </a>
                                         @if (menus.Where(t => t.parentid == firstItem.menu_id).Count() > 0)
                                         {
                                             <ul class="dropdown-menu">
                                                 @foreach (var secondItem in (menus.Where(t => t.parentid == firstItem.menu_id).ToList()))
                                                 {
-                                                    <li><a class="dropdown-item" href="@secondItem.url">@LAPS.SJK.UI.App_LocalResources.GlobalRes.GetMenu(secondItem.menu_code)</a></li>
+                                                    <li><a class="dropdown-item" href="@LAPS.SJK.UI.App_LocalResources.GlobalRes.GetUrl(secondItem.url)">@LAPS.SJK.UI.App_LocalResources.GlobalRes.GetMenu(secondItem.menu_name)</a></li>
                                                 }
                                             </ul>
                                         }

@@ -8,7 +8,6 @@ namespace LAPS.SJK.Dto
     {
         #region tbl_menu Properties
         public Int32 menu_id { get; set; }
-        public string menu_code { get; set; }
         public string menu_name { get; set; }
         public Int32? on_lock { get; set; }
         public Int32? parentid { get; set; }
@@ -19,7 +18,6 @@ namespace LAPS.SJK.Dto
         {
             tbl_menu obj = new tbl_menu();   
             obj.menu_id = Convert.ToInt32(reader["menu_id"]);
-            obj.menu_code = reader["menu_code"] == DBNull.Value ? null : reader["menu_code"].ToString();
             obj.menu_name = reader["menu_name"] == DBNull.Value ? null : reader["menu_name"].ToString();
             obj.on_lock = reader["on_lock"] == DBNull.Value ? (Int32?) null : Convert.ToInt32(reader["on_lock"]);
             obj.parentid = reader["parentid"] == DBNull.Value ? (Int32?) null : Convert.ToInt32(reader["parentid"]);

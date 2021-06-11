@@ -8,7 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LAPS.SJK.UI.App_LocalResources {
+namespace LAPS.SJK.UI.App_LocalResources
+{
     using LAPS.SJK.Dto;
     using LAPS.SJK.Logic;
     using System;
@@ -25,44 +26,58 @@ namespace LAPS.SJK.UI.App_LocalResources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class GlobalRes {
-        
+    public class GlobalRes
+    {
+
         private static CustomResourceManager resourceMan;
-        
+
         private static global::System.Globalization.CultureInfo resourceCulture;
-        
+
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal GlobalRes() {
+        internal GlobalRes()
+        {
         }
-        
+
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static CustomResourceManager ResourceManager {
-            get {
-                if (object.ReferenceEquals(resourceMan, null)) {
+        public static CustomResourceManager ResourceManager
+        {
+            get
+            {
+                if (object.ReferenceEquals(resourceMan, null))
+                {
                     CustomResourceManager temp = new CustomResourceManager("LAPS.SJK.UI.App_LocalResources.GlobalRes", typeof(GlobalRes).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-        
+
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
-            get {
+        public static global::System.Globalization.CultureInfo Culture
+        {
+            get
+            {
                 return resourceCulture;
             }
-            set {
+            set
+            {
                 resourceCulture = value;
             }
         }
-        
+
+        public static string GetUrl(string url)
+        {
+            string lang = ResourceManager.GetLang();
+            if (string.IsNullOrEmpty(lang)) return url;
+            else return string.Format("/{0}{1}", lang, url);
+        }
 
         public static string GetMenu(string name)
         {
@@ -85,233 +100,285 @@ namespace LAPS.SJK.UI.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to DAFTAR ANGGOTA.
         /// </summary>
-        public static string _DAFTAR_ANGGOTA {
-            get {
+        public static string _DAFTAR_ANGGOTA
+        {
+            get
+            {
                 return ResourceManager.GetString("_DAFTAR_ANGGOTA");
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to HAK DAN KEWAJIBAN ANGGOTA.
         /// </summary>
-        public static string _HAK_DAN_KEWAJIBAN_ANGGOTA {
-            get {
+        public static string _HAK_DAN_KEWAJIBAN_ANGGOTA
+        {
+            get
+            {
                 return ResourceManager.GetString("_HAK_DAN_KEWAJIBAN_ANGGOTA");
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to KEANGGOTAAN LAPS SJK.
         /// </summary>
-        public static string _KEANGGOTAAN_LAPS_SJK {
-            get {
+        public static string _KEANGGOTAAN_LAPS_SJK
+        {
+            get
+            {
                 return ResourceManager.GetString("_KEANGGOTAAN_LAPS_SJK");
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to KOMITE ETIK.
         /// </summary>
-        public static string _KOMITE_ETIK {
-            get {
+        public static string _KOMITE_ETIK
+        {
+            get
+            {
                 return ResourceManager.GetString("_KOMITE_ETIK");
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to PENDIRIAN LAPS SJK.
         /// </summary>
-        public static string _PENDIRIAN_LAPS_SJK {
-            get {
+        public static string _PENDIRIAN_LAPS_SJK
+        {
+            get
+            {
                 return ResourceManager.GetString("_PENDIRIAN_LAPS_SJK");
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to PENGAWAS LAPS SJK.
         /// </summary>
-        public static string _PENGAWAS_LAPS_SJK {
-            get {
+        public static string _PENGAWAS_LAPS_SJK
+        {
+            get
+            {
                 return ResourceManager.GetString("_PENGAWAS_LAPS_SJK");
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to PENGURUS LAPS SJK.
         /// </summary>
-        public static string _PENGURUS_LAPS_SJK {
-            get {
+        public static string _PENGURUS_LAPS_SJK
+        {
+            get
+            {
                 return ResourceManager.GetString("_PENGURUS_LAPS_SJK");
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to STRUKTUR ORGANISASI LAPS SJK.
         /// </summary>
-        public static string _STRUKTUR_ORGANISASI_LAPS_SJK {
-            get {
+        public static string _STRUKTUR_ORGANISASI_LAPS_SJK
+        {
+            get
+            {
                 return ResourceManager.GetString("_STRUKTUR_ORGANISASI_LAPS_SJK");
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to SYARAT MENJADI ANGGOTA LAPS SJK.
         /// </summary>
-        public static string _SYARAT_MENJADI_ANGGOTA_LAPS_SJK {
-            get {
+        public static string _SYARAT_MENJADI_ANGGOTA_LAPS_SJK
+        {
+            get
+            {
                 return ResourceManager.GetString("_SYARAT_MENJADI_ANGGOTA_LAPS_SJK");
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Tentang Kami.
         /// </summary>
-        public static string _Tentang_Kami {
-            get {
+        public static string _Tentang_Kami
+        {
+            get
+            {
                 return ResourceManager.GetString("_Tentang_Kami");
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Tentang Kita.
         /// </summary>
-        public static string ABOUT {
-            get {
+        public static string ABOUT
+        {
+            get
+            {
                 return ResourceManager.GetString("ABOUT");
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Nama Aplikasi.
         /// </summary>
-        public static string APPLICATION_NAME {
-            get {
+        public static string APPLICATION_NAME
+        {
+            get
+            {
                 return ResourceManager.GetString("APPLICATION_NAME");
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Kontak.
         /// </summary>
-        public static string CONTACT {
-            get {
+        public static string CONTACT
+        {
+            get
+            {
                 return ResourceManager.GetString("CONTACT");
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Tanggal Dan Jam.
         /// </summary>
-        public static string DateAndTime {
-            get {
+        public static string DateAndTime
+        {
+            get
+            {
                 return ResourceManager.GetString("DateAndTime");
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Tanggal Dan Jam.
         /// </summary>
-        public static string DateTime {
-            get {
+        public static string DateTime
+        {
+            get
+            {
                 return ResourceManager.GetString("DateTime");
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Home.
         /// </summary>
-        public static string HOME {
-            get {
+        public static string HOME
+        {
+            get
+            {
                 return ResourceManager.GetString("HOME");
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Label text.
         /// </summary>
-        public static string Label_text {
-            get {
+        public static string Label_text
+        {
+            get
+            {
                 return ResourceManager.GetString("Label_text");
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Bahasa.
         /// </summary>
-        public static string Language {
-            get {
+        public static string Language
+        {
+            get
+            {
                 return ResourceManager.GetString("Language");
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Menu Utama.
         /// </summary>
-        public static string MainMenu {
-            get {
+        public static string MainMenu
+        {
+            get
+            {
                 return ResourceManager.GetString("MainMenu");
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Uang.
         /// </summary>
-        public static string Money {
-            get {
+        public static string Money
+        {
+            get
+            {
                 return ResourceManager.GetString("Money");
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Harus minimal 5 karakter.
         /// </summary>
-        public static string Must_be_at_least_5_charachters {
-            get {
+        public static string Must_be_at_least_5_charachters
+        {
+            get
+            {
                 return ResourceManager.GetString("Must_be_at_least_5_charachters");
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Field must contain only letters a-z, numbers and underscore _.
         /// </summary>
-        public static string Must_contain_only_letters {
-            get {
+        public static string Must_contain_only_letters
+        {
+            get
+            {
                 return ResourceManager.GetString("Must_contain_only_letters");
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Nama.
         /// </summary>
-        public static string Name {
-            get {
+        public static string Name
+        {
+            get
+            {
                 return ResourceManager.GetString("Name");
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Submit dan test pesan error .
         /// </summary>
-        public static string Submit_and_test_error_messages {
-            get {
+        public static string Submit_and_test_error_messages
+        {
+            get
+            {
                 return ResourceManager.GetString("Submit_and_test_error_messages");
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Field ini mandatori.
         /// </summary>
-        public static string This_field_is_required {
-            get {
+        public static string This_field_is_required
+        {
+            get
+            {
                 return ResourceManager.GetString("This_field_is_required");
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Tooltip help.
         /// </summary>
-        public static string Tooltip_help {
-            get {
+        public static string Tooltip_help
+        {
+            get
+            {
                 return ResourceManager.GetString("Tooltip_help");
             }
         }
