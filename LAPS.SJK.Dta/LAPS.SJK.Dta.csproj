@@ -48,6 +48,7 @@
     <Compile Include="Cstm\tbl_fileItem.cs" />
     <Compile Include="Cstm\tbl_logItem.cs" />
     <Compile Include="Cstm\tbl_menuItem.cs" />
+    <Compile Include="Cstm\tbl_post_list_templateItem.cs" />
     <Compile Include="Cstm\tbl_RoleItem.cs" />
     <Compile Include="Cstm\tbl_userItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

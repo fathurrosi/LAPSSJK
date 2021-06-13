@@ -30,9 +30,12 @@ VALUES      (@name, @cat_id, @created, @creator, @edited, @editor)
 
 SET @Err = @@Error
 
+DECLARE @_post_id Int
+SELECT @_post_id = SCOPE_IDENTITY()
+
 SELECT  post_id, name, cat_id, created, creator, edited, editor
 FROM    [tbl_post]
-WHERE   [name]  = @name";
+WHERE   [post_id]  = @_post_id";
             context.AddParameter("@name", string.Format("{0}", obj.name));
             context.AddParameter("@cat_id", obj.cat_id);
             context.AddParameter("@created", obj.created);
@@ -56,22 +59,24 @@ SET NOCOUNT OFF
 DECLARE @Err int
 
 UPDATE      [tbl_post]
-SET         [cat_id] = @cat_id,
+SET         [name] = @name,
+            [cat_id] = @cat_id,
             [creator] = @creator,
             [edited] = @edited,
             [editor] = @editor
-WHERE       [name]  = @name
+WHERE       [post_id]  = @post_id
 
 SET @Err = @@Error
 
 SELECT  post_id, name, cat_id, created, creator, edited, editor 
 FROM    [tbl_post]
-WHERE   [name]  = @name";
+WHERE   [post_id]  = @post_id";
+            context.AddParameter("@name", string.Format("{0}", obj.name));
             context.AddParameter("@cat_id", obj.cat_id);
             context.AddParameter("@creator", string.Format("{0}", obj.creator));
             context.AddParameter("@edited", obj.edited);
             context.AddParameter("@editor", string.Format("{0}", obj.editor));
-            context.AddParameter("@name", string.Format("{0}", obj.name));            
+            context.AddParameter("@post_id", obj.post_id);            
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_post>(context, new tbl_post()).FirstOrDefault(); 
@@ -80,12 +85,12 @@ WHERE   [name]  = @name";
         /// <summary>
         /// Execute Delete to TABLE [tbl_post]
         /// </summary>        
-        public static int Delete(string name)
+        public static int Delete(Int32 post_id)
         {
             IDBHelper context = new DBHelper();
             string sqlQuery =@"DELETE FROM tbl_post 
-WHERE   [name]  = @name";
-            context.AddParameter("@name",  string.Format("{0}", name));
+WHERE   [post_id]  = @post_id";
+            context.AddParameter("@post_id", post_id);
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             return DBUtil.ExecuteNonQuery(context);
@@ -132,7 +137,7 @@ WHERE   [name]  = @name";
             string sqlQuery = @"
             WITH [Paging_tbl_post] AS
             (
-                SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_post].[name] DESC ) AS PAGING_ROW_NUMBER,
+                SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_post].[post_id] DESC ) AS PAGING_ROW_NUMBER,
                         [tbl_post].*
                 FROM    [tbl_post]
             )
@@ -154,59 +159,15 @@ WHERE   [name]  = @name";
         /// <summary>
         /// Get a single record of TABLE [tbl_post] by Primary Key
         /// </summary>        
-        public static tbl_post GetByPK(string name)
+        public static tbl_post GetByPK(Int32 post_id)
         {
             IDBHelper context = new DBHelper();
             string sqlQuery = @"SELECT post_id, name, cat_id, created, creator, edited, editor FROM tbl_post
-            WHERE [name]  = @name";
-            context.AddParameter("@name", name);
+            WHERE [post_id]  = @post_id";
+            context.AddParameter("@post_id", post_id);
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_post>(context, new tbl_post()).FirstOrDefault();
-        }
-
-        /// <summary>
-        /// Get All records of TABLE [tbl_post] by TABLE [tbl_post_detail]
-        /// </summary>
-        public static List<tbl_post> GetBypost_id(Int32 post_id)
-        {
-            IDBHelper context = new DBHelper();
-            context.CommandType = System.Data.CommandType.Text;
-            string sqlQuery =@"
-SELECT  post_id, name, cat_id, created, creator, edited, editor
-FROM    [tbl_post]
-WHERE   [post_id] = @post_id";
-
-            context.AddParameter("@post_id", post_id);
-            context.CommandText = sqlQuery;
-            return DBUtil.ExecuteMapper<tbl_post>(context, new tbl_post());
-        }
-
-        /// <summary>
-        /// Get All records of TABLE [tbl_post] by TABLE [tbl_post_detail] (with Paging)
-        /// </summary>
-        public static List<tbl_post> GetBypost_id(Int32 post_id, int PageSize, int PageIndex)
-        {
-            long FirstRow = ((long)PageIndex * (long)PageSize) + 1;
-            long LastRow = ((long)PageIndex * (long)PageSize) + PageSize;
-            
-            IDBHelper context = new DBHelper();
-            context.CommandType = System.Data.CommandType.Text;
-            string sqlQuery =@"
-WITH [Paging_tbl_post] AS
-(
-    SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_post].[name]) AS PAGING_ROW_NUMBER,
-            [tbl_post].*
-    FROM    [tbl_post]
-    WHERE   [post_id] = @post_id
-)
-
-SELECT      [Paging_tbl_post].*
-FROM        [Paging_tbl_post]
-WHERE		PAGING_ROW_NUMBER BETWEEN @FirstRow AND @LastRow";
-
-            context.AddParameter("@post_id", post_id);
-            return DBUtil.ExecuteMapper<tbl_post>(context, new tbl_post());
         }
 
         #endregion

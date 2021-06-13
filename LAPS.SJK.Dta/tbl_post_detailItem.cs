@@ -163,6 +163,50 @@ WHERE   [post_detail_id]  = @post_detail_id";
             return DBUtil.ExecuteMapper<tbl_post_detail>(context, new tbl_post_detail()).FirstOrDefault();
         }
 
+        /// <summary>
+        /// Get All records of TABLE [tbl_post_detail] by TABLE [tbl_post]
+        /// </summary>
+        public static List<tbl_post_detail> GetBypost_id(Int32? post_id)
+        {
+            IDBHelper context = new DBHelper();
+            context.CommandType = System.Data.CommandType.Text;
+            string sqlQuery =@"
+SELECT  post_detail_id, post_id, post_type, post_order
+FROM    [tbl_post_detail]
+WHERE   [post_id] = @post_id";
+
+            context.AddParameter("@post_id", post_id);
+            context.CommandText = sqlQuery;
+            return DBUtil.ExecuteMapper<tbl_post_detail>(context, new tbl_post_detail());
+        }
+
+        /// <summary>
+        /// Get All records of TABLE [tbl_post_detail] by TABLE [tbl_post] (with Paging)
+        /// </summary>
+        public static List<tbl_post_detail> GetBypost_id(Int32? post_id, int PageSize, int PageIndex)
+        {
+            long FirstRow = ((long)PageIndex * (long)PageSize) + 1;
+            long LastRow = ((long)PageIndex * (long)PageSize) + PageSize;
+            
+            IDBHelper context = new DBHelper();
+            context.CommandType = System.Data.CommandType.Text;
+            string sqlQuery =@"
+WITH [Paging_tbl_post_detail] AS
+(
+    SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_post_detail].[post_detail_id]) AS PAGING_ROW_NUMBER,
+            [tbl_post_detail].*
+    FROM    [tbl_post_detail]
+    WHERE   [post_id] = @post_id
+)
+
+SELECT      [Paging_tbl_post_detail].*
+FROM        [Paging_tbl_post_detail]
+WHERE		PAGING_ROW_NUMBER BETWEEN @FirstRow AND @LastRow";
+
+            context.AddParameter("@post_id", post_id);
+            return DBUtil.ExecuteMapper<tbl_post_detail>(context, new tbl_post_detail());
+        }
+
         #endregion
 
     }

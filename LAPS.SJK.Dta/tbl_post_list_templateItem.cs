@@ -25,15 +25,17 @@ namespace LAPS.SJK.Dta
 SET NOCOUNT OFF
 DECLARE @Err int
 
-INSERT INTO [tbl_post_list_template]([id], [template_name], [remark], [created], [creator], [is_deleted]) 
-VALUES      (@id, @template_name, @remark, @created, @creator, @is_deleted)
+INSERT INTO [tbl_post_list_template]([template_name], [remark], [created], [creator], [is_deleted]) 
+VALUES      (@template_name, @remark, @created, @creator, @is_deleted)
 
 SET @Err = @@Error
 
+DECLARE @_id Int
+SELECT @_id = SCOPE_IDENTITY()
+
 SELECT  id, template_name, remark, created, creator, is_deleted
 FROM    [tbl_post_list_template]
-WHERE   [id]  = @id";
-            context.AddParameter("@id", obj.id);
+WHERE   [id]  = @_id";
             context.AddParameter("@template_name", string.Format("{0}", obj.template_name));
             context.AddParameter("@remark", string.Format("{0}", obj.remark));
             context.AddParameter("@created", obj.created);
