@@ -1,0 +1,75 @@
+﻿@model Tuple<LAPS.SJK.Dto.tbl_menu, List<LAPS.SJK.Dto.Cstm.tbl_page_content_result>>
+
+@{
+    ViewBag.Title = "Content_Blog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .pdfembed {
+        display: block;
+    }
+</style>
+
+
+<div role="main" class="main">
+    <section class="page-header page-header-modern page-header-background overlay overlay-show overlay-color-primary overlay-op-9 border-0 m-0" data-plugin-parallax data-plugin-options="{'speed': 1.5, 'parallaxHeight': '125%', 'fadeIn': true}" data-image-src="img/demos/finance/backgrounds/background-2.jpg">
+        <div class="container position-relative z-index-2">
+            <div class="row text-center text-md-start">
+                <div class="col-md-8 order-2 order-md-1 align-self-center p-static">
+                    <h1 class="font-weight-bold text-color-light text-10 mb-0">@Html.DisplayFor(model => model.Item1.menu_text)</h1>
+                </div>
+                <div class="col-md-4 order-1 order-md-2 align-self-center">
+                    <ul class="breadcrumb breadcrumb-light d-block text-md-end text-4 mb-0">
+                        <li><a href="../Default" class="text-decoration-none">Home</a></li>
+                        <li class="text-upeercase active">@Html.DisplayFor(model => model.Item1.menu_name)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container-fluid">
+
+        @{
+            List<string> str = new List<string>(); string tbl = string.Empty; string htmlx = string.Empty;
+            foreach (var o in Model.Item2)
+            {
+                <br />
+                if (o.post_type.ToUpper() == "TABLE")
+                {
+                    tbl = "example" + o.post_order.ToString();
+                    str.Add(tbl);
+
+                    string rplid = "id='example" + o.post_order.ToString() + "'";
+                    htmlx = o.content_text.Replace("id=''", rplid);
+                }
+                else
+                {
+                    htmlx = o.content_text;
+                }
+                <div class="row justify-content-center ">
+                    @Html.Raw(htmlx)
+                </div>
+                <br />
+            }
+        }
+
+        @*<iframe class="pdfembed" src="https://eppid.pertamina.com/HTML/js/pdfjs/web/viewer.html?file=https://eppid.pertamina.com/Files/(2)%20Profil%20Pertamina.pdf" width="100%" height="500px"></iframe>*@
+
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+         @{
+            var tblc = string.Empty;
+            foreach(var x in str){
+                tblc = "$('#" + x + "').DataTable();";
+                @Html.Raw(tblc);
+            }
+        }
+    });
+</script>
+

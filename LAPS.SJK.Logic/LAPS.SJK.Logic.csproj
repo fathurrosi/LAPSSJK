@@ -71,6 +71,7 @@
     <Compile Include="Enum\MenuType.cs" />
     <Compile Include="Enum\ReferenceTable.cs" />
     <Compile Include="Enum\UserType.cs" />
+    <Compile Include="GenerateTableHTML.cs" />
     <Compile Include="Handler\FileHandler.cs" />
     <Compile Include="Handler\ImageHandler.cs" />
     <Compile Include="Helper\ExcelHelper.cs" />

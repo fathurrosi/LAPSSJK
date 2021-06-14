@@ -5,3 +5,12 @@ G:\Works\Andri\LAPSSJK\LAPS.SJK.Dto\bin\Debug\MySql.Data.dll
 G:\Works\Andri\LAPSSJK\LAPS.SJK.Dto\obj\Debug\LAPS.SJK.Dto.csprojResolveAssemblyReference.cache
 G:\Works\Andri\LAPSSJK\LAPS.SJK.Dto\obj\Debug\LAPS.SJK.Dto.dll
 G:\Works\Andri\LAPSSJK\LAPS.SJK.Dto\obj\Debug\LAPS.SJK.Dto.pdb
+D:\Andrik\LAPS\LAPS.SJK.Dto\bin\Debug\LAPS.SJK.Dto.dll
+D:\Andrik\LAPS\LAPS.SJK.Dto\bin\Debug\LAPS.SJK.Dto.pdb
+D:\Andrik\LAPS\LAPS.SJK.Dto\bin\Debug\DBHelper.dll
+D:\Andrik\LAPS\LAPS.SJK.Dto\bin\Debug\MySql.Data.dll
+D:\Andrik\LAPS\LAPS.SJK.Dto\obj\Debug\LAPS.SJK.Dto.csproj.AssemblyReference.cache
+D:\Andrik\LAPS\LAPS.SJK.Dto\obj\Debug\LAPS.SJK.Dto.csproj.CoreCompileInputs.cache
+D:\Andrik\LAPS\LAPS.SJK.Dto\obj\Debug\LAPS.SJK.Dto.csproj.CopyComplete
+D:\Andrik\LAPS\LAPS.SJK.Dto\obj\Debug\LAPS.SJK.Dto.dll
+D:\Andrik\LAPS\LAPS.SJK.Dto\obj\Debug\LAPS.SJK.Dto.pdb

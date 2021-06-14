@@ -46,6 +46,8 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Cstm\privilege.cs" />
     <Compile Include="Cstm\SearchResult.cs" />
+    <Compile Include="Cstm\tbl_page_content.cs" />
+    <Compile Include="Cstm\tbl_page_content_result.cs" />
     <Compile Include="Cstm\tbl_User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tbl_category.cs" />
