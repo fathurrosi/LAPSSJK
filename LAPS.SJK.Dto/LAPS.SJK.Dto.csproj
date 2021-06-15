@@ -60,6 +60,8 @@
     <Compile Include="tbl_Menu.cs" />
     <Compile Include="tbl_menu_relations.cs" />
     <Compile Include="tbl_menu_x.cs" />
+    <Compile Include="tbl_m_content_type.cs" />
+    <Compile Include="tbl_m_relation_type.cs" />
     <Compile Include="tbl_post.cs" />
     <Compile Include="tbl_post_content_text.cs" />
     <Compile Include="tbl_post_detail.cs" />

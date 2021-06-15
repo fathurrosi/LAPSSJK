@@ -8,9 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LAPS.SJK.Dta.Cstm
+namespace LAPS.SJK.Dta
 {
-    public class tbl_page_contentItem
+    public partial class tbl_page_contentItem
     {
         public static List<tbl_page_content> getByMenuID(int menu_id)
         {

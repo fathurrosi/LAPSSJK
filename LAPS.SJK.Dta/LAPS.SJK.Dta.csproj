@@ -49,6 +49,7 @@
     <Compile Include="Cstm\tbl_logItem.cs" />
     <Compile Include="Cstm\tbl_menuItem.cs" />
     <Compile Include="Cstm\tbl_page_contentItem.cs" />
+    <Compile Include="Cstm\tbl_post_list_fieldItem.cs" />
     <Compile Include="Cstm\tbl_post_list_templateItem.cs" />
     <Compile Include="Cstm\tbl_RoleItem.cs" />
     <Compile Include="Cstm\tbl_userItem.cs" />
@@ -63,6 +64,8 @@
     <Compile Include="tbl_MenuItem.cs" />
     <Compile Include="tbl_menu_relationsItem.cs" />
     <Compile Include="tbl_menu_xItem.cs" />
+    <Compile Include="tbl_m_content_typeItem.cs" />
+    <Compile Include="tbl_m_relation_typeItem.cs" />
     <Compile Include="tbl_postItem.cs" />
     <Compile Include="tbl_post_content_textItem.cs" />
     <Compile Include="tbl_post_detailItem.cs" />

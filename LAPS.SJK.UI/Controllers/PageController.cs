@@ -1,5 +1,4 @@
 ﻿using LAPS.SJK.Dta;
-using LAPS.SJK.Dta.Cstm;
 using LAPS.SJK.Dto;
 using LAPS.SJK.Dto.Cstm;
 using LAPS.SJK.Logic;
