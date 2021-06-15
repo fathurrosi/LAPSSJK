@@ -25,19 +25,21 @@ namespace LAPS.SJK.Dta
 SET NOCOUNT OFF
 DECLARE @Err int
 
-INSERT INTO [tbl_menu]([menu_name], [on_lock], [parentid], [orderid], [url]) 
-VALUES      (@menu_name, @on_lock, @parentid, @orderid, @url)
+INSERT INTO [tbl_menu]([menu_name], [menu_text], [menu_type], [need_login], [parentid], [orderid], [url]) 
+VALUES      (@menu_name, @menu_text, @menu_type, @need_login, @parentid, @orderid, @url)
 
 SET @Err = @@Error
 
 DECLARE @_menu_id Int
 SELECT @_menu_id = SCOPE_IDENTITY()
 
-SELECT  menu_id, menu_name, on_lock, parentid, orderid, url
+SELECT  menu_id, menu_name, menu_text, menu_type, need_login, parentid, orderid, url
 FROM    [tbl_menu]
 WHERE   [menu_id]  = @_menu_id";
             context.AddParameter("@menu_name", string.Format("{0}", obj.menu_name));
-            context.AddParameter("@on_lock", obj.on_lock);
+            context.AddParameter("@menu_text", string.Format("{0}", obj.menu_text));
+            context.AddParameter("@menu_type", obj.menu_type);
+            context.AddParameter("@need_login", obj.need_login);
             context.AddParameter("@parentid", obj.parentid);
             context.AddParameter("@orderid", obj.orderid);
             context.AddParameter("@url", string.Format("{0}", obj.url));
@@ -59,7 +61,9 @@ DECLARE @Err int
 
 UPDATE      [tbl_menu]
 SET         [menu_name] = @menu_name,
-            [on_lock] = @on_lock,
+            [menu_text] = @menu_text,
+            [menu_type] = @menu_type,
+            [need_login] = @need_login,
             [parentid] = @parentid,
             [orderid] = @orderid,
             [url] = @url
@@ -67,11 +71,13 @@ WHERE       [menu_id]  = @menu_id
 
 SET @Err = @@Error
 
-SELECT  menu_id, menu_name, on_lock, parentid, orderid, url 
+SELECT  menu_id, menu_name, menu_text, menu_type, need_login, parentid, orderid, url 
 FROM    [tbl_menu]
 WHERE   [menu_id]  = @menu_id";
             context.AddParameter("@menu_name", string.Format("{0}", obj.menu_name));
-            context.AddParameter("@on_lock", obj.on_lock);
+            context.AddParameter("@menu_text", string.Format("{0}", obj.menu_text));
+            context.AddParameter("@menu_type", obj.menu_type);
+            context.AddParameter("@need_login", obj.need_login);
             context.AddParameter("@parentid", obj.parentid);
             context.AddParameter("@orderid", obj.orderid);
             context.AddParameter("@url", string.Format("{0}", obj.url));
@@ -121,7 +127,7 @@ WHERE   [menu_id]  = @menu_id";
         public static List<tbl_menu> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT menu_id, menu_name, on_lock, parentid, orderid, url FROM tbl_menu";
+            string sqlQuery = "SELECT menu_id, menu_name, menu_text, menu_type, need_login, parentid, orderid, url FROM tbl_menu";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_menu>(context, new tbl_menu());
@@ -161,7 +167,7 @@ WHERE   [menu_id]  = @menu_id";
         public static tbl_menu GetByPK(Int32 menu_id)
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = @"SELECT menu_id, menu_name, on_lock, parentid, orderid, url FROM tbl_menu
+            string sqlQuery = @"SELECT menu_id, menu_name, menu_text, menu_type, need_login, parentid, orderid, url FROM tbl_menu
             WHERE [menu_id]  = @menu_id";
             context.AddParameter("@menu_id", menu_id);
             context.CommandText = sqlQuery;

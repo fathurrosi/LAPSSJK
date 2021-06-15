@@ -176,7 +176,7 @@ WHERE   [RoleID]  = @RoleID
         }
 
         /// <summary>
-        /// Get All records of TABLE [tbl_privilege] by TABLE [tbl_menu_x]
+        /// Get All records of TABLE [tbl_privilege] by TABLE [tbl_menu]
         /// </summary>
         public static List<tbl_privilege> GetByMenuID(Int32 MenuID)
         {
@@ -193,7 +193,7 @@ WHERE   [MenuID] = @MenuID";
         }
 
         /// <summary>
-        /// Get All records of TABLE [tbl_privilege] by TABLE [tbl_menu_x] (with Paging)
+        /// Get All records of TABLE [tbl_privilege] by TABLE [tbl_menu] (with Paging)
         /// </summary>
         public static List<tbl_privilege> GetByMenuID(Int32 MenuID, int PageSize, int PageIndex)
         {
