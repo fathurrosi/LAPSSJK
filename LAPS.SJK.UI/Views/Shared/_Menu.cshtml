@@ -1,5 +1,5 @@
 ﻿@{
-    List<LAPS.SJK.Dto.tbl_menu> menus = LAPS.SJK.UI.App_LocalResources.GlobalRes._DAFTAR_MENU;
+    List<LAPS.SJK.Dto.tbl_menu> menus = LAPS.SJK.UI.App_LocalResources.GlobalRes._DAFTAR_MENU.Where(t => t.menu_type == 1002).ToList();
 }
 <nav class="collapse">
     <ul class="nav nav-pills" id="mainNav">

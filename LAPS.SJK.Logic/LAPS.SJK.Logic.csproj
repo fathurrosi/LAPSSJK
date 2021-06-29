@@ -84,7 +84,9 @@
     <Compile Include="Security.cs" />
     <Compile Include="Utilities.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LAPS.SJK.Dta\LAPS.SJK.Dta.csproj">
       <Project>{2127c3a3-7096-4041-9b8d-96df6672fc7e}</Project>

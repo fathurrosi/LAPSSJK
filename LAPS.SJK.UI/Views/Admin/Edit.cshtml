@@ -123,7 +123,7 @@
                                 </table>
 
                                 @Html.ActionLink("Tambah Baru", "AddColumn", new { tid = Model.id }, new { @class = "btn btn-primary" })
-
+                                @Html.ActionLink("Preview", "Preview", new { id = Model.id }, new { @class = "btn btn-primary" })
                             </div>
                         </div>
                     }
@@ -132,9 +132,7 @@
                         <div class="form-group">
                             @Html.Label("Field List", htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-
                                 @Html.ActionLink("Add Column", "AddColumn", new { tid = Model.id }, new { @class = "btn btn-primary" })
-
                             </div>
                         </div>
                     }

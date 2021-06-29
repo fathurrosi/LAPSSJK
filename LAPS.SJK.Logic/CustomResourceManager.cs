@@ -48,14 +48,13 @@ namespace LAPS.SJK.Logic
             {
                 List<tbl_label> list = GetAvailableLabel();
                 tbl_label lbl = list.Where(t => t.c_flag.ToUpper() == lang.ToUpper() && t.name.ToUpper() == name.ToUpper()).FirstOrDefault();
-                return lbl != null ? lbl.value : string.Empty;
+                return lbl != null ? lbl.value : name;
             }
             else
             {
                 return name;
                 //return base.GetString(name);
             }
-
         }
 
         public override string GetString(string name, CultureInfo culture)
@@ -63,8 +62,6 @@ namespace LAPS.SJK.Logic
             // your business logic
             return base.GetString(name, culture);
         }
-
-
 
         public List<tbl_menu> GetAvailableMenus()
         {

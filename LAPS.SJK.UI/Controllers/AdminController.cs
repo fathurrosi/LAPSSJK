@@ -145,8 +145,18 @@ namespace LAPS.SJK.UI.Controllers
 
             return RedirectToAction("Index");
         }
-
-
+        public ActionResult Preview(int id)
+        {
+            TemplateModel model = new TemplateModel();
+            tbl_post_list_template item = tbl_post_list_templateItem.GetByPK(id);
+            if (item != null)
+            {
+                model = new TemplateModel(item);
+                model.fields = tbl_post_list_fieldItem.GetByid_template(item.id);
+            }
+            return View(model);
+        }
+        
 
         // GET: Default/Edit/5
         public ActionResult EditColumn(int id)
