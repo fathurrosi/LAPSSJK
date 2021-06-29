@@ -141,7 +141,25 @@
             }, 300);
         });
     </script>
+    <!-- Data tables -->
+    <script type="text/javascript" src="@Url.Content("~/Content/assets/widgets/datatable/datatable.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/assets/widgets/datatable/datatable-bootstrap.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/assets/widgets/datatable/datatable-responsive.js")"></script>
+    <script type="text/javascript">
 
+    /* Datatables responsive */
+
+    $(document).ready(function () {
+        $('.table').DataTable({
+            responsive: true
+        });
+    });
+
+    $(document).ready(function () {
+        $('.dataTables_filter input').attr("placeholder", "Search...");
+    });
+
+    </script>
 </head>
 
 <body>

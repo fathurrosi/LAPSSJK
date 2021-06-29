@@ -26,5 +26,7 @@ namespace LAPS.SJK.UI.Models
 
         [Display(Name = "Keterangan")]
         public new string remark { get; set; }
+
+        public List<tbl_post_list_field> fields { get; set; }
     }
 }

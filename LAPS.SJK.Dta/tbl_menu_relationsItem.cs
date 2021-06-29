@@ -25,17 +25,18 @@ namespace LAPS.SJK.Dta
 SET NOCOUNT OFF
 DECLARE @Err int
 
-INSERT INTO [tbl_menu_relations]([relations_type], [content_id]) 
-VALUES      (@relations_type, @content_id)
+INSERT INTO [tbl_menu_relations]([menu_id], [relations_type], [content_id]) 
+VALUES      (@menu_id, @relations_type, @content_id)
 
 SET @Err = @@Error
 
 DECLARE @_menu_relations_id Int
 SELECT @_menu_relations_id = SCOPE_IDENTITY()
 
-SELECT  menu_relations_id, relations_type, content_id
+SELECT  menu_relations_id, menu_id, relations_type, content_id
 FROM    [tbl_menu_relations]
 WHERE   [menu_relations_id]  = @_menu_relations_id";
+            context.AddParameter("@menu_id", obj.menu_id);
             context.AddParameter("@relations_type", string.Format("{0}", obj.relations_type));
             context.AddParameter("@content_id", obj.content_id);
             context.CommandText = sqlQuery;
@@ -55,15 +56,17 @@ SET NOCOUNT OFF
 DECLARE @Err int
 
 UPDATE      [tbl_menu_relations]
-SET         [relations_type] = @relations_type,
+SET         [menu_id] = @menu_id,
+            [relations_type] = @relations_type,
             [content_id] = @content_id
 WHERE       [menu_relations_id]  = @menu_relations_id
 
 SET @Err = @@Error
 
-SELECT  menu_relations_id, relations_type, content_id 
+SELECT  menu_relations_id, menu_id, relations_type, content_id 
 FROM    [tbl_menu_relations]
 WHERE   [menu_relations_id]  = @menu_relations_id";
+            context.AddParameter("@menu_id", obj.menu_id);
             context.AddParameter("@relations_type", string.Format("{0}", obj.relations_type));
             context.AddParameter("@content_id", obj.content_id);
             context.AddParameter("@menu_relations_id", obj.menu_relations_id);            
@@ -112,7 +115,7 @@ WHERE   [menu_relations_id]  = @menu_relations_id";
         public static List<tbl_menu_relations> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT menu_relations_id, relations_type, content_id FROM tbl_menu_relations";
+            string sqlQuery = "SELECT menu_relations_id, menu_id, relations_type, content_id FROM tbl_menu_relations";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_menu_relations>(context, new tbl_menu_relations());
@@ -152,7 +155,7 @@ WHERE   [menu_relations_id]  = @menu_relations_id";
         public static tbl_menu_relations GetByPK(Int32 menu_relations_id)
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = @"SELECT menu_relations_id, relations_type, content_id FROM tbl_menu_relations
+            string sqlQuery = @"SELECT menu_relations_id, menu_id, relations_type, content_id FROM tbl_menu_relations
             WHERE [menu_relations_id]  = @menu_relations_id";
             context.AddParameter("@menu_relations_id", menu_relations_id);
             context.CommandText = sqlQuery;

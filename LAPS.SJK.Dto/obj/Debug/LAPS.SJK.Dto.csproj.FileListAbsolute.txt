@@ -1,9 +1,3 @@
-G:\Works\Andri\LAPSSJK\LAPS.SJK.Dto\bin\Debug\LAPS.SJK.Dto.dll
-G:\Works\Andri\LAPSSJK\LAPS.SJK.Dto\bin\Debug\LAPS.SJK.Dto.pdb
-G:\Works\Andri\LAPSSJK\LAPS.SJK.Dto\bin\Debug\DBHelper.dll
-G:\Works\Andri\LAPSSJK\LAPS.SJK.Dto\bin\Debug\MySql.Data.dll
-G:\Works\Andri\LAPSSJK\LAPS.SJK.Dto\obj\Debug\LAPS.SJK.Dto.dll
-G:\Works\Andri\LAPSSJK\LAPS.SJK.Dto\obj\Debug\LAPS.SJK.Dto.pdb
 D:\Andrik\LAPS\LAPS.SJK.Dto\bin\Debug\LAPS.SJK.Dto.dll
 D:\Andrik\LAPS\LAPS.SJK.Dto\bin\Debug\LAPS.SJK.Dto.pdb
 D:\Andrik\LAPS\LAPS.SJK.Dto\bin\Debug\DBHelper.dll
@@ -13,3 +7,9 @@ D:\Andrik\LAPS\LAPS.SJK.Dto\obj\Debug\LAPS.SJK.Dto.csproj.CoreCompileInputs.cach
 D:\Andrik\LAPS\LAPS.SJK.Dto\obj\Debug\LAPS.SJK.Dto.csproj.CopyComplete
 D:\Andrik\LAPS\LAPS.SJK.Dto\obj\Debug\LAPS.SJK.Dto.dll
 D:\Andrik\LAPS\LAPS.SJK.Dto\obj\Debug\LAPS.SJK.Dto.pdb
+G:\Works\Andri\LAPSSJK\LAPS.SJK.Dto\bin\Debug\LAPS.SJK.Dto.dll
+G:\Works\Andri\LAPSSJK\LAPS.SJK.Dto\bin\Debug\LAPS.SJK.Dto.pdb
+G:\Works\Andri\LAPSSJK\LAPS.SJK.Dto\bin\Debug\DBHelper.dll
+G:\Works\Andri\LAPSSJK\LAPS.SJK.Dto\bin\Debug\MySql.Data.dll
+G:\Works\Andri\LAPSSJK\LAPS.SJK.Dto\obj\Debug\LAPS.SJK.Dto.dll
+G:\Works\Andri\LAPSSJK\LAPS.SJK.Dto\obj\Debug\LAPS.SJK.Dto.pdb

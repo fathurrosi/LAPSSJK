@@ -25,25 +25,30 @@ namespace LAPS.SJK.Dta
 SET NOCOUNT OFF
 DECLARE @Err int
 
-INSERT INTO [tbl_post_list_field]([id_template], [column_name], [column_alias], [column_seq], [column_data_type], [max_lenth], [default_value], [is_mandatory]) 
-VALUES      (@id_template, @column_name, @column_alias, @column_seq, @column_data_type, @max_lenth, @default_value, @is_mandatory)
+INSERT INTO [tbl_post_list_field]([id_template], [column_name], [column_alias], [column_seq], [column_data_type], [max_lenth], [default_value], [is_mandatory], [is_deleted], [creator], [created], [edited], [editor]) 
+VALUES      (@id_template, @column_name, @column_alias, @column_seq, @column_data_type, @max_lenth, @default_value, @is_mandatory, @is_deleted, @creator, @created, @edited, @editor)
 
 SET @Err = @@Error
 
 DECLARE @_id Int
 SELECT @_id = SCOPE_IDENTITY()
 
-SELECT  id, id_template, column_name, column_alias, column_seq, column_data_type, max_lenth, default_value, is_mandatory
+SELECT  id, id_template, column_name, column_alias, column_seq, column_data_type, max_lenth, default_value, is_mandatory, is_deleted, creator, created, edited, editor
 FROM    [tbl_post_list_field]
 WHERE   [id]  = @_id";
             context.AddParameter("@id_template", obj.id_template);
             context.AddParameter("@column_name", string.Format("{0}", obj.column_name));
             context.AddParameter("@column_alias", string.Format("{0}", obj.column_alias));
             context.AddParameter("@column_seq", obj.column_seq);
-            context.AddParameter("@column_data_type", string.Format("{0}", obj.column_data_type));
+            context.AddParameter("@column_data_type", obj.column_data_type);
             context.AddParameter("@max_lenth", obj.max_lenth);
             context.AddParameter("@default_value", string.Format("{0}", obj.default_value));
             context.AddParameter("@is_mandatory", obj.is_mandatory);
+            context.AddParameter("@is_deleted", obj.is_deleted);
+            context.AddParameter("@creator", string.Format("{0}", obj.creator));
+            context.AddParameter("@created", obj.created);
+            context.AddParameter("@edited", obj.edited);
+            context.AddParameter("@editor", string.Format("{0}", obj.editor));
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_post_list_field>(context, new tbl_post_list_field()).FirstOrDefault();
@@ -68,22 +73,30 @@ SET         [id_template] = @id_template,
             [column_data_type] = @column_data_type,
             [max_lenth] = @max_lenth,
             [default_value] = @default_value,
-            [is_mandatory] = @is_mandatory
+            [is_mandatory] = @is_mandatory,
+            [is_deleted] = @is_deleted,
+            [creator] = @creator,
+            [edited] = @edited,
+            [editor] = @editor
 WHERE       [id]  = @id
 
 SET @Err = @@Error
 
-SELECT  id, id_template, column_name, column_alias, column_seq, column_data_type, max_lenth, default_value, is_mandatory 
+SELECT  id, id_template, column_name, column_alias, column_seq, column_data_type, max_lenth, default_value, is_mandatory, is_deleted, creator, created, edited, editor 
 FROM    [tbl_post_list_field]
 WHERE   [id]  = @id";
             context.AddParameter("@id_template", obj.id_template);
             context.AddParameter("@column_name", string.Format("{0}", obj.column_name));
             context.AddParameter("@column_alias", string.Format("{0}", obj.column_alias));
             context.AddParameter("@column_seq", obj.column_seq);
-            context.AddParameter("@column_data_type", string.Format("{0}", obj.column_data_type));
+            context.AddParameter("@column_data_type", obj.column_data_type);
             context.AddParameter("@max_lenth", obj.max_lenth);
             context.AddParameter("@default_value", string.Format("{0}", obj.default_value));
             context.AddParameter("@is_mandatory", obj.is_mandatory);
+            context.AddParameter("@is_deleted", obj.is_deleted);
+            context.AddParameter("@creator", string.Format("{0}", obj.creator));
+            context.AddParameter("@edited", obj.edited);
+            context.AddParameter("@editor", string.Format("{0}", obj.editor));
             context.AddParameter("@id", obj.id);            
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
@@ -130,7 +143,7 @@ WHERE   [id]  = @id";
         public static List<tbl_post_list_field> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT id, id_template, column_name, column_alias, column_seq, column_data_type, max_lenth, default_value, is_mandatory FROM tbl_post_list_field";
+            string sqlQuery = "SELECT id, id_template, column_name, column_alias, column_seq, column_data_type, max_lenth, default_value, is_mandatory, is_deleted, creator, created, edited, editor FROM tbl_post_list_field";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_post_list_field>(context, new tbl_post_list_field());
@@ -170,7 +183,7 @@ WHERE   [id]  = @id";
         public static tbl_post_list_field GetByPK(Int32 id)
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = @"SELECT id, id_template, column_name, column_alias, column_seq, column_data_type, max_lenth, default_value, is_mandatory FROM tbl_post_list_field
+            string sqlQuery = @"SELECT id, id_template, column_name, column_alias, column_seq, column_data_type, max_lenth, default_value, is_mandatory, is_deleted, creator, created, edited, editor FROM tbl_post_list_field
             WHERE [id]  = @id";
             context.AddParameter("@id", id);
             context.CommandText = sqlQuery;
@@ -186,7 +199,7 @@ WHERE   [id]  = @id";
             IDBHelper context = new DBHelper();
             context.CommandType = System.Data.CommandType.Text;
             string sqlQuery =@"
-SELECT  id, id_template, column_name, column_alias, column_seq, column_data_type, max_lenth, default_value, is_mandatory
+SELECT  id, id_template, column_name, column_alias, column_seq, column_data_type, max_lenth, default_value, is_mandatory, is_deleted, creator, created, edited, editor
 FROM    [tbl_post_list_field]
 WHERE   [id_template] = @id_template";
 

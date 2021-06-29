@@ -1,0 +1,459 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@*<link href="https://www.w3.org/TR/wai-aria-practices-1.1/examples/treeview/treeview-1/css/tree.css" rel="stylesheet" />
+    <script src="https://www.w3.org/TR/wai-aria-practices-1.1/examples/treeview/treeview-1/js/tree.js"></script>
+
+    <script src="https://www.w3.org/TR/wai-aria-practices-1.1/examples/treeview/treeview-1/js/treeitem.js"></script>
+    <script src="https://www.w3.org/TR/wai-aria-practices-1.1/examples/treeview/treeview-1/js/treeitemClick.js"></script>
+    <div class="text-center">
+        <h3 id="tree_label">
+            Silsilah Keluarga
+        </h3>
+        <ul role="tree" aria-labelledby="tree_label">
+            <li role="treeitem" aria-expanded="false">
+                <span>
+                    Projects
+                </span>
+                <ul role="group">
+                    <li role="treeitem" class="doc">
+                        project-1.docx
+                    </li>
+                    <li role="treeitem" class="doc">
+                        project-2.docx
+                    </li>
+                    <li role="treeitem" aria-expanded="false">
+                        <span>
+                            Project 3
+                        </span>
+                        <ul role="group">
+                            <li role="treeitem" class="doc">
+                                project-3A.docx
+                            </li>
+                            <li role="treeitem" class="doc">
+                                project-3B.docx
+                            </li>
+                            <li role="treeitem" class="doc">
+                                project-3C.docx
+                            </li>
+                        </ul>
+                    </li>
+                    <li role="treeitem" class="doc">
+                        project-4.docx
+                    </li>
+                    <li role="treeitem" aria-expanded="false">
+                        <span>
+                            Project 5
+                        </span>
+                        <ul role="group">
+                            <li role="treeitem" class="doc">
+                                project-5A.docx
+                            </li>
+                            <li role="treeitem" class="doc">
+                                project-5B.docx
+                            </li>
+                            <li role="treeitem" class="doc">
+                                project-5C.docx
+                            </li>
+                            <li role="treeitem" class="doc">
+                                project-5D.docx
+                            </li>
+                            <li role="treeitem" class="doc">
+                                project-5E.docx
+                            </li>
+                            <li role="treeitem" class="doc">
+                                project-5F.docx
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li role="treeitem" aria-expanded="false">
+                <span>
+                    Reports
+                </span>
+                <ul role="group">
+                    <li role="treeitem" aria-expanded="false">
+                        <span>
+                            report-1
+                        </span>
+                        <ul role="group">
+                            <li role="treeitem" class="doc">
+                                report-1A.docx
+                            </li>
+                            <li role="treeitem" class="doc">
+                                report-1B.docx
+                            </li>
+                            <li role="treeitem" class="doc">
+                                report-1C.docx
+                            </li>
+                        </ul>
+                    </li>
+                    <li role="treeitem" aria-expanded="false">
+                        <span>
+                            report-2
+                        </span>
+                        <ul role="group">
+                            <li role="treeitem" class="doc">
+                                report-2A.docx
+                            </li>
+                            <li role="treeitem" class="doc">
+                                report-2B.docx
+                            </li>
+                            <li role="treeitem" class="doc">
+                                report-2C.docx
+                            </li>
+                            <li role="treeitem" class="doc">
+                                report-2D.docx
+                            </li>
+                        </ul>
+                    </li>
+                    <li role="treeitem" aria-expanded="false">
+                        <span>
+                            report-3
+                        </span>
+                        <ul role="group">
+                            <li role="treeitem" class="doc">
+                                report-3A.docx
+                            </li>
+                            <li role="treeitem" class="doc">
+                                report-3B.docx
+                            </li>
+                            <li role="treeitem" class="doc">
+                                report-3C.docx
+                            </li>
+                            <li role="treeitem" class="doc">
+                                report-3D.docx
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li role="treeitem" aria-expanded="false">
+                <span>
+                    Letters
+                </span>
+                <ul role="group">
+                    <li role="treeitem" aria-expanded="false">
+                        <span>
+                            letter-1
+                        </span>
+                        <ul>
+                            <li role="treeitem" class="doc">
+                                letter-1A.docx
+                            </li>
+                            <li role="treeitem" class="doc">
+                                letter-1B.docx
+                            </li>
+                            <li role="treeitem" class="doc">
+                                letter-1C.docx
+                            </li>
+                        </ul>
+                    </li>
+                    <li role="treeitem" aria-expanded="false">
+                        <span>
+                            letter-2
+                        </span>
+                        <ul role="group">
+                            <li role="treeitem" class="doc">
+                                letter-2A.docx
+                            </li>
+                            <li role="treeitem" class="doc">
+                                letter-2B.docx
+                            </li>
+                            <li role="treeitem" class="doc">
+                                letter-2C.docx
+                            </li>
+                            <li role="treeitem" class="doc">
+                                letter-2D.docx
+                            </li>
+                        </ul>
+                    </li>
+                    <li role="treeitem" aria-expanded="false">
+                        <span>
+                            letter-3
+                        </span>
+                        <ul role="group">
+                            <li role="treeitem" class="doc">
+                                letter-3A.docx
+                            </li>
+                            <li role="treeitem" class="doc">
+                                letter-3B.docx
+                            </li>
+                            <li role="treeitem" class="doc">
+                                letter-3C.docx
+                            </li>
+                            <li role="treeitem" class="doc">
+                                letter-3D.docx
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <p>
+            <label>
+                File or Folder Selected:
+                <input id="last_action"
+                       type="text"
+                       size="15"
+                       readonly="">
+            </label>
+        </p>
+    </div>*@
+
+<style>
+    html, body {
+        margin: 0px;
+        padding: 0px;
+        width: 100%;
+        height: 100%;
+        font-family: Helvetica;
+        overflow: hidden;
+    }
+
+    #tree {
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<script src="~/js/orgchart.js"></script>
+@*<script src="https://balkangraph.com/js/latest/OrgChart.js"></script>*@
+
+<script>
+
+    window.onload = function () {
+        OrgChart.templates.family_template = Object.assign({}, OrgChart.templates.ana);
+        OrgChart.templates.family_template.size = [86, 86];
+        OrgChart.templates.family_template.plus = "";
+        OrgChart.templates.family_template.minus = "";
+        OrgChart.templates.family_template.rippleRadius = 40;
+        OrgChart.templates.family_template.name = '<text style="font-size: 12px;" fill="#000000" x="43" y="100" text-anchor="middle">{val}</text>';
+        OrgChart.templates.family_template.title = '<text style="font-size: 12px;" fill="#aeaeae" x="43" y="115" text-anchor="middle">{val}</text>';
+        OrgChart.templates.family_template.img = '<clipPath id="{randId}"><circle cx="43" cy="43" r="38.5"></circle></clipPath></circle><image preserveAspectRatio="xMidYMid slice" clip-path="url(#{randId})" xlink:href="{val}" x="3" y="3"  width="80" height="80"></image>';
+        OrgChart.templates.family_template.node = '<circle stroke-width="3" fill="none" stroke="#aeaeae" cx="43" cy="43" r="41.5"></circle>';
+        OrgChart.templates.family_template.defs = '<g transform="matrix(0.05,0,0,0.05,-13,-15.5)" id="baby"><circle cx="260" cy="310" r="200" fill="#ffffff"></circle><path fill="#aeaeae" d="m468.64 268.32h-13.591c-18.432-89.348-95.612-157.432-189.139-161.798-.501-.185-1.015-.348-1.545-.482-18.363-4.622-31.188-22.595-31.188-43.707 0-17.828 14.468-32.333 32.252-32.333 12.573 0 22.802 10.258 22.802 22.866 0 8.284 6.716 15 15 15s15-6.716 15-15c0-29.15-23.687-52.866-52.802-52.866-34.326 0-62.252 27.962-62.252 62.333 0 17.876 5.828 34.443 15.769 47.432-80.698 15.127-144.725 78.25-161.291 158.555h-13.591c-24.103 0-43.712 19.596-43.712 43.683 0 24.086 19.609 43.682 43.712 43.682h14.692c20.935 89.871 101.582 157.018 197.596 157.018s176.66-67.148 197.596-157.018h14.692c24.103 0 43.712-19.596 43.712-43.682 0-24.087-19.609-43.683-43.712-43.683zm-265.054 55.257c-8.284-.024-14.981-6.758-14.958-15.043.007-2.337-.708-13.999-15.481-14.041-.026 0-.053 0-.08 0-14.697 0-15.475 11.62-15.481 13.953-.023 8.284-6.75 15.007-15.043 14.957-8.284-.024-14.98-6.759-14.957-15.043.038-13.322 5.349-25.101 14.955-33.166 8.223-6.904 19.065-10.702 30.543-10.702h.148c11.534.033 22.412 3.896 30.63 10.876 9.559 8.12 14.803 19.928 14.765 33.25-.023 8.27-6.735 14.957-14.999 14.957-.013.002-.027.002-.042.002zm52.766 129.374c-26.485 0-48.033-21.533-48.033-48.002 0-8.284 6.716-15 15-15s15 6.716 15 15c0 9.926 8.089 18.002 18.033 18.002s18.033-8.076 18.033-18.002c0-8.284 6.716-15 15-15s15 6.716 15 15c-.001 26.469-21.548 48.002-48.033 48.002zm113.765-129.374c-.015 0-.029 0-.044 0-8.284-.024-14.98-6.759-14.957-15.043.016-5.445-1.993-9.263-6.14-11.673-5.407-3.142-13.27-3.165-18.695-.053-4.161 2.387-6.191 6.193-6.207 11.638-.023 8.27-6.735 14.957-14.999 14.957-.015 0-.029 0-.043 0-8.284-.024-14.981-6.758-14.958-15.043.046-16.149 7.802-29.845 21.281-37.576 14.814-8.497 33.929-8.443 48.695.138 13.434 7.807 21.112 21.547 21.066 37.696-.023 8.271-6.735 14.959-14.999 14.959z"/> </g>';
+        OrgChart.templates.family_template_blue = Object.assign({}, OrgChart.templates.family_template);
+        OrgChart.templates.family_template_blue.node = '<circle stroke-width="3" fill="none" stroke="#039BE5" cx="43" cy="43" r="41.5"></circle>';
+
+        var chart = new OrgChart(document.getElementById("tree"), {
+            template: "family_template",
+            enableSearch: false,
+            siblingSeparation: 100,
+            nodeBinding: {
+                field_0: 'id',
+                name: "name",
+                title: "title",
+                img: "img",
+            },
+            tags: {
+                blue: {
+                    template: "family_template_blue"
+                }
+            }
+        });
+
+        chart.on('render-link', function (sender, args) {
+            if (args.cnode.ppid != undefined) {
+                args.html += '<use xlink:href="#baby" x="' + args.p.xa + '" y="' + args.p.ya + '"/>';
+            }
+        });
+
+        chart.load([
+
+            { id: 9001, tags: ["blue"], name: "Besar", title: "Oreng Beih (Beipajung)", img: "http://localhost:58620/img/avatar/co.png" },
+            { id: 9002, pid: 9001, tags: ["left-partner"], name: "Istri Besar", img: "http://localhost:58620/img/avatar/ce.png" },
+            { id: 9011, pid: 9001, ppid: 9002, tags: ["blue"], name: "Pongot", title: "", img: "http://localhost:58620/img/avatar/co.png" },
+            { id: 9012, pid: 9011, tags: ["left-partner"], name: "Istri Pongot", title: "", img: "http://localhost:58620/img/avatar/ce.png" },
+            { id: 9101, pid: 9011, ppid: 9012, tags: ["blue"], name: "Mar Said", title: "", img: "http://localhost:58620/img/avatar/co.png" },
+            { id: 9102, pid: 9101, tags: ["left-partner"], name: "Istri Mar Said", title: "", img: "http://localhost:58620/img/avatar/ce.png" },
+
+            { id: 9202, pid: 9101, ppid: 9102, tags: ["blue"], name: "Hanafi (Man Nabbih)", title: "", img: "http://localhost:58620/img/avatar/co.png" },
+            { id: 9203, pid: 9101, ppid: 9102, tags: ["blue"], name: "Asia (bhik Sio)", title: "", img: "http://localhost:58620/img/avatar/ce.png" },
+            { id: 9201, pid: 9101, ppid: 9102, tags: ["blue"], name: "Fathol", title: "Tinggal Di Sar Assem", img: "http://localhost:58620/img/avatar/co.png" },
+
+            { id: 9207, pid: 9201, tags: ["left-partner"], name: "Sumayyah", title: "", img: "http://localhost:58620/img/avatar/ce.png" },
+
+            { id: 9302, pid: 9201, ppid: 9207, tags: ["blue"], name: "Sum'a", title: "", img: "http://localhost:58620/img/avatar/ce.png" },
+            { id: 9303, pid: 9201, ppid: 9207, tags: ["blue"], name: "Hamideh", title: "", img: "http://localhost:58620/img/avatar/ce.png" },
+            { id: 9304, pid: 9201, ppid: 9207, tags: ["blue"], name: "Maimuna (Muna)", title: "", img: "http://localhost:58620/img/avatar/ce.png" },
+            { id: 9305, pid: 9201, ppid: 9207, tags: ["blue"], name: "Asma", title: "", img: "http://localhost:58620/img/avatar/ce.png" },
+            { id: 9306, pid: 9201, ppid: 9207, tags: ["blue"], name: "Mardiyeh", title: "", img: "http://localhost:58620/img/avatar/ce.png" },
+            { id: 9307, pid: 9201, ppid: 9207, tags: ["blue"], name: "Hasan", title: "", img: "http://localhost:58620/img/avatar/co.png" },
+            { id: 9301, pid: 9201, ppid: 9207, tags: ["blue"], name: "Azhari", title: "", img: "http://localhost:58620/img/avatar/azhari.png" },
+
+
+            { id: 9401, pid: 9202, tags: ["left-partner"], name: "Hamdena", title: "", img: "http://localhost:58620/img/avatar/ce.png" },
+            { id: 9402, pid: 9202, ppid: 9401, tags: ["blue"], name: "Kofir", title: "", img: "http://localhost:58620/img/avatar/co.png" },
+            { id: 9403, pid: 9202, ppid: 9401, tags: ["blue"], name: "Maryam", title: "", img: "http://localhost:58620/img/avatar/ce.png" },
+            { id: 9404, pid: 9202, ppid: 9401, tags: ["blue"], name: "Ridwan", title: "", img: "http://localhost:58620/img/avatar/co.png" },
+            { id: 9405, pid: 9202, ppid: 9401, tags: ["blue"], name: "Hotijeh", title: "", img: "http://localhost:58620/img/avatar/ce.png" },
+
+
+            { id: 7015, name: "Bapaknya Bernawi", title: "", img: "http://localhost:58620/img/avatar/13.jpg" },
+            { id: 7014, pid: 7015, tags: ["left-partner"], name: "Ibunya Bernawi", title: "", img: "http://localhost:58620/img/avatar/ce.png" },
+
+            { id: 7001, pid: 7015, ppid: 7014, name: "Bernawi", title: "", img: "http://localhost:58620/img/avatar/13.jpg" },
+            { id: 7002, pid: 7001, tags: ["left-partner"], name: "Istri", title: "", img: "http://localhost:58620/img/avatar/ce.png" },
+            { id: 7003, pid: 7001, ppid: 7002, tags: ["blue"], name: "Mattum", title: "", img: "http://localhost:58620/img/avatar/0.png" },
+            { id: 7004, pid: 7001, ppid: 7002, tags: ["blue"], name: "muhammad", title: "", img: "http://localhost:58620/img/avatar/co.png" },
+            { id: 7005, pid: 7001, ppid: 7002, tags: ["blue"], name: "syafiih", title: "", img: "http://localhost:58620/img/avatar/co.png" },
+            { id: 7006, pid: 7001, ppid: 7002, tags: ["blue"], name: "naqeb", title: "", img: "http://localhost:58620/img/avatar/co.png" },
+            { id: 7007, pid: 7001, ppid: 7002, tags: ["blue"], name: "naiman", title: "", img: "http://localhost:58620/img/avatar/co.png" },
+            { id: 7008, pid: 7001, ppid: 7002, tags: ["blue"], name: "sumayyah", title: "", img: "http://localhost:58620/img/avatar/ce.png" },
+            { id: 7009, pid: 7001, ppid: 7002, tags: ["blue"], name: "mas ama", title: "", img: "http://localhost:58620/img/avatar/ce.png" },
+            { id: 7010, pid: 7001, ppid: 7002, tags: ["blue"], name: "hadiyeh", title: "", img: "http://localhost:58620/img/avatar/ce.png" },
+            { id: 7011, pid: 7001, ppid: 7002, tags: ["blue"], name: "hamdeh", title: "", img: "http://localhost:58620/img/avatar/ce.png" },
+            { id: 7012, pid: 7001, ppid: 7002, tags: ["blue"], name: "Tayyam", title: "", img: "http://localhost:58620/img/avatar/co.png" },
+            { id: 7013, pid: 7007, tags: ["left-partner"], name: "Sardina", title: "", img: "http://localhost:58620/img/avatar/ce.png" },
+
+
+
+            { id: 8001, tags: ["blue"], name: "Mbahnya Saidan", title: "Sampang Madura", img: "http://localhost:58620/img/avatar/co.png" },
+            { id: 8002, pid: 8001, tags: ["left-partner"], name: "Embah Cewe Saidan", title: "Sampang Madura", img: "http://localhost:58620/img/avatar/ce.png" },
+            { id: 8011, pid: 8001, ppid: 8002, tags: ["blue"], name: "Bapaknya Saidan", title: "Sampang Madura", img: "http://localhost:58620/img/avatar/co.png" },
+            { id: 8012, pid: 8011, tags: ["left-partner"], name: "Ibunya Saidan", title: "Sampang Madura", img: "http://localhost:58620/img/avatar/ce.png" },
+            { id: 8101, pid: 8011, ppid: 8012, tags: ["blue"], name: "Saidan", title: "Sampang Madura", img: "http://localhost:58620/img/avatar/co.png" },
+            { id: 8102, pid: 8101, tags: ["left-partner"], name: "Maimuna", title: "Sampang Madura", img: "http://localhost:58620/img/avatar/mba_maimunah.png" },
+            { id: 8103, pid: 8101, ppid: 8102, tags: ["blue"], name: "Alwi", title: "Asli Sampang", img: "http://localhost:58620/img/avatar/alwi.png" },
+
+
+            { id: 13, pid: 7012, ppid: 502, tags: ["blue"], name: "Musrika", img: "http://localhost:58620/img/avatar/3.jpg" },
+            { id: 14, pid: 7012, ppid: 502, tags: ["blue"], name: "Siddik", img: "http://localhost:58620/img/avatar/co.png" },
+            { id: 12, pid: 8103, ppid: 502, tags: ["left-partner"], name: "Ummi Marchonah", title: "", img: "http://localhost:58620/img/avatar/ummi.png" },
+
+            { id: 16, pid: 9301, ppid: 12, tags: ["right-partner"], name: "Khuzaimah", img: "http://localhost:58620/img/avatar/khuzaimah.png" },
+            { id: 17, pid: 8103, ppid: 12, tags: ["blue"], name: "Moh. Tojjib Nabil", img: "http://localhost:58620/img/avatar/toyib.png" },
+            { id: 18, pid: 8103, ppid: 12, tags: ["blue"], name: "Umar Said", img: "http://localhost:58620/img/avatar/said.png" },
+            { id: 19, pid: 8103, ppid: 12, tags: ["blue"], name: "Imam Syafi'i", img: "http://localhost:58620/img/avatar/imam.png" },
+            { id: 20, pid: 8103, ppid: 12, tags: ["blue"], name: "Subairi", img: "http://localhost:58620/img/avatar/13.jpg" },
+            { id: 21, pid: 8103, ppid: 12, tags: ["blue"], name: "Osman efendi", img: "http://localhost:58620/img/avatar/usman.png" },
+            { id: 22, pid: 8103, ppid: 12, tags: ["blue"], name: "Ali Sadikin", img: "http://localhost:58620/img/avatar/ali.png" },
+            { id: 23, pid: 8103, ppid: 12, tags: ["blue"], name: "Maisunah", img: "http://localhost:58620/img/avatar/maisunah.png" },
+            { id: 24, pid: 8103, ppid: 12, tags: ["blue"], name: "Maimunah", img: "http://localhost:58620/img/avatar/muna.png" },
+            { id: 25, pid: 8103, ppid: 12, tags: ["blue"], name: "Hoirul Anwar", img: "http://localhost:58620/img/avatar/anwar.png" },
+            { id: 26, pid: 17, tags: ["right-partner"], name: "Rosmalina Zahroh", img: "http://localhost:58620/img/avatar/lina.png" },
+            { id: 27, pid: 25, tags: ["right-partner"], name: "Romalasari", img: "http://localhost:58620/img/avatar/romala.png" },
+            { id: 28, pid: 25, ppid: 27, name: "Moh. Al-Mu'tashim Billah", img: "http://localhost:58620/img/avatar/muktasim.png" },
+            { id: 29, pid: 16, tags: ["left-partner"], name: "Azhari", img: "http://localhost:58620/img/avatar/azhari.png" },
+            { id: 30, pid: 24, tags: ["right-partner"], name: "Bambang", img: "http://localhost:58620/img/avatar/5.jpg" },
+
+            { id: 31, pid: 9301, ppid: 16, tags: ["blue"], name: "Faisal Amir", img: "http://localhost:58620/img/avatar/amir.png" },
+            { id: 32, pid: 9301, ppid: 16, tags: ["blue"], name: "Abd. Wakib", img: "http://localhost:58620/img/avatar/wakib.png" },
+            { id: 33, pid: 9301, ppid: 16, tags: ["blue"], name: "Fathur Rosi", img: "http://localhost:58620/img/avatar/fathur.png" },
+            { id: 34, pid: 9301, ppid: 16, tags: ["blue"], name: "Siti Muzayyanah", img: "http://localhost:58620/img/avatar/muzay.png" },
+            { id: 35, pid: 9301, ppid: 16, tags: ["blue"], name: "Lutfiyah", img: "http://localhost:58620/img/avatar/lutfiyah.png" },
+
+            { id: 37, pid: 18, ppid: 85, name: "Neni Mardiyanti", img: "http://localhost:58620/img/avatar/neny.png" },
+            { id: 38, pid: 37, tags: ["right-partner"], name: "Andri Purwanto", img: "http://localhost:58620/img/avatar/andre.png" },
+            { id: 39, pid: 37, ppid: 38, tags: ["blue"], name: "Queen Nabila Khairunnisa", img: "http://localhost:58620/img/avatar/2.jpg" },
+            { id: 40, pid: 37, ppid: 38, tags: ["blue"], name: "Alkhalifi Dzikri Virendra", img: "http://localhost:58620/img/avatar/5.jpg" },
+            { id: 41, pid: 37, ppid: 38, tags: ["blue"], name: "Abizar Ahmad Elnino", img: "http://localhost:58620/img/avatar/4.jpg" },
+            { id: 42, pid: 37, ppid: 38, tags: ["blue"], name: "Shabirah Qanita Qianzy", img: "http://localhost:58620/img/avatar/2.jpg" },
+            { id: 43, pid: 37, ppid: 38, tags: ["blue"], name: "belum", img: "http://localhost:58620/img/avatar/2.jpg" },
+            { id: 44, pid: 17, ppid: 26, tags: ["blue"], name: "Aulya", img: "http://localhost:58620/img/avatar/2.jpg" },
+            { id: 45, pid: 17, ppid: 26, tags: ["blue"], name: "Mega Yanwar Husnu Rhomadlon", img: "http://localhost:58620/img/avatar/4.jpg" },
+            { id: 46, pid: 17, ppid: 26, tags: ["blue"], name: "Jundurrahman Suryanegara", img: "http://localhost:58620/img/avatar/5.jpg" },
+            { id: 47, pid: 44, tags: ["right-partner"], name: "Dwisudarini", img: "http://localhost:58620/img/avatar/8.jpg" },
+            { id: 48, pid: 24, ppid: 30, tags: ["blue"], name: "Fikri", img: "http://localhost:58620/img/avatar/11.jpg" },
+            { id: 49, pid: 24, ppid: 30, tags: ["blue"], name: "Farah", img: "http://localhost:58620/img/avatar/3.jpg" },
+            { id: 50, pid: 19, tags: ["right-partner"], name: "Nur Baeni", img: "http://localhost:58620/img/avatar/nurbaeni.png" },
+            { id: 51, pid: 19, ppid: 50, tags: ["blue"], name: "Aditya Ghofuri", img: "http://localhost:58620/img/avatar/ari.png" },
+            { id: 52, pid: 19, ppid: 50, tags: ["blue"], name: "Dzurrinnisyai Asysyafi'iyah", img: "http://localhost:58620/img/avatar/0.png" },
+            { id: 53, pid: 19, ppid: 50, tags: ["blue"], name: "Syafrini Agustine", img: "http://localhost:58620/img/avatar/ririn.png" },
+
+            { id: 54, pid: 53, tags: ["right-partner"], name: "Rizqi Rahman", img: "http://localhost:58620/img/avatar/rahman.png" },
+            { id: 55, pid: 51, tags: ["left-partner"], name: "Salamah puji lestari", img: "http://localhost:58620/img/avatar/ari1.png" },
+
+            { id: 56, pid: 53, ppid: 54, tags: ["blue"], name: "Nabila Ramadhani", img: "http://localhost:58620/img/avatar/nabila.png" },
+            { id: 57, pid: 53, ppid: 54, tags: ["blue"], name: "Zaskia Alya Rahman", img: "http://localhost:58620/img/avatar/7.jpg" },
+            { id: 58, pid: 53, ppid: 54, tags: ["blue"], name: "Coming Soon", img: "http://localhost:58620/img/avatar/7.jpg" },
+
+
+
+            { id: 59, pid: 31, tags: ["left-partner"], name: "Husnia", img: "http://localhost:58620/img/avatar/husnia.png" },
+            { id: 60, pid: 32, tags: ["left-partner"], name: "Nur Jennah", img: "http://localhost:58620/img/avatar/0.png" },
+            { id: 61, pid: 33, tags: ["left-partner"], name: "Haizatul Falah", img: "http://localhost:58620/img/avatar/falah.png" },
+            { id: 62, pid: 34, tags: ["left-partner"], name: "Abd. Muiz", img: "http://localhost:58620/img/avatar/muiz.png" },
+            { id: 63, pid: 35, tags: ["left-partner"], name: "Mahfud", img: "http://localhost:58620/img/avatar/0.png" },
+
+            { id: 64, pid: 31, ppid: 59, tags: ["blue"], name: "Yusril Arzak", img: "http://localhost:58620/img/avatar/0.png" },
+            { id: 65, pid: 31, ppid: 59, tags: ["blue"], name: "Yahya Baskara", img: "http://localhost:58620/img/avatar/0.png" },
+            { id: 66, pid: 31, ppid: 59, tags: ["blue"], name: "Nurul A. Hidayati", img: "http://localhost:58620/img/avatar/0.png" },
+            { id: 67, pid: 31, ppid: 59, tags: ["blue"], name: "Bilqis Adelia", img: "http://localhost:58620/img/avatar/0.png" },
+
+            { id: 68, pid: 32, ppid: 60, tags: ["blue"], name: "Wasik Abhar Ramadhani", img: "http://localhost:58620/img/avatar/0.png" },
+
+            { id: 69, pid: 33, ppid: 61, tags: ["blue"], name: "Java A. Nuruzzaman", img: "http://localhost:58620/img/avatar/java.png" },
+            { id: 70, pid: 33, ppid: 61, tags: ["blue"], name: "Zayn Rabbany Majeed", img: "http://localhost:58620/img/avatar/majeed.png" },
+            { id: 71, pid: 33, ppid: 61, tags: ["blue"], name: "Berliana Khadijaa", img: "http://localhost:58620/img/avatar/berlian.png" },
+            { id: 72, pid: 33, ppid: 61, tags: ["blue"], name: "Moh. Ahsani Thariq", img: "http://localhost:58620/img/avatar/0.png" },
+
+            { id: 73, pid: 34, ppid: 62, tags: ["blue"], name: "Fatih Mulqy Khawarismi", img: "http://localhost:58620/img/avatar/fatih.png" },
+            { id: 74, pid: 34, ppid: 62, tags: ["blue"], name: "Haidir", img: "http://localhost:58620/img/avatar/haidir.png" },
+            { id: 75, pid: 34, ppid: 62, tags: ["blue"], name: "Nahda (NU)", img: "http://localhost:58620/img/avatar/nahda.png" },
+
+
+            { id: 76, pid: 35, ppid: 63, tags: ["blue"], name: "Adriana Aisya", img: "http://localhost:58620/img/avatar/0.png" },
+
+
+            //istri - istri paman
+            { id: 77, pid: 20, tags: ["left-partner"], name: "Yuni Rindang", title: "Deket Univ. Erlangga", img: "http://localhost:58620/img/avatar/0.png" },
+            { id: 78, pid: 20, tags: ["right-partner"], name: "Istri Subairi 2", img: "http://localhost:58620/img/avatar/0.png" },
+            { id: 79, pid: 21, tags: ["left-partner"], name: "Istri Usman 1", title: "Orang Pasuruan", img: "http://localhost:58620/img/avatar/0.png" },
+            { id: 80, pid: 21, tags: ["right-partner"], name: "Istri Usman 2", img: "http://localhost:58620/img/avatar/0.png" },
+            { id: 81, pid: 22, tags: ["right-partner"], name: "Maimanah", img: "http://localhost:58620/img/avatar/0.png" },
+            { id: 82, pid: 18, tags: ["left-partner"], name: "Istri Umar Said 4", img: "http://localhost:58620/img/avatar/0.png" },
+            { id: 83, pid: 18, tags: ["left-partner"], name: "Holilah", img: "http://localhost:58620/img/avatar/0.png" },
+            { id: 84, pid: 18, tags: ["right-partner"], name: "Istri Umar Said 4", img: "http://localhost:58620/img/avatar/0.png" },
+
+            { id: 85, pid: 18, tags: ["right-partner"], name: "Mulyati Ningsih", img: "http://localhost:58620/img/avatar/neng.png" },
+            { id: 86, pid: 22, ppid: 81, tags: ["blue"], name: "Fiki", img: "http://localhost:58620/img/avatar/0.png" },
+            { id: 87, pid: 20, ppid: 77, tags: ["blue"], name: "wildan zulfikar/Bili", img: "http://localhost:58620/img/avatar/0.png" },
+
+            //{ id: 8, pid: 20, ppid: 77, tags: ["blue"], name: "Wildan/Bili", img: "http://localhost:58620/img/avatar/0.png" },
+            { id: 88, pid: 21, ppid: 79, tags: ["blue"], name: "Asrofil Anam/Rafel", img: "http://localhost:58620/img/avatar/0.png" },
+
+            { id: 89, pid: 18, ppid: 83, tags: ["blue"], name: "Lulur", img: "http://localhost:58620/img/avatar/lulur.png" },
+            { id: 90, pid: 18, ppid: 83, tags: ["blue"], name: "Lu'ai", img: "http://localhost:58620/img/avatar/luai.png" },
+            { id: 91, pid: 18, ppid: 83, tags: ["blue"], name: "Falah", img: "http://localhost:58620/img/avatar/falah1.png" },
+
+
+            { id: 1, tags: ["blue"], name: "BapakNya Nafisah?", img: "http://localhost:58620/img/avatar/13.jpg" },
+            { id: 2, pid: 1, tags: ["right-partner"], name: "Ibunya Nafisah?", title: "", img: "http://localhost:58620/img/avatar/ce.png" },
+
+            { id: 500, pid: 1, ppid: 2, tags: ["blue"], name: "Nafisah", img: "http://localhost:58620/img/avatar/ce.png" },
+            { id: 501, pid: 500, tags: ["right-partner"], name: "Supyan", title: "Darimana Asalnya?", img: "http://localhost:58620/img/avatar/13.jpg" },
+            { id: 600, pid: 1, ppid: 2, name: "Sodara2nya Nafisah Siapa?", img: "http://localhost:58620/img/avatar/13.jpg" },
+
+            { id: 502, pid: 7012, ppid: 501, tags: ["right-partner"], name: "Saudah", title: "", img: "http://localhost:58620/img/avatar/ce.png" },
+
+            { id: 510, pid: 511, ppid: 512, name: "Jumali", title: "Nyaradin", img: "http://localhost:58620/img/avatar/0.png" },
+            { id: 511, pid: 500, ppid: 501, tags: ["blue"], name: "Mba Muayyena", title: "Deng Temor", img: "http://localhost:58620/img/avatar/12.jpg" },
+            { id: 512, pid: 511, name: "Suami Mba Muayyena?", tags: ["right-partner"], title: "Deng Temor", img: "http://localhost:58620/img/avatar/13.jpg" },
+
+
+            { id: 503, pid: 500, ppid: 501, tags: ["blue"], name: "Mba Munirah", title: "Deng Temor", img: "http://localhost:58620/img/avatar/12.jpg" },
+            { id: 505, pid: 503, name: "Suami Mba Munirah?", tags: ["right-partner"], title: "Deng Temor", img: "http://localhost:58620/img/avatar/13.jpg" },
+
+            { id: 508, pid: 503, ppid: 505, name: "Sam'ah", title: "", img: "http://localhost:58620/img/avatar/0.png" },
+            { id: 509, pid: 503, ppid: 505, name: "Zekiyeh", title: "", img: "http://localhost:58620/img/avatar/0.png" },
+
+
+            { id: 513, pid: 503, ppid: 505, name: "Nailah", title: "", img: "http://localhost:58620/img/avatar/0.png" },
+            { id: 514, pid: 503, ppid: 505, name: "Dahlan", title: "", img: "http://localhost:58620/img/avatar/0.png" },
+            { id: 515, pid: 503, ppid: 505, name: "H. Wafik", title: "Tinggal Dipasuruan", img: "http://localhost:58620/img/avatar/0.png" },
+            { id: 516, pid: 503, ppid: 505, name: "Muhtar", title: "", img: "http://localhost:58620/img/avatar/0.png" },
+            { id: 517, pid: 503, ppid: 505, name: "Muhsin", title: "", img: "http://localhost:58620/img/avatar/0.png" },
+            { id: 518, pid: 503, ppid: 505, name: "Hanifah", title: "", img: "http://localhost:58620/img/avatar/0.png" },
+            { id: 519, pid: 503, ppid: 505, name: "Muyes", title: "", img: "http://localhost:58620/img/avatar/0.png" },
+
+        ]);
+    };
+
+</script>
+
+<div id="tree"></div>

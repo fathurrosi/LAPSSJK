@@ -26,7 +26,7 @@
                     @Html.HiddenFor(model => model.created)
                     @Html.HiddenFor(model => model.creator)
                     @Html.HiddenFor(model => model.is_deleted)
-                    
+
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.template_name, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -43,7 +43,101 @@
                             @Html.ValidationMessageFor(model => model.remark, "", new { @class = "text-danger" })
                         </div>
                     </div>
-                    `   `
+
+                    @if (Model.fields != null && Model.fields.Count > 0)
+                    {
+                        <div class="form-group">
+                            @Html.Label("Field List", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <table id="datatable-responsive" class="table table-striped table-bordered responsive no-wrap" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                @Html.DisplayName("name")
+                                            </th>
+                                            <th>
+                                                @Html.DisplayName("alias")
+                                            </th>
+                                            <th>
+                                                @Html.DisplayName("data type")
+                                            </th>
+                                            <th>
+                                                @Html.DisplayName("default value")
+                                            </th>
+                                            <th>
+                                                @Html.DisplayName("seq")
+                                            </th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>
+                                                @Html.DisplayName("name")
+                                            </th>
+                                            <th>
+                                                @Html.DisplayName("alias")
+                                            </th>
+                                            <th>
+                                                @Html.DisplayName("data type")
+                                            </th>
+                                            <th>
+                                                @Html.DisplayName("default value")
+                                            </th>
+                                            <th>
+                                                @Html.DisplayName("seq")
+                                            </th>
+                                            <th></th>
+                                        </tr>
+                                    </tfoot>
+
+
+                                    <tbody>
+
+                                        @foreach (var item in Model.fields)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.column_name)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.column_alias)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.column_data_type)
+                                                </td>
+
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.default_value)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.column_seq)
+                                                </td>
+                                                <td>
+                                                    @Html.ActionLink("Edit", "EditColumn", new { id = item.id }) |
+                                                    @Html.ActionLink("Delete", "DeleteColumn", new { id = item.id })
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+
+                                @Html.ActionLink("Tambah Baru", "AddColumn", new { tid = Model.id }, new { @class = "btn btn-primary" })
+
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="form-group">
+                            @Html.Label("Field List", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+
+                                @Html.ActionLink("Add Column", "AddColumn", new { tid = Model.id }, new { @class = "btn btn-primary" })
+
+                            </div>
+                        </div>
+                    }
                     <div class="form-group">
                         @*<div class="col-md-offset-2 col-md-10">*@
                         <div class="bg-default content-box text-center pad20A mrg25T">
