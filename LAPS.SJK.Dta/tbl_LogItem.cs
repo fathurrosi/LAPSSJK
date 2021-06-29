@@ -111,7 +111,7 @@ WHERE   [ID]  = @ID";
         {
             int result = -1;
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT Count(*) as Total FROM tbl_log";
+            string sqlQuery = "SELECT Count(*) as Total FROM tbl_log ";
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             object obj = DBUtil.ExecuteScalar(context);
@@ -127,7 +127,7 @@ WHERE   [ID]  = @ID";
         public static List<tbl_log> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT LogDate, IPAddress, LogType, LongMessage, ShortMessage, Username, MechineName, ID FROM tbl_log";
+            string sqlQuery = "SELECT LogDate, IPAddress, LogType, LongMessage, ShortMessage, Username, MechineName, ID FROM tbl_log ";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_log>(context, new tbl_log());
@@ -145,6 +145,7 @@ WHERE   [ID]  = @ID";
                 SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_log].[ID] DESC ) AS PAGING_ROW_NUMBER,
                         [tbl_log].*
                 FROM    [tbl_log]
+                
             )
 
             SELECT      [Paging_tbl_log].*

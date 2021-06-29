@@ -106,7 +106,7 @@ WHERE   [post_id]  = @post_id";
         {
             int result = -1;
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT Count(*) as Total FROM tbl_post";
+            string sqlQuery = "SELECT Count(*) as Total FROM tbl_post ";
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             object obj = DBUtil.ExecuteScalar(context);
@@ -122,7 +122,7 @@ WHERE   [post_id]  = @post_id";
         public static List<tbl_post> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT post_id, name, cat_id, created, creator, edited, editor FROM tbl_post";
+            string sqlQuery = "SELECT post_id, name, cat_id, created, creator, edited, editor FROM tbl_post ";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_post>(context, new tbl_post());
@@ -140,6 +140,7 @@ WHERE   [post_id]  = @post_id";
                 SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_post].[post_id] DESC ) AS PAGING_ROW_NUMBER,
                         [tbl_post].*
                 FROM    [tbl_post]
+                
             )
 
             SELECT      [Paging_tbl_post].*

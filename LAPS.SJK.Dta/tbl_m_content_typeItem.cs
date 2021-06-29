@@ -91,7 +91,7 @@ WHERE   [type_name]  = @type_name";
         {
             int result = -1;
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT Count(*) as Total FROM tbl_m_content_type";
+            string sqlQuery = "SELECT Count(*) as Total FROM tbl_m_content_type ";
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             object obj = DBUtil.ExecuteScalar(context);
@@ -107,7 +107,7 @@ WHERE   [type_name]  = @type_name";
         public static List<tbl_m_content_type> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT type_name, type_description FROM tbl_m_content_type";
+            string sqlQuery = "SELECT type_name, type_description FROM tbl_m_content_type ";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_m_content_type>(context, new tbl_m_content_type());
@@ -125,6 +125,7 @@ WHERE   [type_name]  = @type_name";
                 SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_m_content_type].[type_name] DESC ) AS PAGING_ROW_NUMBER,
                         [tbl_m_content_type].*
                 FROM    [tbl_m_content_type]
+                
             )
 
             SELECT      [Paging_tbl_m_content_type].*

@@ -22,8 +22,7 @@ G:\Works\Andri\LAPSSJK\LAPS.SJK.Logic\bin\Debug\System.Web.WebPages.xml
 G:\Works\Andri\LAPSSJK\LAPS.SJK.Logic\bin\Debug\System.Web.Razor.xml
 G:\Works\Andri\LAPSSJK\LAPS.SJK.Logic\bin\Debug\Microsoft.Web.Infrastructure.xml
 G:\Works\Andri\LAPSSJK\LAPS.SJK.Logic\bin\Debug\System.Web.WebPages.Deployment.xml
-G:\Works\Andri\LAPSSJK\LAPS.SJK.Logic\obj\Debug\LAPS.SJK.Logic.csprojAssemblyReference.cache
-G:\Works\Andri\LAPSSJK\LAPS.SJK.Logic\obj\Debug\LAPS.SJK.Logic.csproj.CopyComplete
 G:\Works\Andri\LAPSSJK\LAPS.SJK.Logic\obj\Debug\LAPS.SJK.Logic.dll
 G:\Works\Andri\LAPSSJK\LAPS.SJK.Logic\obj\Debug\LAPS.SJK.Logic.pdb
 G:\Works\Andri\LAPSSJK\LAPS.SJK.Logic\bin\Debug\LAPS.SJK.Logic.dll.config
+G:\Works\Andri\LAPSSJK\LAPS.SJK.Logic\obj\Debug\LAPS.SJK.Logic.csprojResolveAssemblyReference.cache

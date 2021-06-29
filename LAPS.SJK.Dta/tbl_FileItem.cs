@@ -111,7 +111,7 @@ WHERE   [file_id]  = @file_id";
         {
             int result = -1;
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT Count(*) as Total FROM tbl_file";
+            string sqlQuery = "SELECT Count(*) as Total FROM tbl_file ";
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             object obj = DBUtil.ExecuteScalar(context);
@@ -127,7 +127,7 @@ WHERE   [file_id]  = @file_id";
         public static List<tbl_file> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT file_id, ref_name, ref_id, file_type, file_path, file_name, file_ext, file_blob, created, created_by FROM tbl_file";
+            string sqlQuery = "SELECT file_id, ref_name, ref_id, file_type, file_path, file_name, file_ext, file_blob, created, created_by FROM tbl_file ";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_file>(context, new tbl_file());
@@ -145,6 +145,7 @@ WHERE   [file_id]  = @file_id";
                 SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_file].[file_id] DESC ) AS PAGING_ROW_NUMBER,
                         [tbl_file].*
                 FROM    [tbl_file]
+                
             )
 
             SELECT      [Paging_tbl_file].*

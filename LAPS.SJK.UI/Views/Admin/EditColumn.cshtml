@@ -97,14 +97,11 @@
                     <div class="form-group">
                         <div class="bg-default content-box text-center pad20A mrg25T">
                             <input type="submit" value="Save" class="btn btn-default" /> @Html.ActionLink("Delete", "DeleteColumn", new { id = Model.id, @class = "btn btn-primary" })
+                            @Html.ActionLink("Back to List", "Edit", new { id = Model.id_template })
                         </div>
                     </div>
                 </div>
             }
-
-            <div>
-                @Html.ActionLink("Back to List", "Edit", new { id = Model.id_template })
-            </div>
         </div>
     </div>
 </div>

@@ -99,7 +99,7 @@ WHERE   [id]  = @id";
         {
             int result = -1;
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT Count(*) as Total FROM tbl_culture_info";
+            string sqlQuery = "SELECT Count(*) as Total FROM tbl_culture_info ";
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             object obj = DBUtil.ExecuteScalar(context);
@@ -115,7 +115,7 @@ WHERE   [id]  = @id";
         public static List<tbl_culture_info> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT culture, spec_culture, name, id FROM tbl_culture_info";
+            string sqlQuery = "SELECT culture, spec_culture, name, id FROM tbl_culture_info ";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_culture_info>(context, new tbl_culture_info());
@@ -133,6 +133,7 @@ WHERE   [id]  = @id";
                 SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_culture_info].[id] DESC ) AS PAGING_ROW_NUMBER,
                         [tbl_culture_info].*
                 FROM    [tbl_culture_info]
+                
             )
 
             SELECT      [Paging_tbl_culture_info].*

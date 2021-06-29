@@ -102,7 +102,7 @@ WHERE   [id]  = @id";
         {
             int result = -1;
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT Count(*) as Total FROM tbl_combo_detail";
+            string sqlQuery = "SELECT Count(*) as Total FROM tbl_combo_detail ";
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             object obj = DBUtil.ExecuteScalar(context);
@@ -118,7 +118,7 @@ WHERE   [id]  = @id";
         public static List<tbl_combo_detail> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT name, parent, header, sequence, id FROM tbl_combo_detail";
+            string sqlQuery = "SELECT name, parent, header, sequence, id FROM tbl_combo_detail ";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_combo_detail>(context, new tbl_combo_detail());
@@ -136,6 +136,7 @@ WHERE   [id]  = @id";
                 SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_combo_detail].[id] DESC ) AS PAGING_ROW_NUMBER,
                         [tbl_combo_detail].*
                 FROM    [tbl_combo_detail]
+                
             )
 
             SELECT      [Paging_tbl_combo_detail].*

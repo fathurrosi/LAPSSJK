@@ -96,7 +96,7 @@ WHERE   [ID]  = @ID";
         {
             int result = -1;
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT Count(*) as Total FROM tbl_user_role";
+            string sqlQuery = "SELECT Count(*) as Total FROM tbl_user_role ";
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             object obj = DBUtil.ExecuteScalar(context);
@@ -112,7 +112,7 @@ WHERE   [ID]  = @ID";
         public static List<tbl_user_role> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT ID, Username, RoleID FROM tbl_user_role";
+            string sqlQuery = "SELECT ID, Username, RoleID FROM tbl_user_role ";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_user_role>(context, new tbl_user_role());
@@ -130,6 +130,7 @@ WHERE   [ID]  = @ID";
                 SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_user_role].[ID] DESC ) AS PAGING_ROW_NUMBER,
                         [tbl_user_role].*
                 FROM    [tbl_user_role]
+                
             )
 
             SELECT      [Paging_tbl_user_role].*

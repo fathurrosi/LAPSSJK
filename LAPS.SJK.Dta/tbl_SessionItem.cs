@@ -96,7 +96,7 @@ WHERE   [id]  = @id";
         {
             int result = -1;
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT Count(*) as Total FROM tbl_session";
+            string sqlQuery = "SELECT Count(*) as Total FROM tbl_session ";
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             object obj = DBUtil.ExecuteScalar(context);
@@ -112,7 +112,7 @@ WHERE   [id]  = @id";
         public static List<tbl_session> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT id, name, updated, updatedBy FROM tbl_session";
+            string sqlQuery = "SELECT id, name, updated, updatedBy FROM tbl_session ";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_session>(context, new tbl_session());
@@ -130,6 +130,7 @@ WHERE   [id]  = @id";
                 SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_session].[id] DESC ) AS PAGING_ROW_NUMBER,
                         [tbl_session].*
                 FROM    [tbl_session]
+                
             )
 
             SELECT      [Paging_tbl_session].*

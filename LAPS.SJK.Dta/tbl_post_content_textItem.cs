@@ -94,7 +94,7 @@ WHERE   [id_post_text]  = @id_post_text";
         {
             int result = -1;
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT Count(*) as Total FROM tbl_post_content_text";
+            string sqlQuery = "SELECT Count(*) as Total FROM tbl_post_content_text ";
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             object obj = DBUtil.ExecuteScalar(context);
@@ -110,7 +110,7 @@ WHERE   [id_post_text]  = @id_post_text";
         public static List<tbl_post_content_text> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT id_post_text, post_detail_id, content_text FROM tbl_post_content_text";
+            string sqlQuery = "SELECT id_post_text, post_detail_id, content_text FROM tbl_post_content_text ";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_post_content_text>(context, new tbl_post_content_text());
@@ -128,6 +128,7 @@ WHERE   [id_post_text]  = @id_post_text";
                 SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_post_content_text].[id_post_text] DESC ) AS PAGING_ROW_NUMBER,
                         [tbl_post_content_text].*
                 FROM    [tbl_post_content_text]
+                
             )
 
             SELECT      [Paging_tbl_post_content_text].*

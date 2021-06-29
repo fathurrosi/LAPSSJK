@@ -109,7 +109,7 @@ WHERE   [Username]  = @Username";
         {
             int result = -1;
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT Count(*) as Total FROM tbl_user";
+            string sqlQuery = "SELECT Count(*) as Total FROM tbl_user ";
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             object obj = DBUtil.ExecuteScalar(context);
@@ -125,7 +125,7 @@ WHERE   [Username]  = @Username";
         public static List<tbl_user> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT Username, Password, LastLogin, IsLogin, IPAddress, MachineName, IsActive, FullName FROM tbl_user";
+            string sqlQuery = "SELECT Username, Password, LastLogin, IsLogin, IPAddress, MachineName, IsActive, FullName FROM tbl_user ";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_user>(context, new tbl_user());
@@ -143,6 +143,7 @@ WHERE   [Username]  = @Username";
                 SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_user].[Username] DESC ) AS PAGING_ROW_NUMBER,
                         [tbl_user].*
                 FROM    [tbl_user]
+                
             )
 
             SELECT      [Paging_tbl_user].*

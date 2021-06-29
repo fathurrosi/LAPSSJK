@@ -108,7 +108,7 @@ WHERE   [id_field]  = @id_field
         {
             int result = -1;
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT Count(*) as Total FROM tbl_post_list_value";
+            string sqlQuery = "SELECT Count(*) as Total FROM tbl_post_list_value ";
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             object obj = DBUtil.ExecuteScalar(context);
@@ -124,7 +124,7 @@ WHERE   [id_field]  = @id_field
         public static List<tbl_post_list_value> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT row_index, id_template, id_field, value_field, id_post_detail FROM tbl_post_list_value";
+            string sqlQuery = "SELECT row_index, id_template, id_field, value_field, id_post_detail FROM tbl_post_list_value ";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_post_list_value>(context, new tbl_post_list_value());
@@ -142,6 +142,7 @@ WHERE   [id_field]  = @id_field
                 SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_post_list_value].[id_field], [tbl_post_list_value].[row_index], [tbl_post_list_value].[id_template] DESC ) AS PAGING_ROW_NUMBER,
                         [tbl_post_list_value].*
                 FROM    [tbl_post_list_value]
+                
             )
 
             SELECT      [Paging_tbl_post_list_value].*

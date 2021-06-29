@@ -14,6 +14,7 @@ namespace LAPS.SJK.Dto
         public string CreatedBy { get; set; }
         public DateTime? ModifiedDate { get; set; }
         public string ModifiedBy { get; set; }
+        public Int32? is_deleted { get; set; }
         #endregion    
         public tbl_role Map(System.Data.IDataReader reader)
         {
@@ -25,6 +26,7 @@ namespace LAPS.SJK.Dto
             obj.CreatedBy = reader["CreatedBy"] == DBNull.Value ? null : reader["CreatedBy"].ToString();
             obj.ModifiedDate = reader["ModifiedDate"] == DBNull.Value ? (DateTime?) null : Convert.ToDateTime(reader["ModifiedDate"]);
             obj.ModifiedBy = reader["ModifiedBy"] == DBNull.Value ? null : reader["ModifiedBy"].ToString();
+            obj.is_deleted = reader["is_deleted"] == DBNull.Value ? (Int32?) null : Convert.ToInt32(reader["is_deleted"]);
             return obj;
         }
     }

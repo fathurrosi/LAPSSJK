@@ -85,7 +85,7 @@ WHERE   [id]  = @id";
         public static int Delete(Int32 id)
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery =@"DELETE FROM tbl_post_list_template 
+            string sqlQuery =@"Update tbl_post_list_template Set is_deleted = 1 
 WHERE   [id]  = @id";
             context.AddParameter("@id", id);
             context.CommandText = sqlQuery;
@@ -103,7 +103,7 @@ WHERE   [id]  = @id";
         {
             int result = -1;
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT Count(*) as Total FROM tbl_post_list_template";
+            string sqlQuery = "SELECT Count(*) as Total FROM tbl_post_list_template WHERE is_deleted <> 1 ";
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             object obj = DBUtil.ExecuteScalar(context);
@@ -119,7 +119,7 @@ WHERE   [id]  = @id";
         public static List<tbl_post_list_template> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT id, template_name, remark, created, creator, is_deleted FROM tbl_post_list_template";
+            string sqlQuery = "SELECT id, template_name, remark, created, creator, is_deleted FROM tbl_post_list_template WHERE is_deleted <> 1 ";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_post_list_template>(context, new tbl_post_list_template());
@@ -137,6 +137,7 @@ WHERE   [id]  = @id";
                 SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_post_list_template].[id] DESC ) AS PAGING_ROW_NUMBER,
                         [tbl_post_list_template].*
                 FROM    [tbl_post_list_template]
+                WHERE   is_deleted <> 1 
             )
 
             SELECT      [Paging_tbl_post_list_template].*

@@ -99,7 +99,7 @@ WHERE   [option_id]  = @option_id";
         {
             int result = -1;
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT Count(*) as Total FROM tb_options";
+            string sqlQuery = "SELECT Count(*) as Total FROM tb_options ";
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             object obj = DBUtil.ExecuteScalar(context);
@@ -115,7 +115,7 @@ WHERE   [option_id]  = @option_id";
         public static List<tb_options> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT option_id, option_name, option_value, autoload FROM tb_options";
+            string sqlQuery = "SELECT option_id, option_name, option_value, autoload FROM tb_options ";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tb_options>(context, new tb_options());
@@ -133,6 +133,7 @@ WHERE   [option_id]  = @option_id";
                 SELECT  ROW_NUMBER() OVER (ORDER BY [tb_options].[option_id] DESC ) AS PAGING_ROW_NUMBER,
                         [tb_options].*
                 FROM    [tb_options]
+                
             )
 
             SELECT      [Paging_tb_options].*

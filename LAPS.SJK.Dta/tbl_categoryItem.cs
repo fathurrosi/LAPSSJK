@@ -99,7 +99,7 @@ WHERE   [cat_id]  = @cat_id";
         {
             int result = -1;
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT Count(*) as Total FROM tbl_category";
+            string sqlQuery = "SELECT Count(*) as Total FROM tbl_category ";
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             object obj = DBUtil.ExecuteScalar(context);
@@ -115,7 +115,7 @@ WHERE   [cat_id]  = @cat_id";
         public static List<tbl_category> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT cat_id, name, slug, term_group FROM tbl_category";
+            string sqlQuery = "SELECT cat_id, name, slug, term_group FROM tbl_category ";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_category>(context, new tbl_category());
@@ -133,6 +133,7 @@ WHERE   [cat_id]  = @cat_id";
                 SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_category].[cat_id] DESC ) AS PAGING_ROW_NUMBER,
                         [tbl_category].*
                 FROM    [tbl_category]
+                
             )
 
             SELECT      [Paging_tbl_category].*

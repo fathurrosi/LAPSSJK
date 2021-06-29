@@ -25,15 +25,15 @@ namespace LAPS.SJK.Dta
 SET NOCOUNT OFF
 DECLARE @Err int
 
-INSERT INTO [tbl_role]([Name], [Description], [CreatedDate], [CreatedBy], [ModifiedDate], [ModifiedBy]) 
-VALUES      (@Name, @Description, @CreatedDate, @CreatedBy, @ModifiedDate, @ModifiedBy)
+INSERT INTO [tbl_role]([Name], [Description], [CreatedDate], [CreatedBy], [ModifiedDate], [ModifiedBy], [is_deleted]) 
+VALUES      (@Name, @Description, @CreatedDate, @CreatedBy, @ModifiedDate, @ModifiedBy, @is_deleted)
 
 SET @Err = @@Error
 
 DECLARE @_ID Int
 SELECT @_ID = SCOPE_IDENTITY()
 
-SELECT  ID, Name, Description, CreatedDate, CreatedBy, ModifiedDate, ModifiedBy
+SELECT  ID, Name, Description, CreatedDate, CreatedBy, ModifiedDate, ModifiedBy, is_deleted
 FROM    [tbl_role]
 WHERE   [ID]  = @_ID";
             context.AddParameter("@Name", string.Format("{0}", obj.Name));
@@ -42,6 +42,7 @@ WHERE   [ID]  = @_ID";
             context.AddParameter("@CreatedBy", string.Format("{0}", obj.CreatedBy));
             context.AddParameter("@ModifiedDate", obj.ModifiedDate);
             context.AddParameter("@ModifiedBy", string.Format("{0}", obj.ModifiedBy));
+            context.AddParameter("@is_deleted", obj.is_deleted);
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_role>(context, new tbl_role()).FirstOrDefault();
@@ -64,12 +65,13 @@ SET         [Name] = @Name,
             [CreatedDate] = @CreatedDate,
             [CreatedBy] = @CreatedBy,
             [ModifiedDate] = @ModifiedDate,
-            [ModifiedBy] = @ModifiedBy
+            [ModifiedBy] = @ModifiedBy,
+            [is_deleted] = @is_deleted
 WHERE       [ID]  = @ID
 
 SET @Err = @@Error
 
-SELECT  ID, Name, Description, CreatedDate, CreatedBy, ModifiedDate, ModifiedBy 
+SELECT  ID, Name, Description, CreatedDate, CreatedBy, ModifiedDate, ModifiedBy, is_deleted 
 FROM    [tbl_role]
 WHERE   [ID]  = @ID";
             context.AddParameter("@Name", string.Format("{0}", obj.Name));
@@ -78,6 +80,7 @@ WHERE   [ID]  = @ID";
             context.AddParameter("@CreatedBy", string.Format("{0}", obj.CreatedBy));
             context.AddParameter("@ModifiedDate", obj.ModifiedDate);
             context.AddParameter("@ModifiedBy", string.Format("{0}", obj.ModifiedBy));
+            context.AddParameter("@is_deleted", obj.is_deleted);
             context.AddParameter("@ID", obj.ID);            
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
@@ -90,7 +93,7 @@ WHERE   [ID]  = @ID";
         public static int Delete(Int32 ID)
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery =@"DELETE FROM tbl_role 
+            string sqlQuery =@"Update tbl_role Set is_deleted = 1 
 WHERE   [ID]  = @ID";
             context.AddParameter("@ID", ID);
             context.CommandText = sqlQuery;
@@ -108,7 +111,7 @@ WHERE   [ID]  = @ID";
         {
             int result = -1;
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT Count(*) as Total FROM tbl_role";
+            string sqlQuery = "SELECT Count(*) as Total FROM tbl_role WHERE is_deleted <> 1 ";
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             object obj = DBUtil.ExecuteScalar(context);
@@ -124,7 +127,7 @@ WHERE   [ID]  = @ID";
         public static List<tbl_role> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT ID, Name, Description, CreatedDate, CreatedBy, ModifiedDate, ModifiedBy FROM tbl_role";
+            string sqlQuery = "SELECT ID, Name, Description, CreatedDate, CreatedBy, ModifiedDate, ModifiedBy, is_deleted FROM tbl_role WHERE is_deleted <> 1 ";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_role>(context, new tbl_role());
@@ -142,6 +145,7 @@ WHERE   [ID]  = @ID";
                 SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_role].[ID] DESC ) AS PAGING_ROW_NUMBER,
                         [tbl_role].*
                 FROM    [tbl_role]
+                WHERE   is_deleted <> 1 
             )
 
             SELECT      [Paging_tbl_role].*
@@ -164,7 +168,7 @@ WHERE   [ID]  = @ID";
         public static tbl_role GetByPK(Int32 ID)
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = @"SELECT ID, Name, Description, CreatedDate, CreatedBy, ModifiedDate, ModifiedBy FROM tbl_role
+            string sqlQuery = @"SELECT ID, Name, Description, CreatedDate, CreatedBy, ModifiedDate, ModifiedBy, is_deleted FROM tbl_role
             WHERE [ID]  = @ID";
             context.AddParameter("@ID", ID);
             context.CommandText = sqlQuery;

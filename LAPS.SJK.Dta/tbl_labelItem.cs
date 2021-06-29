@@ -98,7 +98,7 @@ WHERE   [name]  = @name
         {
             int result = -1;
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT Count(*) as Total FROM tbl_label";
+            string sqlQuery = "SELECT Count(*) as Total FROM tbl_label ";
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             object obj = DBUtil.ExecuteScalar(context);
@@ -114,7 +114,7 @@ WHERE   [name]  = @name
         public static List<tbl_label> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT c_flag, name, value FROM tbl_label";
+            string sqlQuery = "SELECT c_flag, name, value FROM tbl_label ";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_label>(context, new tbl_label());
@@ -132,6 +132,7 @@ WHERE   [name]  = @name
                 SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_label].[name], [tbl_label].[c_flag] DESC ) AS PAGING_ROW_NUMBER,
                         [tbl_label].*
                 FROM    [tbl_label]
+                
             )
 
             SELECT      [Paging_tbl_label].*

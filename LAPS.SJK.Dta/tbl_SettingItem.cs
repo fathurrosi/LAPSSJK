@@ -99,7 +99,7 @@ WHERE   [id]  = @id";
         {
             int result = -1;
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT Count(*) as Total FROM tbl_setting";
+            string sqlQuery = "SELECT Count(*) as Total FROM tbl_setting ";
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             object obj = DBUtil.ExecuteScalar(context);
@@ -115,7 +115,7 @@ WHERE   [id]  = @id";
         public static List<tbl_setting> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT id, name, value, description FROM tbl_setting";
+            string sqlQuery = "SELECT id, name, value, description FROM tbl_setting ";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_setting>(context, new tbl_setting());
@@ -133,6 +133,7 @@ WHERE   [id]  = @id";
                 SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_setting].[id] DESC ) AS PAGING_ROW_NUMBER,
                         [tbl_setting].*
                 FROM    [tbl_setting]
+                
             )
 
             SELECT      [Paging_tbl_setting].*

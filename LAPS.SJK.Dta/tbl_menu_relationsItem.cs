@@ -99,7 +99,7 @@ WHERE   [menu_relations_id]  = @menu_relations_id";
         {
             int result = -1;
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT Count(*) as Total FROM tbl_menu_relations";
+            string sqlQuery = "SELECT Count(*) as Total FROM tbl_menu_relations ";
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             object obj = DBUtil.ExecuteScalar(context);
@@ -115,7 +115,7 @@ WHERE   [menu_relations_id]  = @menu_relations_id";
         public static List<tbl_menu_relations> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT menu_relations_id, menu_id, relations_type, content_id FROM tbl_menu_relations";
+            string sqlQuery = "SELECT menu_relations_id, menu_id, relations_type, content_id FROM tbl_menu_relations ";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_menu_relations>(context, new tbl_menu_relations());
@@ -133,6 +133,7 @@ WHERE   [menu_relations_id]  = @menu_relations_id";
                 SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_menu_relations].[menu_relations_id] DESC ) AS PAGING_ROW_NUMBER,
                         [tbl_menu_relations].*
                 FROM    [tbl_menu_relations]
+                
             )
 
             SELECT      [Paging_tbl_menu_relations].*

@@ -110,7 +110,7 @@ WHERE   [RoleID]  = @RoleID
         {
             int result = -1;
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT Count(*) as Total FROM tbl_privilege";
+            string sqlQuery = "SELECT Count(*) as Total FROM tbl_privilege ";
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             object obj = DBUtil.ExecuteScalar(context);
@@ -126,7 +126,7 @@ WHERE   [RoleID]  = @RoleID
         public static List<tbl_privilege> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT MenuID, RoleID, AllowCreate, AllowRead, AllowUpdate, AllowDelete, AllowPrint FROM tbl_privilege";
+            string sqlQuery = "SELECT MenuID, RoleID, AllowCreate, AllowRead, AllowUpdate, AllowDelete, AllowPrint FROM tbl_privilege ";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_privilege>(context, new tbl_privilege());
@@ -144,6 +144,7 @@ WHERE   [RoleID]  = @RoleID
                 SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_privilege].[RoleID], [tbl_privilege].[MenuID] DESC ) AS PAGING_ROW_NUMBER,
                         [tbl_privilege].*
                 FROM    [tbl_privilege]
+                
             )
 
             SELECT      [Paging_tbl_privilege].*

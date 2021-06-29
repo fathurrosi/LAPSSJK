@@ -87,14 +87,12 @@ G:\Works\Andri\LAPSSJK\LAPS.SJK.UI\bin\Microsoft.Owin.Security.Google.xml
 G:\Works\Andri\LAPSSJK\LAPS.SJK.UI\bin\Microsoft.Owin.Security.Twitter.xml
 G:\Works\Andri\LAPSSJK\LAPS.SJK.UI\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 G:\Works\Andri\LAPSSJK\LAPS.SJK.UI\bin\itextsharp.xml
-G:\Works\Andri\LAPSSJK\LAPS.SJK.UI\obj\Debug\LAPS.SJK.UI.csprojAssemblyReference.cache
 G:\Works\Andri\LAPSSJK\LAPS.SJK.UI\obj\Debug\LAPS.SJK.UI.App_LocalResources.GlobalRes.resources
 G:\Works\Andri\LAPSSJK\LAPS.SJK.UI\obj\Debug\LAPS.SJK.UI.App_LocalResources.GlobalRes.en.resources
 G:\Works\Andri\LAPSSJK\LAPS.SJK.UI\obj\Debug\LAPS.SJK.UI.App_LocalResources.GlobalRes.ru.resources
 G:\Works\Andri\LAPSSJK\LAPS.SJK.UI\obj\Debug\LAPS.SJK.UI.csproj.GenerateResource.cache
 G:\Works\Andri\LAPSSJK\LAPS.SJK.UI\obj\Debug\en\LAPS.SJK.UI.resources.dll
 G:\Works\Andri\LAPSSJK\LAPS.SJK.UI\obj\Debug\ru\LAPS.SJK.UI.resources.dll
-G:\Works\Andri\LAPSSJK\LAPS.SJK.UI\obj\Debug\LAPS.SJK.UI.csproj.CopyComplete
 G:\Works\Andri\LAPSSJK\LAPS.SJK.UI\obj\Debug\LAPS.SJK.UI.dll
 G:\Works\Andri\LAPSSJK\LAPS.SJK.UI\obj\Debug\LAPS.SJK.UI.pdb
 G:\Works\Andri\LAPSSJK\LAPS.SJK.UI\bin\roslyn\csc.exe
@@ -109,4 +107,4 @@ G:\Works\Andri\LAPSSJK\LAPS.SJK.UI\bin\roslyn\System.Reflection.Metadata.dll
 G:\Works\Andri\LAPSSJK\LAPS.SJK.UI\bin\roslyn\vbc.exe
 G:\Works\Andri\LAPSSJK\LAPS.SJK.UI\bin\roslyn\VBCSCompiler.exe
 G:\Works\Andri\LAPSSJK\LAPS.SJK.UI\bin\roslyn\VBCSCompiler.exe.config
-G:\Works\Andri\LAPSSJK\LAPS.SJK.UI\bin\LAPS.SJK.Logic.dll.config
+G:\Works\Andri\LAPSSJK\LAPS.SJK.UI\obj\Debug\LAPS.SJK.UI.csprojResolveAssemblyReference.cache

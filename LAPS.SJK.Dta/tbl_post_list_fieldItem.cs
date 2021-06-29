@@ -109,7 +109,7 @@ WHERE   [id]  = @id";
         public static int Delete(Int32 id)
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery =@"DELETE FROM tbl_post_list_field 
+            string sqlQuery =@"Update tbl_post_list_field Set is_deleted = 1 
 WHERE   [id]  = @id";
             context.AddParameter("@id", id);
             context.CommandText = sqlQuery;
@@ -127,7 +127,7 @@ WHERE   [id]  = @id";
         {
             int result = -1;
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT Count(*) as Total FROM tbl_post_list_field";
+            string sqlQuery = "SELECT Count(*) as Total FROM tbl_post_list_field WHERE is_deleted <> 1 ";
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             object obj = DBUtil.ExecuteScalar(context);
@@ -143,7 +143,7 @@ WHERE   [id]  = @id";
         public static List<tbl_post_list_field> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT id, id_template, column_name, column_alias, column_seq, column_data_type, max_lenth, default_value, is_mandatory, is_deleted, creator, created, edited, editor FROM tbl_post_list_field";
+            string sqlQuery = "SELECT id, id_template, column_name, column_alias, column_seq, column_data_type, max_lenth, default_value, is_mandatory, is_deleted, creator, created, edited, editor FROM tbl_post_list_field WHERE is_deleted <> 1 ";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_post_list_field>(context, new tbl_post_list_field());
@@ -161,6 +161,7 @@ WHERE   [id]  = @id";
                 SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_post_list_field].[id] DESC ) AS PAGING_ROW_NUMBER,
                         [tbl_post_list_field].*
                 FROM    [tbl_post_list_field]
+                WHERE   is_deleted <> 1 
             )
 
             SELECT      [Paging_tbl_post_list_field].*

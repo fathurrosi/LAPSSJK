@@ -111,7 +111,7 @@ WHERE   [menu_id]  = @menu_id";
         {
             int result = -1;
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT Count(*) as Total FROM tbl_menu";
+            string sqlQuery = "SELECT Count(*) as Total FROM tbl_menu ";
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             object obj = DBUtil.ExecuteScalar(context);
@@ -127,7 +127,7 @@ WHERE   [menu_id]  = @menu_id";
         public static List<tbl_menu> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT menu_id, menu_name, menu_text, menu_type, need_login, parentid, orderid, url FROM tbl_menu";
+            string sqlQuery = "SELECT menu_id, menu_name, menu_text, menu_type, need_login, parentid, orderid, url FROM tbl_menu ";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_menu>(context, new tbl_menu());
@@ -145,6 +145,7 @@ WHERE   [menu_id]  = @menu_id";
                 SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_menu].[menu_id] DESC ) AS PAGING_ROW_NUMBER,
                         [tbl_menu].*
                 FROM    [tbl_menu]
+                
             )
 
             SELECT      [Paging_tbl_menu].*

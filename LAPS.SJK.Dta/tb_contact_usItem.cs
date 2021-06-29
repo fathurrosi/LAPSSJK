@@ -105,7 +105,7 @@ WHERE   [contact_id]  = @contact_id";
         {
             int result = -1;
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT Count(*) as Total FROM tb_contact_us";
+            string sqlQuery = "SELECT Count(*) as Total FROM tb_contact_us ";
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             object obj = DBUtil.ExecuteScalar(context);
@@ -121,7 +121,7 @@ WHERE   [contact_id]  = @contact_id";
         public static List<tb_contact_us> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT contact_id, business_day, business_time, address, phone, email FROM tb_contact_us";
+            string sqlQuery = "SELECT contact_id, business_day, business_time, address, phone, email FROM tb_contact_us ";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tb_contact_us>(context, new tb_contact_us());
@@ -139,6 +139,7 @@ WHERE   [contact_id]  = @contact_id";
                 SELECT  ROW_NUMBER() OVER (ORDER BY [tb_contact_us].[contact_id] DESC ) AS PAGING_ROW_NUMBER,
                         [tb_contact_us].*
                 FROM    [tb_contact_us]
+                
             )
 
             SELECT      [Paging_tb_contact_us].*
