@@ -63,9 +63,9 @@ namespace LAPS.SJK.UI.Controllers
             if (ModelState.IsValid)
             {
                 registerUser.IsLogin = 0;
-                registerUser.IsActive = 1;
+                registerUser.is_deleted = 1;
                 registerUser.LastLogin = DateTime.Now;
-                
+
                 tbl_userItem.Insert(registerUser);
 
                 return RedirectToAction("Login");
@@ -74,47 +74,142 @@ namespace LAPS.SJK.UI.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //[AllowAnonymous]
-        //[ValidateAntiForgeryToken]
-        //public async Task<ActionResult> Register(RegisterViewModel model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-        //        var result = await UserManager.CreateAsync(user, model.Password);
-        //        if (result.Succeeded)
-        //        {
-        //            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-
-        //            // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-        //            // Send an email with this link
-        //            // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-        //            // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-        //            // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
-        //            return RedirectToAction("Index", "Home");
-        //        }
-        //        AddErrors(result);
-        //    }
-
-        //    // If we got this far, something failed, redisplay form
-        //    return View(model);
-        //}
-
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("Login");
         }
-        //public ActionResult Logout()
-        //{
-        //    //userService.LoggedOut(Utilities.GetCurrentUsername(), Utilities.GetIPAddress());
-        //    Session.Abandon();
-        //    Session.Clear();
-        //    Session.RemoveAll();
+        // GET: Admin/User
+        public ActionResult Index()
+        {
+            List<UserModel> results = new List<UserModel>();
+            List<Dto.tbl_user> list = tbl_userItem.GetAll();
+            list.ForEach(t => { results.Add(new UserModel(t)); });
+            return View(results);
+        }
 
-        //    return RedirectToAction("Index", "Home");
-        //}
+
+        // GET: user/Create
+        public ActionResult Add()
+        {
+            return View();
+        }
+
+        // POST: user/Create
+        [HttpPost]
+        public ActionResult Add(UserModel model)
+        {
+            try
+            {
+                Dto.tbl_user result = null;
+                // TODO: Add insert logic here
+                Dto.tbl_user item = new Dto.tbl_user();
+
+                item.Username = model.Username;
+                item.Password = Security.MD5Hash("admin");
+                item.LastLogin = DateTime.Now;
+                item.IsLogin = 0; ;
+                item.IPAddress = "";
+                item.MachineName = "";
+                item.is_deleted = 0;
+                item.FullName = model.FullName;
+                item.creator = Utilities.Username;
+                item.created = DateTime.Now;
+
+                result = tbl_userItem.GetByPK(model.Username);
+                if (result != null)
+                {
+                    ModelState.AddModelError("", string.Format("{0} sudah ada.", model.Username));
+                    return View();
+                }
+
+                result = tbl_userItem.Insert(item);
+                if (result == null)
+                {
+                    ModelState.AddModelError("", "Ups, Data tidak dapat tersimpan!");
+                    return View();
+                }
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: user/Edit/5
+        public ActionResult Edit(string id)
+        {
+            Dto.tbl_user item = tbl_userItem.GetByPK(id);
+            return View(new UserModel(item));
+        }
+
+        // POST: user/Edit/5
+        [HttpPost]
+        public ActionResult Edit(string id, UserModel model)
+        {
+            try
+            {
+                Dto.tbl_user result = null;
+                // TODO: Add update logic here
+                Dto.tbl_user item = tbl_userItem.GetByPK(id);
+
+                if (item != null)
+                {
+                    item.Username = model.Username;
+                    item.Password = model.Password;
+                    item.FullName = model.FullName;
+                    item.editor = Utilities.Username;
+                    item.edited = DateTime.Now;
+                    result = tbl_userItem.Update(item);
+                    //update
+                }
+                else
+                {
+                    item = new Dto.tbl_user();
+                    item.Username = "Admin";
+                    item.Password = Security.MD5Hash("admin");
+                    item.LastLogin = DateTime.Now;
+                    item.IsLogin = 0; ;
+                    item.IPAddress = "";
+                    item.MachineName = "";
+                    item.is_deleted = 0;
+                    item.FullName = model.FullName;
+                    item.creator = Utilities.Username;
+                    item.created = DateTime.Now;
+                    result = tbl_userItem.Insert(item);
+                }
+
+                if (result == null)
+                {
+                    ModelState.AddModelError("", "Ups, Data tidak dapat tersimpan!");
+                    return View();
+                }
+
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: user/Delete/5
+        public ActionResult Delete(string id)
+        {
+            // TODO: Add update logic here
+            Dto.tbl_user item = tbl_userItem.GetByPK(id);
+            int result = tbl_userItem.Delete(id);
+
+            if (result > 0)
+            {
+                ModelState.AddModelError("", "Ups, Data tidak dapat tersimpan!");
+                return View();
+            }
+            return RedirectToAction("Index");
+            //return View();
+        }
     }
 }

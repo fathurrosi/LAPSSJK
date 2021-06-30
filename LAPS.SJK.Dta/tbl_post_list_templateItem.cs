@@ -60,7 +60,6 @@ DECLARE @Err int
 UPDATE      [tbl_post_list_template]
 SET         [template_name] = @template_name,
             [remark] = @remark,
-            [creator] = @creator,
             [is_deleted] = @is_deleted
 WHERE       [id]  = @id
 
@@ -71,7 +70,6 @@ FROM    [tbl_post_list_template]
 WHERE   [id]  = @id";
             context.AddParameter("@template_name", string.Format("{0}", obj.template_name));
             context.AddParameter("@remark", string.Format("{0}", obj.remark));
-            context.AddParameter("@creator", string.Format("{0}", obj.creator));
             context.AddParameter("@is_deleted", obj.is_deleted);
             context.AddParameter("@id", obj.id);            
             context.CommandText = sqlQuery;

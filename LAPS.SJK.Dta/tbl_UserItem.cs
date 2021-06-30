@@ -25,12 +25,12 @@ namespace LAPS.SJK.Dta
 SET NOCOUNT OFF
 DECLARE @Err int
 
-INSERT INTO [tbl_user]([Username], [Password], [LastLogin], [IsLogin], [IPAddress], [MachineName], [IsActive], [FullName]) 
-VALUES      (@Username, @Password, @LastLogin, @IsLogin, @IPAddress, @MachineName, @IsActive, @FullName)
+INSERT INTO [tbl_user]([Username], [Password], [LastLogin], [IsLogin], [IPAddress], [MachineName], [is_deleted], [FullName], [created], [creator]) 
+VALUES      (@Username, @Password, @LastLogin, @IsLogin, @IPAddress, @MachineName, @is_deleted, @FullName, @created, @creator)
 
 SET @Err = @@Error
 
-SELECT  Username, Password, LastLogin, IsLogin, IPAddress, MachineName, IsActive, FullName
+SELECT  Username, Password, LastLogin, IsLogin, IPAddress, MachineName, is_deleted, FullName, created, creator, edited, editor
 FROM    [tbl_user]
 WHERE   [Username]  = @Username";
             context.AddParameter("@Username", string.Format("{0}", obj.Username));
@@ -39,8 +39,10 @@ WHERE   [Username]  = @Username";
             context.AddParameter("@IsLogin", obj.IsLogin);
             context.AddParameter("@IPAddress", string.Format("{0}", obj.IPAddress));
             context.AddParameter("@MachineName", string.Format("{0}", obj.MachineName));
-            context.AddParameter("@IsActive", obj.IsActive);
+            context.AddParameter("@is_deleted", obj.is_deleted);
             context.AddParameter("@FullName", string.Format("{0}", obj.FullName));
+            context.AddParameter("@created", obj.created);
+            context.AddParameter("@creator", string.Format("{0}", obj.creator));
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_user>(context, new tbl_user()).FirstOrDefault();
@@ -63,13 +65,15 @@ SET         [Password] = @Password,
             [IsLogin] = @IsLogin,
             [IPAddress] = @IPAddress,
             [MachineName] = @MachineName,
-            [IsActive] = @IsActive,
-            [FullName] = @FullName
+            [is_deleted] = @is_deleted,
+            [FullName] = @FullName,
+            [edited] = @edited,
+            [editor] = @editor
 WHERE       [Username]  = @Username
 
 SET @Err = @@Error
 
-SELECT  Username, Password, LastLogin, IsLogin, IPAddress, MachineName, IsActive, FullName 
+SELECT  Username, Password, LastLogin, IsLogin, IPAddress, MachineName, is_deleted, FullName, created, creator, edited, editor 
 FROM    [tbl_user]
 WHERE   [Username]  = @Username";
             context.AddParameter("@Password", string.Format("{0}", obj.Password));
@@ -77,8 +81,10 @@ WHERE   [Username]  = @Username";
             context.AddParameter("@IsLogin", obj.IsLogin);
             context.AddParameter("@IPAddress", string.Format("{0}", obj.IPAddress));
             context.AddParameter("@MachineName", string.Format("{0}", obj.MachineName));
-            context.AddParameter("@IsActive", obj.IsActive);
+            context.AddParameter("@is_deleted", obj.is_deleted);
             context.AddParameter("@FullName", string.Format("{0}", obj.FullName));
+            context.AddParameter("@edited", obj.edited);
+            context.AddParameter("@editor", string.Format("{0}", obj.editor));
             context.AddParameter("@Username", string.Format("{0}", obj.Username));            
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
@@ -91,7 +97,7 @@ WHERE   [Username]  = @Username";
         public static int Delete(string Username)
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery =@"DELETE FROM tbl_user 
+            string sqlQuery =@"Update tbl_user Set is_deleted = 1 
 WHERE   [Username]  = @Username";
             context.AddParameter("@Username",  string.Format("{0}", Username));
             context.CommandText = sqlQuery;
@@ -109,7 +115,7 @@ WHERE   [Username]  = @Username";
         {
             int result = -1;
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT Count(*) as Total FROM tbl_user ";
+            string sqlQuery = "SELECT Count(*) as Total FROM tbl_user WHERE is_deleted <> 1 ";
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             object obj = DBUtil.ExecuteScalar(context);
@@ -125,7 +131,7 @@ WHERE   [Username]  = @Username";
         public static List<tbl_user> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT Username, Password, LastLogin, IsLogin, IPAddress, MachineName, IsActive, FullName FROM tbl_user ";
+            string sqlQuery = "SELECT Username, Password, LastLogin, IsLogin, IPAddress, MachineName, is_deleted, FullName, created, creator, edited, editor FROM tbl_user WHERE is_deleted <> 1 ";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_user>(context, new tbl_user());
@@ -143,7 +149,7 @@ WHERE   [Username]  = @Username";
                 SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_user].[Username] DESC ) AS PAGING_ROW_NUMBER,
                         [tbl_user].*
                 FROM    [tbl_user]
-                
+                WHERE   is_deleted <> 1 
             )
 
             SELECT      [Paging_tbl_user].*
@@ -166,7 +172,7 @@ WHERE   [Username]  = @Username";
         public static tbl_user GetByPK(string Username)
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = @"SELECT Username, Password, LastLogin, IsLogin, IPAddress, MachineName, IsActive, FullName FROM tbl_user
+            string sqlQuery = @"SELECT Username, Password, LastLogin, IsLogin, IPAddress, MachineName, is_deleted, FullName, created, creator, edited, editor FROM tbl_user
             WHERE [Username]  = @Username";
             context.AddParameter("@Username", Username);
             context.CommandText = sqlQuery;

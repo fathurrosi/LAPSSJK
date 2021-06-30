@@ -11,6 +11,18 @@ namespace LAPS.SJK.Dta
 {
     public partial class tbl_roleItem
     {
+        public static tbl_role GetByName(string name)
+        {
+            IDBHelper context = new DBHelper();
+            context.CommandText = @" 
+
+select r.* from tbl_role r
+where r.name=@name
+";
+            context.CommandType = CommandType.Text;
+            context.AddParameter("@name", string.Format("{0}", name));
+            return DBUtil.ExecuteMapper(context, new tbl_role()).FirstOrDefault();
+        }
 
         public static List<tbl_role> GetByUsername(string Username)
         {

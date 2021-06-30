@@ -25,8 +25,8 @@ namespace LAPS.SJK.Dta
 SET NOCOUNT OFF
 DECLARE @Err int
 
-INSERT INTO [tbl_post_list_field]([id_template], [column_name], [column_alias], [column_seq], [column_data_type], [max_lenth], [default_value], [is_mandatory], [is_deleted], [creator], [created], [edited], [editor]) 
-VALUES      (@id_template, @column_name, @column_alias, @column_seq, @column_data_type, @max_lenth, @default_value, @is_mandatory, @is_deleted, @creator, @created, @edited, @editor)
+INSERT INTO [tbl_post_list_field]([id_template], [column_name], [column_alias], [column_seq], [column_data_type], [max_lenth], [default_value], [is_mandatory], [is_deleted], [creator], [created]) 
+VALUES      (@id_template, @column_name, @column_alias, @column_seq, @column_data_type, @max_lenth, @default_value, @is_mandatory, @is_deleted, @creator, @created)
 
 SET @Err = @@Error
 
@@ -47,8 +47,6 @@ WHERE   [id]  = @_id";
             context.AddParameter("@is_deleted", obj.is_deleted);
             context.AddParameter("@creator", string.Format("{0}", obj.creator));
             context.AddParameter("@created", obj.created);
-            context.AddParameter("@edited", obj.edited);
-            context.AddParameter("@editor", string.Format("{0}", obj.editor));
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_post_list_field>(context, new tbl_post_list_field()).FirstOrDefault();
@@ -75,7 +73,6 @@ SET         [id_template] = @id_template,
             [default_value] = @default_value,
             [is_mandatory] = @is_mandatory,
             [is_deleted] = @is_deleted,
-            [creator] = @creator,
             [edited] = @edited,
             [editor] = @editor
 WHERE       [id]  = @id
@@ -94,7 +91,6 @@ WHERE   [id]  = @id";
             context.AddParameter("@default_value", string.Format("{0}", obj.default_value));
             context.AddParameter("@is_mandatory", obj.is_mandatory);
             context.AddParameter("@is_deleted", obj.is_deleted);
-            context.AddParameter("@creator", string.Format("{0}", obj.creator));
             context.AddParameter("@edited", obj.edited);
             context.AddParameter("@editor", string.Format("{0}", obj.editor));
             context.AddParameter("@id", obj.id);            

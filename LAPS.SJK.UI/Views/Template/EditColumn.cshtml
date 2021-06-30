@@ -1,0 +1,107 @@
+﻿@model LAPS.SJK.UI.Models.FieldModel
+
+@{
+    ViewBag.Title = "EditColumn";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>Edit Column</h2>
+<div class="panel">
+    <div class="panel-body">
+        <h3 class="title-hero">
+            Add Column
+        </h3>
+        <div class="example-box-wrapper">
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>FieldModel</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.created)
+                    @Html.HiddenFor(model => model.creator)
+                    @Html.HiddenFor(model => model.edited)
+                    @Html.HiddenFor(model => model.editor)
+                    @Html.HiddenFor(model => model.is_deleted)
+                    @Html.HiddenFor(model => model.id_template)
+
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.id_template, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+
+                            @Html.DisplayFor(model => model.template_name)
+
+                            @*@Html.EditorFor(model => model.id_template, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.ValidationMessageFor(model => model.id_template, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.column_name, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.column_name, new { htmlAttributes = new { @class = "form-control col-md-2" } })
+                            @Html.ValidationMessageFor(model => model.column_name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.column_seq, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.column_seq, new { htmlAttributes = new { @class = "form-control col-md-2" } })
+                            @Html.ValidationMessageFor(model => model.column_seq, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.column_data_type, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @*@Html.EditorFor(model => model.column_data_type, new { htmlAttributes = new { @class = "form-control col-md-2" } })*@
+                            @Html.DropDownListFor(model => model.column_data_type, Model.DataTypeList, "Select Data Type", new { @class = "form-control col-md-2" })
+
+                            @Html.ValidationMessageFor(model => model.column_data_type, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.max_lenth, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.max_lenth, new { htmlAttributes = new { @class = "form-control col-md-2" } })
+                            @Html.ValidationMessageFor(model => model.max_lenth, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.default_value, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.default_value, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.default_value, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.is_mandatory, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @*@Html.EditorFor(model => model.is_mandatory, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.CheckBoxFor(model => model.is_mandatory, new { htmlAttributes = new { @class = "form-control" } })
+
+                            @Html.ValidationMessageFor(model => model.is_mandatory, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="bg-default content-box text-center pad20A mrg25T">
+                            <input type="submit" value="Save" class="btn btn-default" /> @Html.ActionLink("Delete", "DeleteColumn", new { id = Model.id, @class = "btn btn-primary" })
+                            @Html.ActionLink("Back to List", "Edit", new { id = Model.id_template })
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

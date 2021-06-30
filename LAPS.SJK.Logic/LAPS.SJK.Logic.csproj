@@ -81,6 +81,7 @@
     <Compile Include="Login.cs" />
     <Compile Include="Mail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RouteConstraint.cs" />
     <Compile Include="Security.cs" />
     <Compile Include="Utilities.cs" />
   </ItemGroup>

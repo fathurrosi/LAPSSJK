@@ -8,7 +8,7 @@ using LAPS.SJK.Dto;
 using LAPS.SJK.Logic;
 using LAPS.SJK.UI.Models;
 
-namespace LAPS.SJK.UI.Controllers
+namespace LAPS.SJK.UI.Areas.Admin.Controllers
 {
     public class RoleController : Controller
     {
@@ -21,21 +21,15 @@ namespace LAPS.SJK.UI.Controllers
             return View(result);
         }
 
-        // GET: Role/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
         // GET: Role/Create
-        public ActionResult Create()
+        public ActionResult Add()
         {
             return View();
         }
 
         // POST: Role/Create
         [HttpPost]
-        public ActionResult Create(RoleModel model)
+        public ActionResult Add(RoleModel model)
         {
             try
             {
@@ -47,6 +41,14 @@ namespace LAPS.SJK.UI.Controllers
                 item.CreatedDate = DateTime.Now;
                 item.CreatedBy = Utilities.Username;
                 item.is_deleted = 0;
+
+                result = tbl_roleItem.GetByName(model.Name);
+                if (result != null)
+                {
+                    ModelState.AddModelError("", string.Format("{0} sudah ada.", model.Name));
+                    return View();
+                }
+
                 result = tbl_roleItem.Insert(item);
                 if (result == null)
                 {
@@ -117,37 +119,19 @@ namespace LAPS.SJK.UI.Controllers
         // GET: Role/Delete/5
         public ActionResult Delete(int id)
         {
-            tbl_role result = null;
             // TODO: Add update logic here
             tbl_role item = tbl_roleItem.GetByPK(id);
-            item.ModifiedDate = DateTime.Now;
-            item.ModifiedBy = Utilities.Username;
-            item.is_deleted = 1;
-            result = tbl_roleItem.Update(item);
+            int result = tbl_roleItem.Delete(id);
 
-            if (result == null)
+            if (result > 0)
             {
                 ModelState.AddModelError("", "Ups, Data tidak dapat tersimpan!");
                 return View();
             }
-
-            return View();
+            return RedirectToAction("Index");
+            //return View();
         }
 
-        // POST: Role/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+      
     }
 }

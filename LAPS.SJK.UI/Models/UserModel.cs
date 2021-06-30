@@ -6,6 +6,26 @@ namespace LAPS.SJK.UI.Models
 {
     public class UserModel : LAPS.SJK.Dto.tbl_user
     {
+        //public string CurrentUsername { get; set; }
+
+        [Display(Name = "ID Pengguna")]
+        public new string Username { get; set; }
+
+        [Display(Name = "Nama Lengkap")]
+        public new string FullName { get; set; }
+        public UserModel(Dto.tbl_user item)
+        {
+            this.Username = item.Username;
+            //this.CurrentUsername = item.Username;
+            this.Password = item.Password;
+            this.LastLogin = item.LastLogin;
+            this.IsLogin = item.IsLogin;
+            this.IPAddress = item.IPAddress;
+            this.MachineName = item.MachineName;
+            this.is_deleted = item.is_deleted;
+            this.FullName = item.FullName;
+        }
+        public UserModel() { }
     }
 
     public class Widget

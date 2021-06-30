@@ -12,7 +12,7 @@ using LAPS.SJK.UI.Models;
 
 namespace LAPS.SJK.UI.Controllers
 {
-    public class AdminController : Controller
+    public class AdminXXController : Controller
     {
         // GET: Admin
         public ActionResult Index()

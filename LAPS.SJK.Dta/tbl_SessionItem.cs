@@ -25,8 +25,8 @@ namespace LAPS.SJK.Dta
 SET NOCOUNT OFF
 DECLARE @Err int
 
-INSERT INTO [tbl_session]([id], [name], [updatedBy]) 
-VALUES      (@id, @name, @updatedBy)
+INSERT INTO [tbl_session]([id], [name], [updated], [updatedBy]) 
+VALUES      (@id, @name, @updated, @updatedBy)
 
 SET @Err = @@Error
 
@@ -35,6 +35,7 @@ FROM    [tbl_session]
 WHERE   [id]  = @id";
             context.AddParameter("@id", obj.id);
             context.AddParameter("@name", string.Format("{0}", obj.name));
+            context.AddParameter("@updated", obj.updated);
             context.AddParameter("@updatedBy", string.Format("{0}", obj.updatedBy));
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;

@@ -1088,6 +1088,17 @@
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\Role\Edit.cshtml" />
     <Content Include="Views\Role\Add.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\Add.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\Template\AddColumn.cshtml" />
+    <Content Include="Views\Template\Create.cshtml" />
+    <Content Include="Views\Template\Edit.cshtml" />
+    <Content Include="Views\Template\EditColumn.cshtml" />
+    <Content Include="Views\Template\Forgot.cshtml" />
+    <Content Include="Views\Template\Login.cshtml" />
+    <Content Include="Views\Template\Preview.cshtml" />
+    <Content Include="Views\Template\Templates.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
