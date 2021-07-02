@@ -9,6 +9,7 @@ using LAPS.SJK.Dta;
 using LAPS.SJK.Logic;
 using LAPS.SJK.UI.Models;
 using LAPS.SJK.Logic.Enum;
+using LAPS.SJK.Dto;
 
 namespace LAPS.SJK.UI.Controllers
 {
@@ -92,45 +93,70 @@ namespace LAPS.SJK.UI.Controllers
         // GET: user/Create
         public ActionResult Add()
         {
-            return View();
+
+            var model = new UserModel();
+            var roles = tbl_roleItem.GetAll();
+            roles.ForEach(t => { model.RoleList.Add(new SelectListItem() { Value = t.ID.ToString(), Text = t.Name }); });
+
+            return View(model);
         }
 
         // POST: user/Create
         [HttpPost]
         public ActionResult Add(UserModel model)
         {
+
             try
             {
-                Dto.tbl_user result = null;
-                // TODO: Add insert logic here
-                Dto.tbl_user item = new Dto.tbl_user();
-
-                item.Username = model.Username;
-                item.Password = Security.MD5Hash("admin");
-                item.LastLogin = DateTime.Now;
-                item.IsLogin = 0; ;
-                item.IPAddress = "";
-                item.MachineName = "";
-                item.is_deleted = 0;
-                item.FullName = model.FullName;
-                item.creator = Utilities.Username;
-                item.created = DateTime.Now;
-
-                result = tbl_userItem.GetByPK(model.Username);
-                if (result != null)
+                if (ModelState.IsValid)
                 {
-                    ModelState.AddModelError("", string.Format("{0} sudah ada.", model.Username));
-                    return View();
-                }
 
-                result = tbl_userItem.Insert(item);
-                if (result == null)
+                    Dto.tbl_user result = null;
+                    // TODO: Add insert logic here
+                    Dto.tbl_user item = new Dto.tbl_user();
+
+                    item.Username = model.Username;
+                    item.Password = Security.MD5Hash("admin");
+                    item.LastLogin = DateTime.Now;
+                    item.IsLogin = 0; ;
+                    item.IPAddress = "";
+                    item.MachineName = "";
+                    item.is_deleted = 0;
+                    item.FullName = model.FullName;
+                    item.creator = Utilities.Username;
+                    item.created = DateTime.Now;
+
+                    result = tbl_userItem.GetByPK(model.Username);
+                    if (result != null)
+                    {
+                        ModelState.AddModelError("", string.Format("{0} sudah ada.", model.Username));
+                        var list = tbl_roleItem.GetAll();
+                        list.ForEach(t => { model.RoleList.Add(new SelectListItem() { Value = t.ID.ToString(), Text = t.Name }); });
+
+                        return View(model);
+                    }
+
+
+                    List<int> roles = new List<int>() { model.RoleId };
+
+                    result = tbl_userItem.Insert(item, roles);
+                    if (result == null)
+                    {
+                        ModelState.AddModelError("", "Ups, Data tidak dapat tersimpan!");
+                        var list = tbl_roleItem.GetAll();
+                        list.ForEach(t => { model.RoleList.Add(new SelectListItem() { Value = t.ID.ToString(), Text = t.Name }); });
+
+                        return View(model);
+                    }
+
+                    return RedirectToAction("Index");
+                }
+                else
                 {
-                    ModelState.AddModelError("", "Ups, Data tidak dapat tersimpan!");
-                    return View();
+                    var roles = tbl_roleItem.GetAll();
+                    roles.ForEach(t => { model.RoleList.Add(new SelectListItem() { Value = t.ID.ToString(), Text = t.Name }); });
+                    return View(model);
                 }
-
-                return RedirectToAction("Index");
             }
             catch
             {
@@ -141,8 +167,19 @@ namespace LAPS.SJK.UI.Controllers
         // GET: user/Edit/5
         public ActionResult Edit(string id)
         {
+            UserModel model = new UserModel();
             Dto.tbl_user item = tbl_userItem.GetByPK(id);
-            return View(new UserModel(item));
+            if (item != null)
+            {
+
+                List<tbl_user_role> userRoles = tbl_user_roleItem.GetByUsername(item.Username);
+                model = new UserModel(item);
+
+                var roles = tbl_roleItem.GetAll();
+                roles.ForEach(t => { model.RoleList.Add(new SelectListItem() { Value = t.ID.ToString(), Text = t.Name, Selected = userRoles.Exists(y => y.RoleID == t.ID) }); });
+            }
+
+            return View(model);
         }
 
         // POST: user/Edit/5
@@ -162,7 +199,10 @@ namespace LAPS.SJK.UI.Controllers
                     item.FullName = model.FullName;
                     item.editor = Utilities.Username;
                     item.edited = DateTime.Now;
-                    result = tbl_userItem.Update(item);
+
+                    List<int> roles = new List<int>() { model.RoleId };
+
+                    result = tbl_userItem.Update(item, roles);
                     //update
                 }
                 else
@@ -178,7 +218,13 @@ namespace LAPS.SJK.UI.Controllers
                     item.FullName = model.FullName;
                     item.creator = Utilities.Username;
                     item.created = DateTime.Now;
-                    result = tbl_userItem.Insert(item);
+
+
+                    List<int> roles = new List<int>() { model.RoleId };
+
+
+                    result = tbl_userItem.Insert(
+                        item, roles);
                 }
 
                 if (result == null)
@@ -192,7 +238,11 @@ namespace LAPS.SJK.UI.Controllers
             }
             catch
             {
-                return View();
+                List<tbl_user_role> userRoles = tbl_user_roleItem.GetByUsername(model.Username);
+                var roles = tbl_roleItem.GetAll();
+                roles.ForEach(t => { model.RoleList.Add(new SelectListItem() { Value = t.ID.ToString(), Text = t.Name, Selected = userRoles.Exists(y => y.RoleID == t.ID) }); });
+
+                return View(model);
             }
         }
 
@@ -203,10 +253,9 @@ namespace LAPS.SJK.UI.Controllers
             Dto.tbl_user item = tbl_userItem.GetByPK(id);
             int result = tbl_userItem.Delete(id);
 
-            if (result > 0)
+            if (result == 0)
             {
-                ModelState.AddModelError("", "Ups, Data tidak dapat tersimpan!");
-                return View();
+                ModelState.AddModelError("", "Ups, Data tidak dapat dihapus!");
             }
             return RedirectToAction("Index");
             //return View();

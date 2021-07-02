@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
+using LAPS.SJK.Dto;
 using LAPS.SJK.UI.App_LocalResources;
 
 namespace LAPS.SJK.UI.Models
@@ -8,6 +11,10 @@ namespace LAPS.SJK.UI.Models
     {
         //public string CurrentUsername { get; set; }
 
+        public List<SelectListItem> RoleList { get; set; }
+
+        [Display(Name = "Peran")]
+        public int RoleId { get; set; }
         [Display(Name = "ID Pengguna")]
         public new string Username { get; set; }
 
@@ -15,6 +22,7 @@ namespace LAPS.SJK.UI.Models
         public new string FullName { get; set; }
         public UserModel(Dto.tbl_user item)
         {
+            RoleList = new List<SelectListItem>();
             this.Username = item.Username;
             //this.CurrentUsername = item.Username;
             this.Password = item.Password;
@@ -25,7 +33,7 @@ namespace LAPS.SJK.UI.Models
             this.is_deleted = item.is_deleted;
             this.FullName = item.FullName;
         }
-        public UserModel() { }
+        public UserModel() { RoleList = new List<SelectListItem>(); }
     }
 
     public class Widget

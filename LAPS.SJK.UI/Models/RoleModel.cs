@@ -15,10 +15,10 @@ namespace LAPS.SJK.UI.Models
             this.ID = item.ID;
             this.Name = item.Name;
             this.Description = item.Description;
-            this.CreatedDate = item.CreatedDate;
-            this.CreatedBy = item.CreatedBy;
-            this.ModifiedDate = item.ModifiedDate;
-            this.ModifiedBy = item.ModifiedBy;
+            this.created= item.created;
+            this.creator= item.creator;
+            this.edited= item.edited;
+            this.editor= item.editor;
 
         }
 

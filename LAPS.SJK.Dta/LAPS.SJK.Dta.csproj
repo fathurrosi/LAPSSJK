@@ -61,9 +61,8 @@
     <Compile Include="tbl_InfoItem.cs" />
     <Compile Include="tbl_labelItem.cs" />
     <Compile Include="tbl_LogItem.cs" />
-    <Compile Include="tbl_MenuItem.cs" />
+    <Compile Include="tbl_menuItem.cs" />
     <Compile Include="tbl_menu_relationsItem.cs" />
-    <Compile Include="tbl_menu_xItem.cs" />
     <Compile Include="tbl_m_content_typeItem.cs" />
     <Compile Include="tbl_m_relation_typeItem.cs" />
     <Compile Include="tbl_postItem.cs" />

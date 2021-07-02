@@ -15,49 +15,53 @@ namespace LAPS.SJK.UI.Areas.Admin.Controllers
     public class TemplateController : Controller
     {
 
-        // GET: Admin
+        //// GET: Admin
+        //public ActionResult Index()
+        //{
+        //    List<tbl_post_list_template> list = tbl_post_list_templateItem.GetAllActive();
+        //    return View(list);
+        //}
+        //public ActionResult Forgot()
+        //{
+        //    return View();
+        //}
+
+        //public ActionResult Login()
+        //{
+        //    return View();
+        //}
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Login(UserModel user)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+
+        //        string usernname = user.Username;
+        //        string password = Security.MD5Hash(user.Password.Trim());
+        //        #region Login
+
+        //        Log.Info(string.Format("User :{0}-{1} try to log in", usernname, password));
+
+        //        Dto.Cstm.tbl_user Item = tbl_userItem.GetUser(usernname);
+        //        if (Item != null && Item.Password == password &&
+        //            Item.Roles.Where(t => string.Format("{0}", t.Name).ToLower() == string.Format("{0}", UserType.Administrator).ToLower()).Count() > 0)
+        //        {
+        //            tbl_userItem.UpdateLogin(user.Username, "", "");
+        //            FormsAuthentication.SetAuthCookie(user.Username, false);
+        //            return RedirectToAction("Index");
+        //        }
+
+        //        #endregion
+        //    }
+        //    ModelState.AddModelError("", "invalid Username or Password");
+        //    return View();
+        //}
         public ActionResult Index()
         {
-            List<tbl_post_list_template> list = tbl_post_list_templateItem.GetAllActive();
+            List<tbl_post_list_template> list = tbl_post_list_templateItem.GetAll();
             return View(list);
         }
-        public ActionResult Forgot()
-        {
-            return View();
-        }
-
-        public ActionResult Login()
-        {
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Login(UserModel user)
-        {
-            if (ModelState.IsValid)
-            {
-
-                string usernname = user.Username;
-                string password = Security.MD5Hash(user.Password.Trim());
-                #region Login
-
-                Log.Info(string.Format("User :{0}-{1} try to log in", usernname, password));
-
-                Dto.Cstm.tbl_user Item = tbl_userItem.GetUser(usernname);
-                if (Item != null && Item.Password == password &&
-                    Item.Roles.Where(t => string.Format("{0}", t.Name).ToLower() == string.Format("{0}", UserType.Administrator).ToLower()).Count() > 0)
-                {
-                    tbl_userItem.UpdateLogin(user.Username, "", "");
-                    FormsAuthentication.SetAuthCookie(user.Username, false);
-                    return RedirectToAction("Index");
-                }
-
-                #endregion
-            }
-            ModelState.AddModelError("", "invalid Username or Password");
-            return View();
-        }
-
 
         public ActionResult Delete(int id)
         {

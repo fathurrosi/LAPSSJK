@@ -38,8 +38,8 @@ namespace LAPS.SJK.UI.Areas.Admin.Controllers
                 tbl_role item = new tbl_role();
                 item.Name = model.Name;
                 item.Description = model.Description;
-                item.CreatedDate = DateTime.Now;
-                item.CreatedBy = Utilities.Username;
+                item.created = DateTime.Now;
+                item.creator = Utilities.Username;
                 item.is_deleted = 0;
 
                 result = tbl_roleItem.GetByName(model.Name);
@@ -85,8 +85,8 @@ namespace LAPS.SJK.UI.Areas.Admin.Controllers
                 {
                     item.Name = model.Name;
                     item.Description = model.Description;
-                    item.ModifiedDate = DateTime.Now;
-                    item.ModifiedBy = Utilities.Username;
+                    item.edited = DateTime.Now;
+                    item.editor = Utilities.Username;
                     result = tbl_roleItem.Update(item);
                     //update
                 }
@@ -95,8 +95,8 @@ namespace LAPS.SJK.UI.Areas.Admin.Controllers
                     item = new tbl_role();
                     item.Name = model.Name;
                     item.Description = model.Description;
-                    item.CreatedDate = DateTime.Now;
-                    item.CreatedBy = Utilities.Username;
+                    item.created = DateTime.Now;
+                    item.creator = Utilities.Username;
                     item.is_deleted = 0;
                     result = tbl_roleItem.Insert(item);
                 }
@@ -123,15 +123,15 @@ namespace LAPS.SJK.UI.Areas.Admin.Controllers
             tbl_role item = tbl_roleItem.GetByPK(id);
             int result = tbl_roleItem.Delete(id);
 
-            if (result > 0)
+            if (result == 0)
             {
                 ModelState.AddModelError("", "Ups, Data tidak dapat tersimpan!");
-                return View();
+              
             }
             return RedirectToAction("Index");
             //return View();
         }
 
-      
+
     }
 }

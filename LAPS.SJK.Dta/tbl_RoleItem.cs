@@ -25,24 +25,22 @@ namespace LAPS.SJK.Dta
 SET NOCOUNT OFF
 DECLARE @Err int
 
-INSERT INTO [tbl_role]([Name], [Description], [CreatedDate], [CreatedBy], [ModifiedDate], [ModifiedBy], [is_deleted]) 
-VALUES      (@Name, @Description, @CreatedDate, @CreatedBy, @ModifiedDate, @ModifiedBy, @is_deleted)
+INSERT INTO [tbl_role]([Name], [Description], [is_deleted], [created], [creator]) 
+VALUES      (@Name, @Description, @is_deleted, @created, @creator)
 
 SET @Err = @@Error
 
 DECLARE @_ID Int
 SELECT @_ID = SCOPE_IDENTITY()
 
-SELECT  ID, Name, Description, CreatedDate, CreatedBy, ModifiedDate, ModifiedBy, is_deleted
+SELECT  ID, Name, Description, is_deleted, created, creator, edited, editor
 FROM    [tbl_role]
 WHERE   [ID]  = @_ID";
             context.AddParameter("@Name", string.Format("{0}", obj.Name));
             context.AddParameter("@Description", string.Format("{0}", obj.Description));
-            context.AddParameter("@CreatedDate", obj.CreatedDate);
-            context.AddParameter("@CreatedBy", string.Format("{0}", obj.CreatedBy));
-            context.AddParameter("@ModifiedDate", obj.ModifiedDate);
-            context.AddParameter("@ModifiedBy", string.Format("{0}", obj.ModifiedBy));
             context.AddParameter("@is_deleted", obj.is_deleted);
+            context.AddParameter("@created", obj.created);
+            context.AddParameter("@creator", string.Format("{0}", obj.creator));
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_role>(context, new tbl_role()).FirstOrDefault();
@@ -62,25 +60,21 @@ DECLARE @Err int
 UPDATE      [tbl_role]
 SET         [Name] = @Name,
             [Description] = @Description,
-            [CreatedDate] = @CreatedDate,
-            [CreatedBy] = @CreatedBy,
-            [ModifiedDate] = @ModifiedDate,
-            [ModifiedBy] = @ModifiedBy,
-            [is_deleted] = @is_deleted
+            [is_deleted] = @is_deleted,
+            [edited] = @edited,
+            [editor] = @editor
 WHERE       [ID]  = @ID
 
 SET @Err = @@Error
 
-SELECT  ID, Name, Description, CreatedDate, CreatedBy, ModifiedDate, ModifiedBy, is_deleted 
+SELECT  ID, Name, Description, is_deleted, created, creator, edited, editor 
 FROM    [tbl_role]
 WHERE   [ID]  = @ID";
             context.AddParameter("@Name", string.Format("{0}", obj.Name));
             context.AddParameter("@Description", string.Format("{0}", obj.Description));
-            context.AddParameter("@CreatedDate", obj.CreatedDate);
-            context.AddParameter("@CreatedBy", string.Format("{0}", obj.CreatedBy));
-            context.AddParameter("@ModifiedDate", obj.ModifiedDate);
-            context.AddParameter("@ModifiedBy", string.Format("{0}", obj.ModifiedBy));
             context.AddParameter("@is_deleted", obj.is_deleted);
+            context.AddParameter("@edited", obj.edited);
+            context.AddParameter("@editor", string.Format("{0}", obj.editor));
             context.AddParameter("@ID", obj.ID);            
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
@@ -127,7 +121,7 @@ WHERE   [ID]  = @ID";
         public static List<tbl_role> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT ID, Name, Description, CreatedDate, CreatedBy, ModifiedDate, ModifiedBy, is_deleted FROM tbl_role WHERE is_deleted <> 1 ";
+            string sqlQuery = "SELECT ID, Name, Description, is_deleted, created, creator, edited, editor FROM tbl_role WHERE is_deleted <> 1 ";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_role>(context, new tbl_role());
@@ -168,7 +162,7 @@ WHERE   [ID]  = @ID";
         public static tbl_role GetByPK(Int32 ID)
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = @"SELECT ID, Name, Description, CreatedDate, CreatedBy, ModifiedDate, ModifiedBy, is_deleted FROM tbl_role
+            string sqlQuery = @"SELECT ID, Name, Description, is_deleted, created, creator, edited, editor FROM tbl_role
             WHERE [ID]  = @ID";
             context.AddParameter("@ID", ID);
             context.CommandText = sqlQuery;

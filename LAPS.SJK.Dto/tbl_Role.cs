@@ -10,11 +10,11 @@ namespace LAPS.SJK.Dto
         public Int32 ID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        public string CreatedBy { get; set; }
-        public DateTime? ModifiedDate { get; set; }
-        public string ModifiedBy { get; set; }
         public Int32? is_deleted { get; set; }
+        public DateTime? created { get; set; }
+        public string creator { get; set; }
+        public DateTime? edited { get; set; }
+        public string editor { get; set; }
         #endregion    
         public tbl_role Map(System.Data.IDataReader reader)
         {
@@ -22,11 +22,11 @@ namespace LAPS.SJK.Dto
             obj.ID = Convert.ToInt32(reader["ID"]);
             obj.Name = reader["Name"] == DBNull.Value ? null : reader["Name"].ToString();
             obj.Description = reader["Description"] == DBNull.Value ? null : reader["Description"].ToString();
-            obj.CreatedDate = reader["CreatedDate"] == DBNull.Value ? (DateTime?) null : Convert.ToDateTime(reader["CreatedDate"]);
-            obj.CreatedBy = reader["CreatedBy"] == DBNull.Value ? null : reader["CreatedBy"].ToString();
-            obj.ModifiedDate = reader["ModifiedDate"] == DBNull.Value ? (DateTime?) null : Convert.ToDateTime(reader["ModifiedDate"]);
-            obj.ModifiedBy = reader["ModifiedBy"] == DBNull.Value ? null : reader["ModifiedBy"].ToString();
             obj.is_deleted = reader["is_deleted"] == DBNull.Value ? (Int32?) null : Convert.ToInt32(reader["is_deleted"]);
+            obj.created = reader["created"] == DBNull.Value ? (DateTime?) null : Convert.ToDateTime(reader["created"]);
+            obj.creator = reader["creator"] == DBNull.Value ? null : reader["creator"].ToString();
+            obj.edited = reader["edited"] == DBNull.Value ? (DateTime?) null : Convert.ToDateTime(reader["edited"]);
+            obj.editor = reader["editor"] == DBNull.Value ? null : reader["editor"].ToString();
             return obj;
         }
     }
