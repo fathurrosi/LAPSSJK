@@ -25,12 +25,12 @@ namespace LAPS.SJK.Dta
 SET NOCOUNT OFF
 DECLARE @Err int
 
-INSERT INTO [tbl_post_list_value]([row_index], [id_template], [id_field], [value_field], [id_post_detail]) 
-VALUES      (@row_index, @id_template, @id_field, @value_field, @id_post_detail)
+INSERT INTO [tbl_post_list_value]([row_index], [id_template], [id_field], [value_field]) 
+VALUES      (@row_index, @id_template, @id_field, @value_field)
 
 SET @Err = @@Error
 
-SELECT  row_index, id_template, id_field, value_field, id_post_detail
+SELECT  row_index, id_template, id_field, value_field
 FROM    [tbl_post_list_value]
 WHERE   [id_field]  = @id_field
             AND [row_index] = @row_index
@@ -39,7 +39,6 @@ WHERE   [id_field]  = @id_field
             context.AddParameter("@id_template", obj.id_template);
             context.AddParameter("@id_field", obj.id_field);
             context.AddParameter("@value_field", string.Format("{0}", obj.value_field));
-            context.AddParameter("@id_post_detail", obj.id_post_detail);
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_post_list_value>(context, new tbl_post_list_value()).FirstOrDefault();
@@ -57,21 +56,19 @@ SET NOCOUNT OFF
 DECLARE @Err int
 
 UPDATE      [tbl_post_list_value]
-SET         [value_field] = @value_field,
-            [id_post_detail] = @id_post_detail
+SET         [value_field] = @value_field
 WHERE       [id_field]  = @id_field
             AND [row_index] = @row_index
             AND [id_template] = @id_template
 
 SET @Err = @@Error
 
-SELECT  row_index, id_template, id_field, value_field, id_post_detail 
+SELECT  row_index, id_template, id_field, value_field 
 FROM    [tbl_post_list_value]
 WHERE   [id_field]  = @id_field
         AND [row_index] = @row_index
         AND [id_template] = @id_template";
             context.AddParameter("@value_field", string.Format("{0}", obj.value_field));
-            context.AddParameter("@id_post_detail", obj.id_post_detail);
             context.AddParameter("@id_field", obj.id_field);
             context.AddParameter("@row_index", obj.row_index);
             context.AddParameter("@id_template", obj.id_template);            
@@ -124,7 +121,7 @@ WHERE   [id_field]  = @id_field
         public static List<tbl_post_list_value> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT row_index, id_template, id_field, value_field, id_post_detail FROM tbl_post_list_value ";
+            string sqlQuery = "SELECT row_index, id_template, id_field, value_field FROM tbl_post_list_value ";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_post_list_value>(context, new tbl_post_list_value());
@@ -165,7 +162,7 @@ WHERE   [id_field]  = @id_field
         public static tbl_post_list_value GetByPK(Int32 id_field, Int64 row_index, Int32 id_template)
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = @"SELECT row_index, id_template, id_field, value_field, id_post_detail FROM tbl_post_list_value
+            string sqlQuery = @"SELECT row_index, id_template, id_field, value_field FROM tbl_post_list_value
             WHERE [id_field]  = @id_field, AND [row_index] = @row_index, AND [id_template] = @id_template";
             context.AddParameter("@id_field", id_field);
             context.AddParameter("@row_index", row_index);
@@ -176,50 +173,6 @@ WHERE   [id_field]  = @id_field
         }
 
         /// <summary>
-        /// Get All records of TABLE [tbl_post_list_value] by TABLE [tbl_post_detail]
-        /// </summary>
-        public static List<tbl_post_list_value> GetByid_post_detail(Int32? id_post_detail)
-        {
-            IDBHelper context = new DBHelper();
-            context.CommandType = System.Data.CommandType.Text;
-            string sqlQuery =@"
-SELECT  row_index, id_template, id_field, value_field, id_post_detail
-FROM    [tbl_post_list_value]
-WHERE   [id_post_detail] = @id_post_detail";
-
-            context.AddParameter("@id_post_detail", id_post_detail);
-            context.CommandText = sqlQuery;
-            return DBUtil.ExecuteMapper<tbl_post_list_value>(context, new tbl_post_list_value());
-        }
-
-        /// <summary>
-        /// Get All records of TABLE [tbl_post_list_value] by TABLE [tbl_post_detail] (with Paging)
-        /// </summary>
-        public static List<tbl_post_list_value> GetByid_post_detail(Int32? id_post_detail, int PageSize, int PageIndex)
-        {
-            long FirstRow = ((long)PageIndex * (long)PageSize) + 1;
-            long LastRow = ((long)PageIndex * (long)PageSize) + PageSize;
-            
-            IDBHelper context = new DBHelper();
-            context.CommandType = System.Data.CommandType.Text;
-            string sqlQuery =@"
-WITH [Paging_tbl_post_list_value] AS
-(
-    SELECT  ROW_NUMBER() OVER (ORDER BY [tbl_post_list_value].[id_field], [tbl_post_list_value].[row_index], [tbl_post_list_value].[id_template]) AS PAGING_ROW_NUMBER,
-            [tbl_post_list_value].*
-    FROM    [tbl_post_list_value]
-    WHERE   [id_post_detail] = @id_post_detail
-)
-
-SELECT      [Paging_tbl_post_list_value].*
-FROM        [Paging_tbl_post_list_value]
-WHERE		PAGING_ROW_NUMBER BETWEEN @FirstRow AND @LastRow";
-
-            context.AddParameter("@id_post_detail", id_post_detail);
-            return DBUtil.ExecuteMapper<tbl_post_list_value>(context, new tbl_post_list_value());
-        }
-
-        /// <summary>
         /// Get All records of TABLE [tbl_post_list_value] by TABLE [tbl_post_list_template]
         /// </summary>
         public static List<tbl_post_list_value> GetByid_template(Int32 id_template)
@@ -227,7 +180,7 @@ WHERE		PAGING_ROW_NUMBER BETWEEN @FirstRow AND @LastRow";
             IDBHelper context = new DBHelper();
             context.CommandType = System.Data.CommandType.Text;
             string sqlQuery =@"
-SELECT  row_index, id_template, id_field, value_field, id_post_detail
+SELECT  row_index, id_template, id_field, value_field
 FROM    [tbl_post_list_value]
 WHERE   [id_template] = @id_template";
 
@@ -271,7 +224,7 @@ WHERE		PAGING_ROW_NUMBER BETWEEN @FirstRow AND @LastRow";
             IDBHelper context = new DBHelper();
             context.CommandType = System.Data.CommandType.Text;
             string sqlQuery =@"
-SELECT  row_index, id_template, id_field, value_field, id_post_detail
+SELECT  row_index, id_template, id_field, value_field
 FROM    [tbl_post_list_value]
 WHERE   [id_field] = @id_field";
 

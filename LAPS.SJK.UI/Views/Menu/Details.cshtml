@@ -1,0 +1,83 @@
+﻿@model LAPS.SJK.Dto.tbl_menu
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbl_menu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.menu_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.menu_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.menu_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.menu_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.menu_text)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.menu_text)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.menu_type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.menu_type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.need_login)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.need_login)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.parentid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.parentid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.orderid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.orderid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.url)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.url)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

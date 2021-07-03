@@ -81,6 +81,14 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NPOI, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\LAPS.SJK.Dependencies\NPOI.2.4.1\lib\net45\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\LAPS.SJK.Dependencies\NPOI.2.4.1\lib\net45\NPOI.OOXML.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -231,6 +239,7 @@
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\TemplateController.cs" />
@@ -240,6 +249,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\FieldModel.cs" />
+    <Compile Include="Models\FieldValueModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MenuModel.cs" />
@@ -1095,10 +1105,15 @@
     <Content Include="Views\Template\Create.cshtml" />
     <Content Include="Views\Template\Edit.cshtml" />
     <Content Include="Views\Template\EditColumn.cshtml" />
-    <Content Include="Views\Template\Forgot.cshtml" />
     <Content Include="Views\Template\Login.cshtml" />
     <Content Include="Views\Template\Preview.cshtml" />
     <Content Include="Views\Template\Templates.cshtml" />
+    <Content Include="Views\Menu\Index.cshtml" />
+    <Content Include="Views\Menu\Details.cshtml" />
+    <Content Include="Views\Menu\Edit.cshtml" />
+    <Content Include="Views\Template\Upload.cshtml" />
+    <Content Include="Views\Template\AddValue.cshtml" />
+    <Content Include="Views\Template\EditValue.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

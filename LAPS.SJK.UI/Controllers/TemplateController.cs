@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,54 +10,16 @@ using LAPS.SJK.Dto;
 using LAPS.SJK.Logic;
 using LAPS.SJK.Logic.Enum;
 using LAPS.SJK.UI.Models;
+using NPOI.HSSF.UserModel;
+using NPOI.SS.UserModel;
+using NPOI.XSSF.UserModel;
 
 namespace LAPS.SJK.UI.Areas.Admin.Controllers
 {
     public class TemplateController : Controller
     {
 
-        //// GET: Admin
-        //public ActionResult Index()
-        //{
-        //    List<tbl_post_list_template> list = tbl_post_list_templateItem.GetAllActive();
-        //    return View(list);
-        //}
-        //public ActionResult Forgot()
-        //{
-        //    return View();
-        //}
 
-        //public ActionResult Login()
-        //{
-        //    return View();
-        //}
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Login(UserModel user)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-
-        //        string usernname = user.Username;
-        //        string password = Security.MD5Hash(user.Password.Trim());
-        //        #region Login
-
-        //        Log.Info(string.Format("User :{0}-{1} try to log in", usernname, password));
-
-        //        Dto.Cstm.tbl_user Item = tbl_userItem.GetUser(usernname);
-        //        if (Item != null && Item.Password == password &&
-        //            Item.Roles.Where(t => string.Format("{0}", t.Name).ToLower() == string.Format("{0}", UserType.Administrator).ToLower()).Count() > 0)
-        //        {
-        //            tbl_userItem.UpdateLogin(user.Username, "", "");
-        //            FormsAuthentication.SetAuthCookie(user.Username, false);
-        //            return RedirectToAction("Index");
-        //        }
-
-        //        #endregion
-        //    }
-        //    ModelState.AddModelError("", "invalid Username or Password");
-        //    return View();
-        //}
         public ActionResult Index()
         {
             List<tbl_post_list_template> list = tbl_post_list_templateItem.GetAll();
@@ -158,8 +121,144 @@ namespace LAPS.SJK.UI.Areas.Admin.Controllers
             {
                 model = new TemplateModel(item);
                 model.fields = tbl_post_list_fieldItem.GetByid_template(item.id);
+                model.values = tbl_post_list_valueItem.GetByid_template(item.id);
             }
             return View(model);
+        }
+
+        public ActionResult Upload(int id)
+        {
+            TemplateModel model = new TemplateModel();
+            tbl_post_list_template item = tbl_post_list_templateItem.GetByPK(id);
+            if (item != null)
+            {
+                model = new TemplateModel(item);
+                model.fields = tbl_post_list_fieldItem.GetByid_template(item.id);
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Upload(int id, HttpPostedFileBase postedFile)
+        {
+            if (ModelState.IsValid)
+            {
+                if (postedFile != null && postedFile.ContentLength > (1024 * 1024 * 50))  // 50MB limit  
+                {
+                    ModelState.AddModelError("postedFile", "Your file is to large. Maximum size allowed is 50MB !");
+                }
+
+                else
+                {
+                    NPOI.HSSF.UserModel.HSSFWorkbook hSSFWorkbook = new NPOI.HSSF.UserModel.HSSFWorkbook(postedFile.InputStream);
+                    NPOI.SS.UserModel.ISheet sheet = hSSFWorkbook.GetSheetAt(0);
+                    for (int row = 1; row <= sheet.LastRowNum; row++)
+                    {
+                        var sheetRow = sheet.GetRow(row);
+                        if (sheetRow != null)
+                        {
+                            string test = sheetRow.GetCell(0).StringCellValue;
+                            //sheetRow.GetCell(1).StringCellValue;
+                        }
+                    }
+                }
+            }
+            //return View(postedFile);  
+            return Json("no files were selected !");
+        }
+        public ActionResult EditValue(int id, int row_index)
+        {
+            FieldValueModel model = new FieldValueModel();
+            model.id = id;
+            model.row_index = row_index;
+            model.field = tbl_post_list_fieldItem.GetByid_template(id);
+            model.values = tbl_post_list_valueItem.GetByid_template(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult EditValue(int id, FormCollection form)
+        {
+            if (ModelState.IsValid)
+            {
+                int max_row_index = tbl_post_list_valueItem.GetMaxRowIndex(id);
+                List<tbl_post_list_value> values = new List<tbl_post_list_value>();
+                foreach (string key in form.AllKeys)
+                {
+                    if (!key.StartsWith("__") && key.StartsWith("_"))
+                    {
+                        tbl_post_list_value value = new tbl_post_list_value();
+                        value.value_field = form[key];
+
+                        //string.Format("_{0}_{1}_{2}", field.id_template, field.id, value.row_index)
+                        int id_template = 0;
+                        int id_field = 0;
+                        int row_index = 0;
+                        string[] temps = key.Split('_');
+                        int.TryParse(temps[1], out id_template);
+                        int.TryParse(temps[2], out id_field);
+                        int.TryParse(temps[3], out row_index);
+                        value.id_template = id_template;
+                        value.id_field = id_field;
+                        value.row_index = row_index == 0 ? max_row_index : row_index;
+
+                        values.Add(value);
+                    }
+                }
+
+                tbl_post_list_valueItem.Update(values);
+            }
+            return RedirectToAction("Preview", new { id = id });
+        }
+
+        public ActionResult DeleteValue(int id, int row_index)
+        {
+            tbl_post_list_valueItem.Delete(id, row_index);
+            return RedirectToAction("Preview", new { id = id });
+        }
+        public ActionResult AddValue(int id)
+        {
+            FieldValueModel model = new FieldValueModel();
+            model.id = id;
+            model.row_index = 0;
+            model.field = tbl_post_list_fieldItem.GetByid_template(id);
+            model.values = tbl_post_list_valueItem.GetByid_template(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult AddValue(int id, FormCollection form)
+        {
+            if (ModelState.IsValid)
+            {
+                int max_row_index = tbl_post_list_valueItem.GetMaxRowIndex(id);
+                List<tbl_post_list_value> values = new List<tbl_post_list_value>();
+                foreach (string key in form.AllKeys)
+                {
+                    if (!key.StartsWith("__") && key.StartsWith("_"))
+                    {
+                        tbl_post_list_value value = new tbl_post_list_value();
+                        value.value_field = form[key];
+
+                        //string.Format("_{0}_{1}_{2}", field.id_template, field.id, value.row_index)
+                        int id_template = 0;
+                        int id_field = 0;
+                        int row_index = 0;
+                        string[] temps = key.Split('_');
+                        int.TryParse(temps[1], out id_template);
+                        int.TryParse(temps[2], out id_field);
+                        int.TryParse(temps[3], out row_index);
+                        value.id_template = id_template;
+                        value.id_field = id_field;
+                        value.row_index = row_index == 0 ? max_row_index : row_index;
+
+                        values.Add(value);
+                    }
+                }
+
+                tbl_post_list_valueItem.Insert(values);
+            }
+            return RedirectToAction("Preview", new { id = id });
         }
 
 

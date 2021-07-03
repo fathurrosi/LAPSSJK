@@ -13,6 +13,7 @@ namespace LAPS.SJK.Dto
         public DateTime? created { get; set; }
         public string creator { get; set; }
         public Int32? is_deleted { get; set; }
+        public Int32? id_post_detail { get; set; }
         #endregion    
         public tbl_post_list_template Map(System.Data.IDataReader reader)
         {
@@ -23,6 +24,7 @@ namespace LAPS.SJK.Dto
             obj.created = reader["created"] == DBNull.Value ? (DateTime?) null : Convert.ToDateTime(reader["created"]);
             obj.creator = reader["creator"] == DBNull.Value ? null : reader["creator"].ToString();
             obj.is_deleted = reader["is_deleted"] == DBNull.Value ? (Int32?) null : Convert.ToInt32(reader["is_deleted"]);
+            obj.id_post_detail = reader["id_post_detail"] == DBNull.Value ? (Int32?) null : Convert.ToInt32(reader["id_post_detail"]);
             return obj;
         }
     }

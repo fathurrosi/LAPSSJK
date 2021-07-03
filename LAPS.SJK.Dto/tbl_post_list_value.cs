@@ -11,7 +11,6 @@ namespace LAPS.SJK.Dto
         public Int32 id_template { get; set; }
         public Int32 id_field { get; set; }
         public string value_field { get; set; }
-        public Int32? id_post_detail { get; set; }
         #endregion    
         public tbl_post_list_value Map(System.Data.IDataReader reader)
         {
@@ -20,7 +19,6 @@ namespace LAPS.SJK.Dto
             obj.id_template = Convert.ToInt32(reader["id_template"]);
             obj.id_field = Convert.ToInt32(reader["id_field"]);
             obj.value_field = reader["value_field"] == DBNull.Value ? null : reader["value_field"].ToString();
-            obj.id_post_detail = reader["id_post_detail"] == DBNull.Value ? (Int32?) null : Convert.ToInt32(reader["id_post_detail"]);
             return obj;
         }
     }

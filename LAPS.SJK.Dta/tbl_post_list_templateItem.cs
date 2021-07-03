@@ -25,15 +25,15 @@ namespace LAPS.SJK.Dta
 SET NOCOUNT OFF
 DECLARE @Err int
 
-INSERT INTO [tbl_post_list_template]([template_name], [remark], [created], [creator], [is_deleted]) 
-VALUES      (@template_name, @remark, @created, @creator, @is_deleted)
+INSERT INTO [tbl_post_list_template]([template_name], [remark], [created], [creator], [is_deleted], [id_post_detail]) 
+VALUES      (@template_name, @remark, @created, @creator, @is_deleted, @id_post_detail)
 
 SET @Err = @@Error
 
 DECLARE @_id Int
 SELECT @_id = SCOPE_IDENTITY()
 
-SELECT  id, template_name, remark, created, creator, is_deleted
+SELECT  id, template_name, remark, created, creator, is_deleted, id_post_detail
 FROM    [tbl_post_list_template]
 WHERE   [id]  = @_id";
             context.AddParameter("@template_name", string.Format("{0}", obj.template_name));
@@ -41,6 +41,7 @@ WHERE   [id]  = @_id";
             context.AddParameter("@created", obj.created);
             context.AddParameter("@creator", string.Format("{0}", obj.creator));
             context.AddParameter("@is_deleted", obj.is_deleted);
+            context.AddParameter("@id_post_detail", obj.id_post_detail);
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_post_list_template>(context, new tbl_post_list_template()).FirstOrDefault();
@@ -60,17 +61,19 @@ DECLARE @Err int
 UPDATE      [tbl_post_list_template]
 SET         [template_name] = @template_name,
             [remark] = @remark,
-            [is_deleted] = @is_deleted
+            [is_deleted] = @is_deleted,
+            [id_post_detail] = @id_post_detail
 WHERE       [id]  = @id
 
 SET @Err = @@Error
 
-SELECT  id, template_name, remark, created, creator, is_deleted 
+SELECT  id, template_name, remark, created, creator, is_deleted, id_post_detail 
 FROM    [tbl_post_list_template]
 WHERE   [id]  = @id";
             context.AddParameter("@template_name", string.Format("{0}", obj.template_name));
             context.AddParameter("@remark", string.Format("{0}", obj.remark));
             context.AddParameter("@is_deleted", obj.is_deleted);
+            context.AddParameter("@id_post_detail", obj.id_post_detail);
             context.AddParameter("@id", obj.id);            
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
@@ -117,7 +120,7 @@ WHERE   [id]  = @id";
         public static List<tbl_post_list_template> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT id, template_name, remark, created, creator, is_deleted FROM tbl_post_list_template WHERE is_deleted <> 1 ";
+            string sqlQuery = "SELECT id, template_name, remark, created, creator, is_deleted, id_post_detail FROM tbl_post_list_template WHERE is_deleted <> 1 ";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_post_list_template>(context, new tbl_post_list_template());
@@ -158,7 +161,7 @@ WHERE   [id]  = @id";
         public static tbl_post_list_template GetByPK(Int32 id)
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = @"SELECT id, template_name, remark, created, creator, is_deleted FROM tbl_post_list_template
+            string sqlQuery = @"SELECT id, template_name, remark, created, creator, is_deleted, id_post_detail FROM tbl_post_list_template
             WHERE [id]  = @id";
             context.AddParameter("@id", id);
             context.CommandText = sqlQuery;

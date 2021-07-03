@@ -1,0 +1,50 @@
+﻿@model LAPS.SJK.UI.Models.FieldValueModel
+@{
+    List<LAPS.SJK.Dto.tbl_post_list_value> values = Model.values;
+    List<LAPS.SJK.Dto.tbl_post_list_field> fields = Model.field;
+    ViewBag.Title = "Input";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+
+<div class="panel">
+    <div class="panel-body">
+        <h3 class="title-hero">
+            Edit Template
+        </h3>
+        <div class="example-box-wrapper">
+            <div class="form-horizontal bordered-row" id="demo-form" data-parsley-validate="">
+                <h4>Input Table</h4>
+                <hr />
+
+                @using (Html.BeginForm(null, null, new { id = Model.id }, FormMethod.Post, new { @class = "form-horizontal" }))
+                {  @Html.HiddenFor(model => model.id)
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    for (int i = 0; i < fields.Count; i++)
+                    {
+
+                        LAPS.SJK.Dto.tbl_post_list_field field = fields[i];
+                        LAPS.SJK.Dto.tbl_post_list_value value = values.Where(t => t.id_field == field.id && t.id_template == field.id_template && t.row_index == Model.row_index).FirstOrDefault();
+                        <div class="form-group">
+                            @Html.Label(field.column_alias, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextBox(string.Format("_{0}_{1}_{2}", field.id_template, field.id, Model.row_index), value == null ? "" : value.value_field, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    }
+
+
+                    <div class="form-group">
+                        <div class="bg-default content-box text-center pad20A mrg25T">
+                            <input type="submit" value="Save" class="btn btn-primary" />
+                            @Html.ActionLink("Kembali", "Index", null, new { @class = "btn btn-primary" })
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
