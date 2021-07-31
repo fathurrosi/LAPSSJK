@@ -25,8 +25,8 @@ namespace LAPS.SJK.Dta
 SET NOCOUNT OFF
 DECLARE @Err int
 
-INSERT INTO [tbl_info]([title], [body], [created], [created_by], [updated], [updated_by]) 
-VALUES      (@title, @body, @created, @created_by, @updated, @updated_by)
+INSERT INTO [tbl_info]([title], [body], [created], [created_by]) 
+VALUES      (@title, @body, @created, @created_by)
 
 SET @Err = @@Error
 
@@ -40,8 +40,6 @@ WHERE   [id]  = @_id";
             context.AddParameter("@body", string.Format("{0}", obj.body));
             context.AddParameter("@created", obj.created);
             context.AddParameter("@created_by", string.Format("{0}", obj.created_by));
-            context.AddParameter("@updated", obj.updated);
-            context.AddParameter("@updated_by", string.Format("{0}", obj.updated_by));
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_info>(context, new tbl_info()).FirstOrDefault();
@@ -61,7 +59,6 @@ DECLARE @Err int
 UPDATE      [tbl_info]
 SET         [title] = @title,
             [body] = @body,
-            [created_by] = @created_by,
             [updated] = @updated,
             [updated_by] = @updated_by
 WHERE       [id]  = @id
@@ -73,7 +70,6 @@ FROM    [tbl_info]
 WHERE   [id]  = @id";
             context.AddParameter("@title", string.Format("{0}", obj.title));
             context.AddParameter("@body", string.Format("{0}", obj.body));
-            context.AddParameter("@created_by", string.Format("{0}", obj.created_by));
             context.AddParameter("@updated", obj.updated);
             context.AddParameter("@updated_by", string.Format("{0}", obj.updated_by));
             context.AddParameter("@id", obj.id);            

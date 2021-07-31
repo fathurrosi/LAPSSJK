@@ -66,8 +66,7 @@ SET         [ref_name] = @ref_name,
             [file_path] = @file_path,
             [file_name] = @file_name,
             [file_ext] = @file_ext,
-            [file_blob] = @file_blob,
-            [created_by] = @created_by
+            [file_blob] = @file_blob
 WHERE       [file_id]  = @file_id
 
 SET @Err = @@Error
@@ -82,7 +81,6 @@ WHERE   [file_id]  = @file_id";
             context.AddParameter("@file_name", string.Format("{0}", obj.file_name));
             context.AddParameter("@file_ext", string.Format("{0}", obj.file_ext));
             context.AddParameter("@file_blob", obj.file_blob, System.Data.DbType.Binary);
-            context.AddParameter("@created_by", string.Format("{0}", obj.created_by));
             context.AddParameter("@file_id", string.Format("{0}", obj.file_id));            
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;

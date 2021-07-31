@@ -25,18 +25,19 @@ namespace LAPS.SJK.Dta
 SET NOCOUNT OFF
 DECLARE @Err int
 
-INSERT INTO [tbl_combo_detail]([name], [parent], [header], [sequence]) 
-VALUES      (@name, @parent, @header, @sequence)
+INSERT INTO [tbl_combo_detail]([name], [note], [parent], [header], [sequence]) 
+VALUES      (@name, @note, @parent, @header, @sequence)
 
 SET @Err = @@Error
 
 DECLARE @_id Int
 SELECT @_id = SCOPE_IDENTITY()
 
-SELECT  name, parent, header, sequence, id
+SELECT  name, note, parent, header, sequence, id
 FROM    [tbl_combo_detail]
 WHERE   [id]  = @_id";
             context.AddParameter("@name", string.Format("{0}", obj.name));
+            context.AddParameter("@note", string.Format("{0}", obj.note));
             context.AddParameter("@parent", string.Format("{0}", obj.parent));
             context.AddParameter("@header", string.Format("{0}", obj.header));
             context.AddParameter("@sequence", obj.sequence);
@@ -58,6 +59,7 @@ DECLARE @Err int
 
 UPDATE      [tbl_combo_detail]
 SET         [name] = @name,
+            [note] = @note,
             [parent] = @parent,
             [header] = @header,
             [sequence] = @sequence
@@ -65,10 +67,11 @@ WHERE       [id]  = @id
 
 SET @Err = @@Error
 
-SELECT  name, parent, header, sequence, id 
+SELECT  name, note, parent, header, sequence, id 
 FROM    [tbl_combo_detail]
 WHERE   [id]  = @id";
             context.AddParameter("@name", string.Format("{0}", obj.name));
+            context.AddParameter("@note", string.Format("{0}", obj.note));
             context.AddParameter("@parent", string.Format("{0}", obj.parent));
             context.AddParameter("@header", string.Format("{0}", obj.header));
             context.AddParameter("@sequence", obj.sequence);
@@ -118,7 +121,7 @@ WHERE   [id]  = @id";
         public static List<tbl_combo_detail> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT name, parent, header, sequence, id FROM tbl_combo_detail ";
+            string sqlQuery = "SELECT name, note, parent, header, sequence, id FROM tbl_combo_detail ";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_combo_detail>(context, new tbl_combo_detail());
@@ -159,7 +162,7 @@ WHERE   [id]  = @id";
         public static tbl_combo_detail GetByPK(Int32 id)
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = @"SELECT name, parent, header, sequence, id FROM tbl_combo_detail
+            string sqlQuery = @"SELECT name, note, parent, header, sequence, id FROM tbl_combo_detail
             WHERE [id]  = @id";
             context.AddParameter("@id", id);
             context.CommandText = sqlQuery;

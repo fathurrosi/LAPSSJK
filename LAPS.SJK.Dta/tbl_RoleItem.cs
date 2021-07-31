@@ -25,8 +25,8 @@ namespace LAPS.SJK.Dta
 SET NOCOUNT OFF
 DECLARE @Err int
 
-INSERT INTO [tbl_role]([Name], [Description], [is_deleted], [created], [creator]) 
-VALUES      (@Name, @Description, @is_deleted, @created, @creator)
+INSERT INTO [tbl_role]([Name], [Description], [is_deleted], [created], [creator], [edited], [editor]) 
+VALUES      (@Name, @Description, @is_deleted, @created, @creator, @edited, @editor)
 
 SET @Err = @@Error
 
@@ -41,6 +41,8 @@ WHERE   [ID]  = @_ID";
             context.AddParameter("@is_deleted", obj.is_deleted);
             context.AddParameter("@created", obj.created);
             context.AddParameter("@creator", string.Format("{0}", obj.creator));
+            context.AddParameter("@edited", obj.edited);
+            context.AddParameter("@editor", string.Format("{0}", obj.editor));
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_role>(context, new tbl_role()).FirstOrDefault();
@@ -61,6 +63,7 @@ UPDATE      [tbl_role]
 SET         [Name] = @Name,
             [Description] = @Description,
             [is_deleted] = @is_deleted,
+            [creator] = @creator,
             [edited] = @edited,
             [editor] = @editor
 WHERE       [ID]  = @ID
@@ -73,6 +76,7 @@ WHERE   [ID]  = @ID";
             context.AddParameter("@Name", string.Format("{0}", obj.Name));
             context.AddParameter("@Description", string.Format("{0}", obj.Description));
             context.AddParameter("@is_deleted", obj.is_deleted);
+            context.AddParameter("@creator", string.Format("{0}", obj.creator));
             context.AddParameter("@edited", obj.edited);
             context.AddParameter("@editor", string.Format("{0}", obj.editor));
             context.AddParameter("@ID", obj.ID);            

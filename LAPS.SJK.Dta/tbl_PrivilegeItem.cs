@@ -168,7 +168,7 @@ WHERE   [RoleID]  = @RoleID
         {
             IDBHelper context = new DBHelper();
             string sqlQuery = @"SELECT MenuID, RoleID, AllowCreate, AllowRead, AllowUpdate, AllowDelete, AllowPrint FROM tbl_privilege
-            WHERE [RoleID]  = @RoleID, AND [MenuID] = @MenuID";
+            WHERE [RoleID]  = @RoleID AND [MenuID] = @MenuID";
             context.AddParameter("@RoleID", RoleID);
             context.AddParameter("@MenuID", MenuID);
             context.CommandText = sqlQuery;

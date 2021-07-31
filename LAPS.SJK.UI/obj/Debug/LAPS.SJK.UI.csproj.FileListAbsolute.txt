@@ -108,3 +108,6 @@ G:\Works\Andri\LAPSSJK\LAPS.SJK.UI\bin\roslyn\vbc.exe
 G:\Works\Andri\LAPSSJK\LAPS.SJK.UI\bin\roslyn\VBCSCompiler.exe
 G:\Works\Andri\LAPSSJK\LAPS.SJK.UI\bin\roslyn\VBCSCompiler.exe.config
 G:\Works\Andri\LAPSSJK\LAPS.SJK.UI\obj\Debug\LAPS.SJK.UI.csprojResolveAssemblyReference.cache
+G:\Works\Andri\LAPSSJK\LAPS.SJK.UI\bin\ICSharpCode.SharpZipLib.dll
+G:\Works\Andri\LAPSSJK\LAPS.SJK.UI\bin\ICSharpCode.SharpZipLib.pdb
+G:\Works\Andri\LAPSSJK\LAPS.SJK.UI\bin\ICSharpCode.SharpZipLib.xml

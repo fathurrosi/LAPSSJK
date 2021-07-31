@@ -8,6 +8,7 @@ namespace LAPS.SJK.Dto
     {
         #region tbl_combo_detail Properties
         public string name { get; set; }
+        public string note { get; set; }
         public string parent { get; set; }
         public string header { get; set; }
         public Int32? sequence { get; set; }
@@ -17,6 +18,7 @@ namespace LAPS.SJK.Dto
         {
             tbl_combo_detail obj = new tbl_combo_detail();   
             obj.name = reader["name"] == DBNull.Value ? null : reader["name"].ToString();
+            obj.note = reader["note"] == DBNull.Value ? null : reader["note"].ToString();
             obj.parent = reader["parent"] == DBNull.Value ? null : reader["parent"].ToString();
             obj.header = reader["header"] == DBNull.Value ? null : reader["header"].ToString();
             obj.sequence = reader["sequence"] == DBNull.Value ? (Int32?) null : Convert.ToInt32(reader["sequence"]);

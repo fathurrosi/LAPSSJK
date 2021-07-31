@@ -1,4 +1,4 @@
-﻿@model LAPS.SJK.Dto.tbl_post_list_value
+﻿@model LAPS.SJK.UI.Models.TemplateModel
 
 @{
     ViewBag.Title = "Upload";
@@ -7,54 +7,82 @@
 
 <h2>Upload</h2>
 
-@using (Html.BeginForm())
+
+@using (Html.BeginForm("Upload", "Template", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return myFunction()" }))
 {
-    @Html.AntiForgeryToken()
-    
     <div class="form-horizontal">
-        <h4>tbl_post_list_value</h4>
-        <hr />
+
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.id)
         <div class="form-group">
-            @Html.LabelFor(model => model.row_index, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">                
-                @Html.EditorFor(model => model.row_index, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.row_index, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.id_template, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="control-label col-md-2">Download Format:</div>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.id_template, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.id_template, "", new { @class = "text-danger" })
+                <a href="/User/DownloadExcel/"><img src="~/excel.ico" width="25" height="25" title="Download Excel format" alt="excel" /></a>
             </div>
         </div>
-
         <div class="form-group">
-            @Html.LabelFor(model => model.id_field, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="control-label col-md-2">Excel:</div>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.id_field, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.id_field, "", new { @class = "text-danger" })
+                <input type="file" id="postedFile" name="postedFile" class="" />
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.value_field, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.value_field, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.value_field, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Upload" id="btnSubmit" class="btn btn-primary" />
             </div>
         </div>
     </div>
 }
+
+
+@*@using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>tbl_post_list_value</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.row_index, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.row_index, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.row_index, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.id_template, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.id_template, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.id_template, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.id_field, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.id_field, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.id_field, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.value_field, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.value_field, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.value_field, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }*@
 
 <div>
     @Html.ActionLink("Back to List", "Index")

@@ -25,8 +25,8 @@ namespace LAPS.SJK.Dta
 SET NOCOUNT OFF
 DECLARE @Err int
 
-INSERT INTO [tbl_post]([name], [cat_id], [created], [creator]) 
-VALUES      (@name, @cat_id, @created, @creator)
+INSERT INTO [tbl_post]([name], [cat_id], [created], [creator], [edited], [editor]) 
+VALUES      (@name, @cat_id, @created, @creator, @edited, @editor)
 
 SET @Err = @@Error
 
@@ -40,6 +40,8 @@ WHERE   [post_id]  = @_post_id";
             context.AddParameter("@cat_id", obj.cat_id);
             context.AddParameter("@created", obj.created);
             context.AddParameter("@creator", string.Format("{0}", obj.creator));
+            context.AddParameter("@edited", obj.edited);
+            context.AddParameter("@editor", string.Format("{0}", obj.editor));
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_post>(context, new tbl_post()).FirstOrDefault();
@@ -59,6 +61,7 @@ DECLARE @Err int
 UPDATE      [tbl_post]
 SET         [name] = @name,
             [cat_id] = @cat_id,
+            [creator] = @creator,
             [edited] = @edited,
             [editor] = @editor
 WHERE       [post_id]  = @post_id
@@ -70,6 +73,7 @@ FROM    [tbl_post]
 WHERE   [post_id]  = @post_id";
             context.AddParameter("@name", string.Format("{0}", obj.name));
             context.AddParameter("@cat_id", obj.cat_id);
+            context.AddParameter("@creator", string.Format("{0}", obj.creator));
             context.AddParameter("@edited", obj.edited);
             context.AddParameter("@editor", string.Format("{0}", obj.editor));
             context.AddParameter("@post_id", obj.post_id);            

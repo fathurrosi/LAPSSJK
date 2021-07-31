@@ -163,7 +163,7 @@ WHERE   [id_field]  = @id_field
         {
             IDBHelper context = new DBHelper();
             string sqlQuery = @"SELECT row_index, id_template, id_field, value_field FROM tbl_post_list_value
-            WHERE [id_field]  = @id_field, AND [row_index] = @row_index, AND [id_template] = @id_template";
+            WHERE [id_field]  = @id_field AND [row_index] = @row_index AND [id_template] = @id_template";
             context.AddParameter("@id_field", id_field);
             context.AddParameter("@row_index", row_index);
             context.AddParameter("@id_template", id_template);

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "anY2F7uCV9azeXDzoiFBNkeoJoEQka52KGkRtxJ01sNLPya5Hv3uK2FzDVxBskFVR5XMYTo/uNVc2umVeF+dcA==",
+  "success": true,
+  "projectFilePath": "G:\\Works\\Andri\\LAPSSJK\\Web.NetCore\\Web.NetCore.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\fathu\\.nuget\\packages\\microsoft.typescript.msbuild\\4.3.2\\microsoft.typescript.msbuild.4.3.2.nupkg.sha512"
+  ],
+  "logs": []
+}

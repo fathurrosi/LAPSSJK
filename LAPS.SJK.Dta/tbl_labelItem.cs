@@ -25,18 +25,22 @@ namespace LAPS.SJK.Dta
 SET NOCOUNT OFF
 DECLARE @Err int
 
-INSERT INTO [tbl_label]([c_flag], [name], [value]) 
-VALUES      (@c_flag, @name, @value)
+INSERT INTO [tbl_label]([c_flag], [name], [value], [created], [creator], [edited], [editor]) 
+VALUES      (@c_flag, @name, @value, @created, @creator, @edited, @editor)
 
 SET @Err = @@Error
 
-SELECT  c_flag, name, value
+SELECT  c_flag, name, value, created, creator, edited, editor
 FROM    [tbl_label]
 WHERE   [name]  = @name
             AND [c_flag] = @c_flag";
             context.AddParameter("@c_flag", string.Format("{0}", obj.c_flag));
             context.AddParameter("@name", string.Format("{0}", obj.name));
             context.AddParameter("@value", string.Format("{0}", obj.value));
+            context.AddParameter("@created", obj.created);
+            context.AddParameter("@creator", string.Format("{0}", obj.creator));
+            context.AddParameter("@edited", obj.edited);
+            context.AddParameter("@editor", string.Format("{0}", obj.editor));
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_label>(context, new tbl_label()).FirstOrDefault();
@@ -54,17 +58,23 @@ SET NOCOUNT OFF
 DECLARE @Err int
 
 UPDATE      [tbl_label]
-SET         [value] = @value
+SET         [value] = @value,
+            [creator] = @creator,
+            [edited] = @edited,
+            [editor] = @editor
 WHERE       [name]  = @name
             AND [c_flag] = @c_flag
 
 SET @Err = @@Error
 
-SELECT  c_flag, name, value 
+SELECT  c_flag, name, value, created, creator, edited, editor 
 FROM    [tbl_label]
 WHERE   [name]  = @name
         AND [c_flag] = @c_flag";
             context.AddParameter("@value", string.Format("{0}", obj.value));
+            context.AddParameter("@creator", string.Format("{0}", obj.creator));
+            context.AddParameter("@edited", obj.edited);
+            context.AddParameter("@editor", string.Format("{0}", obj.editor));
             context.AddParameter("@name", string.Format("{0}", obj.name));
             context.AddParameter("@c_flag", string.Format("{0}", obj.c_flag));            
             context.CommandText = sqlQuery;
@@ -114,7 +124,7 @@ WHERE   [name]  = @name
         public static List<tbl_label> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "SELECT c_flag, name, value FROM tbl_label ";
+            string sqlQuery = "SELECT c_flag, name, value, created, creator, edited, editor FROM tbl_label ";
             context.CommandText = sqlQuery;
             context.CommandType =  System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_label>(context, new tbl_label());
@@ -155,8 +165,8 @@ WHERE   [name]  = @name
         public static tbl_label GetByPK(string name, string c_flag)
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = @"SELECT c_flag, name, value FROM tbl_label
-            WHERE [name]  = @name, AND [c_flag] = @c_flag";
+            string sqlQuery = @"SELECT c_flag, name, value, created, creator, edited, editor FROM tbl_label
+            WHERE [name]  = @name AND [c_flag] = @c_flag";
             context.AddParameter("@name", name);
             context.AddParameter("@c_flag", c_flag);
             context.CommandText = sqlQuery;

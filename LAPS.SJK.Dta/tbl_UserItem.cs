@@ -25,8 +25,8 @@ namespace LAPS.SJK.Dta
 SET NOCOUNT OFF
 DECLARE @Err int
 
-INSERT INTO [tbl_user]([Username], [Password], [LastLogin], [IsLogin], [IPAddress], [MachineName], [is_deleted], [FullName], [created], [creator]) 
-VALUES      (@Username, @Password, @LastLogin, @IsLogin, @IPAddress, @MachineName, @is_deleted, @FullName, @created, @creator)
+INSERT INTO [tbl_user]([Username], [Password], [LastLogin], [IsLogin], [IPAddress], [MachineName], [is_deleted], [FullName], [created], [creator], [edited], [editor]) 
+VALUES      (@Username, @Password, @LastLogin, @IsLogin, @IPAddress, @MachineName, @is_deleted, @FullName, @created, @creator, @edited, @editor)
 
 SET @Err = @@Error
 
@@ -43,6 +43,8 @@ WHERE   [Username]  = @Username";
             context.AddParameter("@FullName", string.Format("{0}", obj.FullName));
             context.AddParameter("@created", obj.created);
             context.AddParameter("@creator", string.Format("{0}", obj.creator));
+            context.AddParameter("@edited", obj.edited);
+            context.AddParameter("@editor", string.Format("{0}", obj.editor));
             context.CommandText = sqlQuery;
             context.CommandType = System.Data.CommandType.Text;
             return DBUtil.ExecuteMapper<tbl_user>(context, new tbl_user()).FirstOrDefault();
@@ -67,6 +69,7 @@ SET         [Password] = @Password,
             [MachineName] = @MachineName,
             [is_deleted] = @is_deleted,
             [FullName] = @FullName,
+            [creator] = @creator,
             [edited] = @edited,
             [editor] = @editor
 WHERE       [Username]  = @Username
@@ -83,6 +86,7 @@ WHERE   [Username]  = @Username";
             context.AddParameter("@MachineName", string.Format("{0}", obj.MachineName));
             context.AddParameter("@is_deleted", obj.is_deleted);
             context.AddParameter("@FullName", string.Format("{0}", obj.FullName));
+            context.AddParameter("@creator", string.Format("{0}", obj.creator));
             context.AddParameter("@edited", obj.edited);
             context.AddParameter("@editor", string.Format("{0}", obj.editor));
             context.AddParameter("@Username", string.Format("{0}", obj.Username));            

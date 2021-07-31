@@ -143,14 +143,18 @@ namespace LAPS.SJK.UI.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (postedFile != null && postedFile.ContentLength > (1024 * 1024 * 50))  // 50MB limit  
+                if (postedFile == null)
+                {
+                    ModelState.AddModelError("postedFile", "You have no file to upload ! ");
+                }
+                else if (postedFile != null && postedFile.ContentLength > (1024 * 1024 * 50))  // 50MB limit  
                 {
                     ModelState.AddModelError("postedFile", "Your file is to large. Maximum size allowed is 50MB !");
                 }
 
                 else
                 {
-                    NPOI.HSSF.UserModel.HSSFWorkbook hSSFWorkbook = new NPOI.HSSF.UserModel.HSSFWorkbook(postedFile.InputStream);
+                    NPOI.XSSF.UserModel.XSSFWorkbook hSSFWorkbook = new NPOI.XSSF.UserModel.XSSFWorkbook(postedFile.InputStream);
                     NPOI.SS.UserModel.ISheet sheet = hSSFWorkbook.GetSheetAt(0);
                     for (int row = 1; row <= sheet.LastRowNum; row++)
                     {
@@ -166,6 +170,8 @@ namespace LAPS.SJK.UI.Areas.Admin.Controllers
             //return View(postedFile);  
             return Json("no files were selected !");
         }
+
+
         public ActionResult EditValue(int id, int row_index)
         {
             FieldValueModel model = new FieldValueModel();
